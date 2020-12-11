@@ -1,3 +1,11 @@
+```
+mysql -u root -p
+CREATE DATABASE koen CHARACTER SET utf8;
+GRANT ALL PRIVILEGES ON koen.* TO root@localhost IDENTIFIED BY '';
+
+ php artisan make:model Park -m
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
