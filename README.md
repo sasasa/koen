@@ -3,7 +3,17 @@ mysql -u root -p
 CREATE DATABASE koen CHARACTER SET utf8;
 GRANT ALL PRIVILEGES ON koen.* TO root@localhost IDENTIFIED BY '';
 
- php artisan make:model Park -m
+php artisan make:model Park -m
+
+php artisan make:controller ParksController
+
+php artisan make:seeder ParksTableSeeder
+php artisan make:seeder UsersTableSeeder
+php artisan db:seed --class=ParksTableSeeder
+
+php artisan migrate:refresh
+php artisan db:seed
+php artisan storage:link
 ```
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>

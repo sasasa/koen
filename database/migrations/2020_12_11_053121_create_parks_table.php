@@ -19,77 +19,80 @@ class CreateParksTable extends Migration
             $table->string('park_name');
             // 住所
             $table->string('address');
+            // 画像パス
+            $table->string('image_path');
+
             // 経度
             $table->double('longitude');
             // 緯度
             $table->double('latitude');
             /*基本施設*/
             // トイレ
-            $table->boolean('is_toilet');
+            $table->boolean('is_toilet')->default(false);
             // 管理室
-            $table->boolean('is_management_room');
+            $table->boolean('is_management_room')->default(false);
             // 売店
-            $table->boolean('is_store');
+            $table->boolean('is_store')->default(false);
             // 駐車場
-            $table->boolean('is_parking');
+            $table->boolean('is_parking')->default(false);
 
             /* こども*/
             //  おむつ
-            $table->boolean('is_diaper');
+            $table->boolean('is_diaper')->default(false);
             //  遊具
-            $table->boolean('is_playing_equipment');
+            $table->boolean('is_playing_equipment')->default(false);
             //  砂遊び
-            $table->boolean('is_playing_with_sand');
+            $table->boolean('is_playing_with_sand')->default(false);
             //  水遊び
-            $table->boolean('is_playing_in_water');
+            $table->boolean('is_playing_in_water')->default(false);
 
             /*自然 */
             // 川・池
-            $table->boolean('is_river');
+            $table->boolean('is_river')->default(false);
             // 花壇
-            $table->boolean('is_ flower_bed');
+            $table->boolean('is_flower_bed')->default(false);
             // 桜
-            $table->boolean('is_cherry_blossom');
+            $table->boolean('is_cherry_blossom')->default(false);
             // 遊歩道
-            $table->boolean('is_promenade');
+            $table->boolean('is_promenade')->default(false);
 
             /* 運動 */
             // ランニング
-            $table->boolean('is_running');
+            $table->boolean('is_running')->default(false);
             // 野球場
-            $table->boolean('is_baseball');
+            $table->boolean('is_baseball')->default(false);
             // テニス
-            $table->boolean('is_tennis');
+            $table->boolean('is_tennis')->default(false);
             // 体育館
-            $table->boolean('is_gym');
+            $table->boolean('is_gym')->default(false);
             // 多目的グラウンド
-            $table->boolean('is_multipurpose_ground');
+            $table->boolean('is_multipurpose_ground')->default(false);
 
             /**アウトドア */
             // 宿泊施設
-            $table->boolean('is_accommodation');
+            $table->boolean('is_accommodation')->default(false);
             // キャンプ場
-            $table->boolean('is_campground');
+            $table->boolean('is_campground')->default(false);
             // 炊事場
-            $table->boolean('is_kitchen');
+            $table->boolean('is_kitchen')->default(false);
             // フィッシング
-            $table->boolean('is_fishing');
+            $table->boolean('is_fishing')->default(false);
 
             /**バリアフリー */
             // 多目的トイレ
-            $table->boolean('is_multipurpose_toilet');
+            $table->boolean('is_multipurpose_toilet')->default(false);
             // 車椅子対応
-            $table->boolean('is_wheelchair_accessible');
+            $table->boolean('is_wheelchair_accessible')->default(false);
 
             /**その他*/
             // ドッグラン
-            $table->boolean('is_dog_run');
+            $table->boolean('is_dog_run')->default(false);
             // ボート
-            $table->boolean('is_boat');
+            $table->boolean('is_boat')->default(false);
             // 美術館
-            $table->boolean('is_art_museum');
+            $table->boolean('is_art_museum')->default(false);
             // 資料館
-            $table->boolean('is_reference_library');
+            $table->boolean('is_reference_library')->default(false);
 
             $table->timestamps();
         });
