@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Park;
+use App\Models\Photo;
 use Illuminate\Support\Facades\Storage;
 
 class ParksController extends Controller
 {
+    public function detail(Request $req, Park $park)
+    {
+        return view('parks.detail', [
+            'park' => $park,
+            'insect_photos' => Photo::where('photo_type', '昆虫')->orderBy('id', 'desc')->get(),
+            'bird_photos' => Photo::where('photo_type', '鳥')->orderBy('id', 'desc')->get(),
+            'plant_photos' => Photo::where('photo_type', '植物')->orderBy('id', 'desc')->get(),
+        ]);
+    }
+    
+    
     public function search(Request $req)
     {
         $park_query = Park::query();
@@ -99,6 +111,9 @@ class ParksController extends Controller
             $park_query->where('is_reference_library', $req->is_reference_library);
         }
         if ($req->area) {
+            // areaを使った検索
+            $park_query->where('address', 'LIKE', '%'.$req->area.'%');
+
             $parks = $park_query->orderBy('id', 'DESC')->paginate(12);
         } else {
             $parks = collect([]);
@@ -110,6 +125,15 @@ class ParksController extends Controller
             'address' => $req->address,
             'longitude' => $req->longitude,
             'latitude' => $req->latitude,
+
+            'area' => $req->area,
+            'is_basic_facility' => $req->is_basic_facility,
+            'is_child' => $req->is_child,
+            'is_nature' => $req->is_nature,
+            'is_exercise' => $req->is_exercise,
+            'is_outdoor' => $req->is_outdoor,
+            'is_barrier_free' => $req->is_barrier_free,
+            'is_others' => $req->is_others,
             
             'is_toilet' => $req->is_toilet,
             'is_management_room' => $req->is_management_room,

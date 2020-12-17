@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ParksController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PhotosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,16 +16,19 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/parks', ParksController::class);
+    Route::resource('parks', ParksController::class);
 });
-Route::get('/search_feature', [ParksController::class, 'search'])->name('parks.search');
-Route::get('/detail', [ParksController::class, 'detail'])->name('parks.detail');
+
+Route::resource('parks.photos', PhotosController::class, ['except'=>['update', 'destroy']]);
+
+Route::get('/search', [ParksController::class, 'search'])->name('parks.search');
+Route::get('/detail/{park}', [ParksController::class, 'detail'])->name('parks.detail');
+
+Route::redirect('/', '/search', 301);
