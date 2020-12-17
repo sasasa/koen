@@ -1,6 +1,6 @@
 
 @extends('layouts.base')
-@section('title', '公園検索')
+@section('title', '公園を特徴から探す')
 
 @section('content')
 <form action="{{route('parks.search')}}" method="get" class="mb-5">
@@ -14,12 +14,12 @@
           <div class="cp_ipselect cp_sl01">
           <select name="area" required>
             <option value="" hidden>地域を選択してください</option>
-            <option value="1">福岡</option>
-            <option value="2">北九州</option>
-            <option value="3">久留米</option>
-            <option value="4">筑紫</option>
-            <option value="5">京築</option>
-            <option value="6">有明</option>
+            <option value="福岡市" {{$area==='福岡市' ? 'selected' : ''}}>福岡市</option>
+            <option value="北九州" {{$area==='北九州' ? 'selected' : ''}}>北九州</option>
+            <option value="久留米" {{$area==='久留米' ? 'selected' : ''}}>久留米</option>
+            <option value="筑紫" {{$area==='筑紫' ? 'selected' : ''}}>筑紫</option>
+            <option value="京築" {{$area==='京築' ? 'selected' : ''}}>京築</option>
+            <option value="有明" {{$area==='有明' ? 'selected' : ''}}>有明</option>
           </select>
           </div><!-- cp_ipselect cp_sl01 -->
         </div><!-- local_select -->
@@ -31,7 +31,7 @@
               <!-- 「基本施設」チェック群 -->
               <div id="input-01" class="check_card">
                 <div class="all-ck">
-                  <input type="checkbox" name="基本施設" value="1" id="ck-01-all">
+                  <input {{$is_basic_facility == '1' ? 'checked' : ''}} type="checkbox" name="is_basic_facility" value="1" id="ck-01-all">
                   <label for="ck-01-all">基本施設</label>
                 </div><!-- class="all-ck" -->
                 <ul class="ck-list">
@@ -57,7 +57,7 @@
               <!-- 「こども」チェック群 -->
               <div id="input-02" class="check_card">
                 <div class="all-ck">
-                  <input type="checkbox" name="こども" value="1" id="ck-02-all">
+                  <input {{$is_child == '1' ? 'checked' : ''}} type="checkbox" name="is_child" value="1" id="ck-02-all">
                   <label for="ck-02-all">こども</label>
                 </div><!-- class="all-ck" -->
                 <ul class="ck-list">
@@ -83,7 +83,7 @@
               <!-- 「自然」チェック群 -->
               <div id="input-03" class="check_card">
                 <div class="all-ck">
-                  <input type="checkbox" name="自然" value="1" id="ck-03-all">
+                  <input {{$is_nature == '1' ? 'checked' : ''}} type="checkbox" name="is_nature" value="1" id="ck-03-all">
                   <label for="ck-03-all">自然</label>
                 </div><!-- class="all-ck" -->
                 <ul class="ck-list">
@@ -114,7 +114,7 @@
               <!-- 「運動」チェック群 -->
               <div id="input-04" class="check_card">
                 <div class="all-ck">
-                  <input type="checkbox" name="運動" value="1" id="ck-04-all">
+                  <input {{$is_exercise == '1' ? 'checked' : ''}} type="checkbox" name="is_exercise" value="1" id="ck-04-all">
                   <label for="ck-04-all">運動</label>
                 </div><!-- class="all-ck" -->
                 <ul class="ck-list">
@@ -144,7 +144,7 @@
               <!-- 「アウトドア」チェック群 -->
               <div id="input-05" class="check_card">
                 <div class="all-ck">
-                  <input type="checkbox" name="ç" value="1" id="ck-05-all">
+                  <input {{$is_outdoor == '1' ? 'checked' : ''}} type="checkbox" name="is_outdoor" value="1" id="ck-05-all">
                   <label for="ck-05-all">アウトドア</label>
                 </div><!-- class="all-ck" -->
                 <ul class="ck-list">
@@ -169,7 +169,7 @@
           
               <div id="input-06" class="check_card">
                 <div class="all-ck">
-                  <input type="checkbox" name="バリアフリー" value="1" id="ck-06-all">
+                  <input {{$is_barrier_free == '1' ? 'checked' : ''}} type="checkbox" name="is_barrier_free" value="1" id="ck-06-all">
                   <label for="ck-06-all">バリアフリー</label>
                 </div><!-- class="all-ck" -->
                 <ul class="ck-list">
@@ -193,7 +193,7 @@
               <!-- 「その他」チェック群 -->
               <div id="input-07" class="check_card">
                 <div class="all-ck">
-                  <input type="checkbox" name="その他" value="1" id="ck-07-all">
+                  <input {{$is_others == '1' ? 'checked' : ''}} type="checkbox" name="is_others" value="1" id="ck-07-all">
                   <label for="ck-07-all">その他</label>
                 </div><!-- class="all-ck" -->
                 <ul class="ck-list">
@@ -231,8 +231,41 @@
     <section id="section_catalog_result">
       <div id="catalog_result">
       <h2>検索結果一覧</h2>
-      <dl><dt>地域</dt><dd>福岡市東区</dd></dl>
-      <dl><dt>特徴</dt><dd>トイレ</dd><dd>野球場</dd><dd>野球場</dd></dl>
+      <dl>
+        <dt>地域</dt>
+        <dd>{{$area}}</dd>
+      </dl>
+      <dl>
+        <dt>特徴</dt>
+
+        <dd>{{$is_toilet == '1' ? 'トイレ、' : ''}}</dd>
+        <dd>{{$is_management_room == '1' ? '管理室' : ''}}</dd>
+        <dd>{{$is_store == '1' ? '売店、' : ''}}</dd>
+        <dd>{{$is_parking == '1' ? '駐車場、' : ''}}</dd>
+        <dd>{{$is_diaper == '1' ? 'おむつ、' : ''}}</dd>
+        <dd>{{$is_playing_equipment == '1' ? '遊具、' : ''}}</dd>
+        <dd>{{$is_playing_with_sand == '1' ? '砂遊び、' : ''}}</dd>
+        <dd>{{$is_playing_in_water == '1' ? '水遊び、' : ''}}</dd>
+        <dd>{{$is_river == '1' ? '川・池、' : ''}}</dd>
+        <dd>{{$is_flower_bed == '1' ? '花壇、' : ''}}</dd>
+        <dd>{{$is_cherry_blossom == '1' ? '桜、' : ''}}</dd>
+        <dd>{{$is_promenade == '1' ? '遊歩道、' : ''}}</dd>
+        <dd>{{$is_running == '1' ? 'ランニング、' : ''}}</dd>
+        <dd>{{$is_baseball == '1' ? '野球場、' : ''}}</dd>
+        <dd>{{$is_tennis == '1' ? 'テニス、' : ''}}</dd>
+        <dd>{{$is_gym == '1' ? '体育館、' : ''}}</dd>
+        <dd>{{$is_multipurpose_ground == '1' ? '多目的グラウンド、' : ''}}</dd>
+        <dd>{{$is_accommodation == '1' ? '宿泊施設、' : ''}}</dd>
+        <dd>{{$is_campground == '1' ? 'キャンプ場、' : ''}}</dd>
+        <dd>{{$is_kitchen == '1' ? '炊事場、' : ''}}</dd>
+        <dd>{{$is_fishing == '1' ? 'フィッシング、' : ''}}</dd>
+        <dd>{{$is_multipurpose_toilet == '1' ? '多目的トイレ、' : ''}}</dd>
+        <dd>{{$is_wheelchair_accessible == '1' ? '車椅子対応、' : ''}}</dd>
+        <dd>{{$is_dog_run == '1' ? 'ドッグラン、' : ''}}</dd>
+        <dd>{{$is_boat == '1' ? 'ボート、' : ''}}</dd>
+        <dd>{{$is_art_museum == '1' ? '美術館、' : ''}}</dd>
+        <dd>{{$is_reference_library == '1' ? '資料館、' : ''}}</dd>
+      </dl>
       </div><!-- catalog_result -->
       <section id="section_catalog_ex">
         <div id="catalog_ex">
@@ -248,20 +281,17 @@
                   {{$park->address}}
                 </div><!-- catalog_ex_item_inner_address  -->
                 <div class="catalog_ex_item_inner_picture">
-                  <a href="result_deateails_feature.html">
-                  <img src="../img/gannosu/drawable-mdpi/gannosu.png" alt='クリックで公園の詳細情報'>
+                  <a href="{{route('parks.detail', ['park' => $park])}}">
+                    <img src="/storage/{{$park->image_path}}" alt='クリックで公園の詳細情報'>
                   </a>
                 </div><!-- catalog_ex_item_inner_picture -->
                 <div class="catalog_ex_item_inner_tag_area">
-                  <span class="catalog_ex_item_inner_tag">タグ</span>
-                  <span class="catalog_ex_item_inner_tag">トイレ</span>
-                  <span class="catalog_ex_item_inner_tag">ああああああ</span>
-                  <div class="catalog_ex_item_inner_baloon">
-                    <span>100</span>
-                  </div>
+                  @foreach ($park->getNames() as $item)
+                    <span class="catalog_ex_item_inner_tag">{{$item}}</span>
+                  @endforeach
                 </div><!-- catalog_ex_item_inner_tag_area1 -->
                 <div class="catalog_ex_item_inner_anker">
-                  <a href="result_deateails_feature.html">&gt;</a>
+                  <a href="{{route('parks.detail', ['park' => $park])}}">&gt;</a>
                 </div><!-- catalog_ex_item_inner_anker1  -->
               </div><!-- catalog_ex_item_inner1 -->
             </div><!--  catalog_ex_item1 -->
@@ -275,12 +305,45 @@
     <section id="section_catalog_result">
       <div id="catalog_result">
         <h2>検索結果一覧</h2>
-        <dl><dt>地域</dt><dd>福岡市東区</dd></dl>
-        <dl><dt>特徴</dt><dd>トイレ</dd><dd>野球場</dd><dd>野球場</dd></dl>
-      </div><!-- catalog_result -->
-      <div>
+        <dl>
+          <dt>地域</dt>
+          <dd>{{$area}}</dd>
+        </dl>
+        <dl>
+          <dt>特徴</dt>
+  
+          <dd>{{$is_toilet == '1' ? 'トイレ、' : ''}}</dd>
+          <dd>{{$is_management_room == '1' ? '管理室' : ''}}</dd>
+          <dd>{{$is_store == '1' ? '売店、' : ''}}</dd>
+          <dd>{{$is_parking == '1' ? '駐車場、' : ''}}</dd>
+          <dd>{{$is_diaper == '1' ? 'おむつ、' : ''}}</dd>
+          <dd>{{$is_playing_equipment == '1' ? '遊具、' : ''}}</dd>
+          <dd>{{$is_playing_with_sand == '1' ? '砂遊び、' : ''}}</dd>
+          <dd>{{$is_playing_in_water == '1' ? '水遊び、' : ''}}</dd>
+          <dd>{{$is_river == '1' ? '川・池、' : ''}}</dd>
+          <dd>{{$is_flower_bed == '1' ? '花壇、' : ''}}</dd>
+          <dd>{{$is_cherry_blossom == '1' ? '桜、' : ''}}</dd>
+          <dd>{{$is_promenade == '1' ? '遊歩道、' : ''}}</dd>
+          <dd>{{$is_running == '1' ? 'ランニング、' : ''}}</dd>
+          <dd>{{$is_baseball == '1' ? '野球場、' : ''}}</dd>
+          <dd>{{$is_tennis == '1' ? 'テニス、' : ''}}</dd>
+          <dd>{{$is_gym == '1' ? '体育館、' : ''}}</dd>
+          <dd>{{$is_multipurpose_ground == '1' ? '多目的グラウンド、' : ''}}</dd>
+          <dd>{{$is_accommodation == '1' ? '宿泊施設、' : ''}}</dd>
+          <dd>{{$is_campground == '1' ? 'キャンプ場、' : ''}}</dd>
+          <dd>{{$is_kitchen == '1' ? '炊事場、' : ''}}</dd>
+          <dd>{{$is_fishing == '1' ? 'フィッシング、' : ''}}</dd>
+          <dd>{{$is_multipurpose_toilet == '1' ? '多目的トイレ、' : ''}}</dd>
+          <dd>{{$is_wheelchair_accessible == '1' ? '車椅子対応、' : ''}}</dd>
+          <dd>{{$is_dog_run == '1' ? 'ドッグラン、' : ''}}</dd>
+          <dd>{{$is_boat == '1' ? 'ボート、' : ''}}</dd>
+          <dd>{{$is_art_museum == '1' ? '美術館、' : ''}}</dd>
+          <dd>{{$is_reference_library == '1' ? '資料館、' : ''}}</dd>
+        </dl>
+        </div><!-- catalog_result -->
+      <section id="section_catalog_ex">
         検索結果は有りません。
-      </div>
+      </section>
     </section>
   @endif
 </form>

@@ -22,10 +22,22 @@ class CreateParksTable extends Migration
             // 画像パス
             $table->string('image_path');
 
+            // 公園種別
+            $table->string('park_type');
+            // 面積
+            $table->integer('surface_area');
+            // 管理
+            $table->string('management');
+            // ホームページurl
+            $table->string('url');
+            // マップ
+            $table->text('map');
+
             // 経度
             $table->double('longitude');
             // 緯度
             $table->double('latitude');
+
             /*基本施設*/
             // トイレ
             $table->boolean('is_toilet')->default(false);

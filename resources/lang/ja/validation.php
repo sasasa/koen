@@ -156,6 +156,13 @@ return [
         'park_name' => '公園名',
         'address' => '住所',
         'image_path' => '画像パス',
+
+        'park_type' => '公園種別',
+        'surface_area' => '面積',
+        'management' => '管理',
+        'url' => 'ホームページurl',
+        'map' => 'マップ',
+
         'longitude' => '経度',
         'latitude' => '緯度',
         
@@ -186,6 +193,9 @@ return [
         'is_boat' => 'ボート',
         'is_art_museum' => '美術館',
         'is_reference_library' => '資料館',
+
+        'comment' => 'コメント',
+        'photo_type' => 'タイプ',
     ],
 
 ];

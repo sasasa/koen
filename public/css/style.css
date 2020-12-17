@@ -506,7 +506,7 @@ footer span {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  height: 89.8rem;
+  height: auto;
   width: 100%;
 }
 
@@ -586,8 +586,10 @@ footer span {
 
 #result_expression_area_image_area img {
   max-width: 100%;
-  height: auto;
-  width: auto;
+  height: 17rem;
+  width: 37.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #result_expression {
@@ -629,7 +631,7 @@ footer span {
   text-align: center;
   border-radius: 0.8rem;
   line-height: 2.3rem;
-  margin: 0 0.5rem;
+  margin: 0.5rem 0.5rem;
 }
 
 /* featは「詳細」画面の「特徴」表示関係 */
@@ -701,12 +703,18 @@ footer span {
   border-radius: 0.5rem;
 }
 
+.natr_image_include img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 #natr ul {
   display: flex;
-  height: 22rem;
+  height: auto;
   justify-content: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 4rem;
 }
 
 #natr li {
@@ -732,12 +740,21 @@ footer span {
   width: 100%;
   border: 1px solid #707070;
   height: auto;
+  position: relative;
 }
 
-#overview_map_exp img {
-  max-width: 100%;
-  height: auto;
-  width: auto;
+#overview_map_exp::before {
+  content: "";
+  display: inline-block;
+  padding-top: 56.25%;
+}
+
+#overview_map_exp iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #overview_infomation {
@@ -819,6 +836,7 @@ td {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 #catalog_result {
@@ -865,6 +883,7 @@ td {
   justify-content: center;
   background-color: #F7F7F7;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #catalog_ex {
@@ -873,14 +892,15 @@ td {
 
 .catalog_ex_item {
   width: 35rem;
-  height: 21rem;
+  min-height: 21rem;
   padding: 1rem 0;
 }
 
 .catalog_ex_item_inner {
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
+  height: auto;
+  min-height: 21rem;
   width: 100%;
   border: 0.1rem solid #707070;
   border-radius: 0.5rem;
@@ -911,15 +931,17 @@ td {
   border: 0.1rem solid #fff;
   border-radius: 0.5rem;
   max-width: 100%;
-  height: auto;
-  width: auto;
+  height: 7.7rem;
+  width: 15.8rem;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .catalog_ex_item_inner_tag_area {
   position: relative;
   padding: 0 1rem;
   width: 15.2rem;
-  height: 7.7rem;
+  min-height: 7.7rem;
 }
 
 .catalog_ex_item_inner_tag {
@@ -1121,7 +1143,6 @@ td {
   height: 4rem;
   width: 35rem;
   margin-right: 2rem;
-  cursor: pointer;
 }
 
 #re_choice_button button {
@@ -1131,6 +1152,10 @@ td {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
 
 #check,
@@ -1377,6 +1402,13 @@ input[type=checkbox]:checked + #check {
     height: 40.7rem;
   }
 
+  #result_expression_area_image_area img {
+    width: 100rem;
+    height: 40.7rem;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
   .search_card {
     width: 25%;
   }
@@ -1602,10 +1634,6 @@ input[type=checkbox]:checked + #check {
     height: 13rem;
   }
 
-  #natr ul {
-    margin-bottom: 12rem;
-  }
-
   #natr li {
     margin: 0 1rem 5rem 1rem;
   }
@@ -1619,7 +1647,7 @@ input[type=checkbox]:checked + #check {
   }
 
   #overview_map_exp {
-    height: auto;
+    height: 450px;
   }
 
   #overview_infomation {
@@ -1637,6 +1665,11 @@ input[type=checkbox]:checked + #check {
     width: 35rem;
     order: 0;
     padding-right: 1rem;
+  }
+
+  .catalog_ex_item_inner_picture img {
+    height: 14rem;
+    width: 35rem;
   }
 
   .catalog_ex_item_inner h3 {
@@ -1665,7 +1698,7 @@ input[type=checkbox]:checked + #check {
     position: absolute;
     left: 36rem;
     top: 10rem;
-    height: 5rem;
+    min-height: 5rem;
     width: 55rem;
     order: 4;
   }
@@ -1682,5 +1715,17 @@ input[type=checkbox]:checked + #check {
   #contact_form_area textarea {
     width: 90%;
   }
+}
+
+.upload-form {
+  margin-bottom: 4rem;
+}
+
+.upload-form input {
+  border: 1px solid #666666;
+}
+
+.invalid-feedback strong {
+  color: #CC5A12;
 }
 

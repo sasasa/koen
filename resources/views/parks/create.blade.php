@@ -40,7 +40,57 @@
   </div>
 
   <div class="form-group">
-    <label for="">{{__('validation.attributes.longitude')}}:</label>
+    <label for="park_type">{{__('validation.attributes.park_type')}}:</label>
+    <input value="{{old('park_type')}}" type="text" id="park_type" class="form-control @error('park_type') is-invalid @enderror" name="park_type">
+    @error('park_type')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="surface_area">{{__('validation.attributes.surface_area')}}:</label>
+    <input value="{{old('surface_area')}}" type="text" id="surface_area" class="form-control @error('surface_area') is-invalid @enderror" name="surface_area">
+    @error('surface_area')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="management">{{__('validation.attributes.management')}}:</label>
+    <input value="{{old('management')}}" type="text" id="management" class="form-control @error('management') is-invalid @enderror" name="management">
+    @error('management')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="url">{{__('validation.attributes.url')}}:</label>
+    <input value="{{old('url')}}" type="text" id="url" class="form-control @error('url') is-invalid @enderror" name="url">
+    @error('url')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="map">{{__('validation.attributes.map')}}:</label>
+    <input value="{{old('map')}}" type="text" id="map" class="form-control @error('map') is-invalid @enderror" name="map">
+    @error('map')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="longitude">{{__('validation.attributes.longitude')}}:</label>
     <input value="{{old('longitude')}}" type="text" id="longitude" class="form-control @error('longitude') is-invalid @enderror" name="longitude">
     @error('longitude')
     <span class="invalid-feedback" role="alert">
@@ -50,7 +100,7 @@
   </div>
 
   <div class="form-group">
-    <label for="">{{__('validation.attributes.latitude')}}:</label>
+    <label for="latitude">{{__('validation.attributes.latitude')}}:</label>
     <input value="{{old('latitude')}}" type="text" id="latitude" class="form-control @error('latitude') is-invalid @enderror" name="latitude">
     @error('latitude')
     <span class="invalid-feedback" role="alert">

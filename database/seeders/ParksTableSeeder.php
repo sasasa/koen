@@ -30,6 +30,13 @@ class ParksTableSeeder extends Seeder
                 'park_name' => '福岡第'. $i . "公園",
                 'address' => '福岡市城南区友丘5-14-7',
                 'image_path' => 'koen'. $i. '.jpg',
+
+                'park_type' => '運動公園',
+                'surface_area' => 1000,
+                'management' => '福岡市',
+                'url' => 'http://localhost/',
+                'map' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1661.8029784447729!2d130.34373415822694!3d33.58957884518356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541930896668a2b%3A0x23382a0614339737!2z44CSODE0LTAwMDEg56aP5bKh55yM56aP5bKh5biC5pep6Imv5Yy655m-6YGT5rWc77yU5LiB55uu77yU!5e0!3m2!1sja!2sjp!4v1608097947850!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>',
+
                 'longitude' => 130.41800 + 0.00006*$i,
                 'latitude' => 33.60630 + 0.00009*$i,
                 'is_toilet' => false,

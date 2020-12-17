@@ -9,7 +9,7 @@
     
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>特徴から探す|（仮）公園ポータルサイト</title>
+    <title>@yield('title') | 公園ポータルサイト</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -78,7 +78,6 @@
         <span>運営&nbsp;株式会社Grow-up</span>
     </footer>
 </div>
-<script type="text/javascript" src="../js/checkbox.js"></script>
 @yield('script')
 </body>
 </html>

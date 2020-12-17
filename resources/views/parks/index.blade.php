@@ -162,6 +162,26 @@
     <td><img src="/storage/{{$park->image_path}}"></td>
   </tr>
   <tr>
+    <th>{{__('validation.attributes.park_type')}}</th>
+    <td>{{$park->park_type}}</td>
+  </tr>
+  <tr>
+    <th>{{__('validation.attributes.surface_area')}}</th>
+    <td>{{$park->surface_area}}</td>
+  </tr>
+  <tr>
+    <th>{{__('validation.attributes.management')}}</th>
+    <td>{{$park->management}}</td>
+  </tr>
+  <tr>
+    <th>{{__('validation.attributes.url')}}</th>
+    <td>{{$park->url}}</td>
+  </tr>
+  <tr>
+    <th>{{__('validation.attributes.map')}}</th>
+    <td>{{$park->map}}</td>
+  </tr>
+  <tr>
     <th>{{__('validation.attributes.longitude')}}</th>
     <td>{{$park->longitude}}</td>
   </tr>
