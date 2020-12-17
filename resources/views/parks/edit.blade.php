@@ -11,7 +11,7 @@
   @method('PATCH')
 
   <div class="form-group">
-    <label for="">{{__('validation.attributes.park_name')}}:</label>
+    <label for="park_name">{{__('validation.attributes.park_name')}}:</label>
     <input value="{{old('park_name', $park->park_name)}}" type="text" id="park_name" class="form-control @error('park_name') is-invalid @enderror" name="park_name">
     @error('park_name')
     <span class="invalid-feedback" role="alert">
@@ -21,7 +21,7 @@
   </div>
 
   <div class="form-group">
-    <label for="">{{__('validation.attributes.address')}}:</label>
+    <label for="address">{{__('validation.attributes.address')}}:</label>
     <input value="{{old('address', $park->address)}}" type="text" id="address" class="form-control @error('address') is-invalid @enderror" name="address">
     @error('address')
     <span class="invalid-feedback" role="alert">

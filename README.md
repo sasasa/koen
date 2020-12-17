@@ -4,8 +4,10 @@ CREATE DATABASE koen CHARACTER SET utf8;
 GRANT ALL PRIVILEGES ON koen.* TO root@localhost IDENTIFIED BY '';
 
 php artisan make:model Park -m
+php artisan make:model Photo -m
 
 php artisan make:controller ParksController
+php artisan make:controller PhotosController --resource
 
 php artisan make:seeder ParksTableSeeder
 php artisan make:seeder UsersTableSeeder

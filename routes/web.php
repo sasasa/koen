@@ -24,9 +24,17 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('parks', ParksController::class);
+    Route::resource('photos', PhotosController::class, ['except'=>['store']]);
 });
 
-Route::resource('parks.photos', PhotosController::class, ['except'=>['update', 'destroy']]);
+Route::resource('parks.photos', PhotosController::class, ['except'=>[
+    'index',
+    'edit',
+    'show',
+    'create',
+    'update',
+    'destroy',
+]]);
 
 Route::get('/search', [ParksController::class, 'search'])->name('parks.search');
 Route::get('/detail/{park}', [ParksController::class, 'detail'])->name('parks.detail');

@@ -13,7 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="{{route('parks.index')}}">公園一覧</a>
+                    <a class="btn btn-info" href="{{route('parks.index')}}">公園一覧</a>
+                    <a class="btn btn-info" href="{{route('photos.index')}}">フォト一覧</a>
                 </div>
             </div>
         </div>

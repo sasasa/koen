@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\Park;
+use Illuminate\Support\Facades\Storage;
 
 class PhotosController extends Controller
 {
@@ -14,19 +15,30 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $photo_query = Photo::query();
+        if ($req->park_id) {
+            $photo_query->where('park_id', $req->park_id);
+        }
+        if ($req->photo_type) {
+            $photo_query->where('photo_type', 'LIKE', '%'.$req->photo_type.'%');
+        }
+        if ($req->comment) {
+            $photo_query->where('comment', 'LIKE', '%'.$req->comment.'%');
+        }
+        $parks = [];
+        Park::orderBy('id', 'DESC')->get()->each(function($park) use(&$parks) {
+            $parks[$park->id] = $park->park_name;
+        });
+        
+        return view('photos.index', [
+            'parks' => $parks,
+            'photos' => $photo_query->orderBy('id', 'DESC')->paginate(12),
+            'comment' => $req->comment,
+            'park_id' => $req->park_id,
+            'photo_type' => $req->photo_type,
+        ]);
     }
 
     /**
@@ -48,25 +60,16 @@ class PhotosController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Photo $photo)
     {
-        //
+        return view('photos.edit', [
+            'photo' => $photo,
+        ]);
     }
 
     /**
@@ -76,9 +79,23 @@ class PhotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, Photo $photo)
     {
-        //
+        if ($req->delete_image) {
+            $this->validate($req, array_merge(Photo::$rules, Park::$rules_image));
+            
+            $file = $req->upfile;
+            $file_name = basename($file->store('public'));
+            Storage::disk('public')->delete($photo->image_path);
+            $photo->image_path = $file_name;
+        } else {
+            $this->validate($req, Photo::$rules);
+        }
+        
+        $photo->fill($req->all());
+        $photo->save();
+
+        return redirect(route('photos.index'));
     }
 
     /**
@@ -87,8 +104,11 @@ class PhotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Photo $photo)
     {
-        //
+        Storage::disk('public')->delete($photo->image_path);
+        $photo->delete();
+
+        return redirect(route('photos.index'));
     }
 }

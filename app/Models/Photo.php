@@ -11,6 +11,7 @@ class Photo extends Model
 
     public static $rules = [
         'comment' => 'required|max:60',
+        'photo_type' => 'required|max:60',
     ];
 
     protected $fillable = [

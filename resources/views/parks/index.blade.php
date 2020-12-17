@@ -300,6 +300,7 @@
   <tr>
     <th>操作</th>
     <td>
+      <a class="btn btn-info" href="{{route('parks.detail', ['park' => $park])}}">確認</a>
       <a class="btn btn-info" href="{{route('parks.edit', ['park' => $park])}}">更新</a>
       <form action="{{route('parks.destroy', ['park' => $park])}}" method="post">
         @csrf
