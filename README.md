@@ -11,7 +11,12 @@ php artisan make:controller PhotosController --resource
 
 php artisan make:seeder ParksTableSeeder
 php artisan make:seeder UsersTableSeeder
-php artisan db:seed --class=ParksTableSeeder
+php artisan make:seeder PhotosTableSeeder
+php artisan db:seed --class=PhotosTableSeeder
+
+php artisan make:command ParkCSVLoader
+
+php artisan park:csv:loader
 
 php artisan migrate:refresh
 php artisan db:seed

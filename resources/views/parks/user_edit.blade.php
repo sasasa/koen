@@ -1,128 +1,18 @@
-@extends('layouts.app')
-@section('title', '公園編集')
+@extends('layouts.base')
+@section('title', '公園の特徴を教えてください！')
 
 @section('content')
-<h1>公園編集</h1>
+<form action="{{route('parks.user_update', ['park'=>$park])}}" method="post" class="user_edit">
+  <h1>公園の特徴を教えてください！</h1>
 
-@include('components.errorAll')
-
-<form action="{{route('parks.update', ['park'=>$park])}}" method="post" class="mt-5" enctype='multipart/form-data'>
   @csrf
   @method('PATCH')
-
-  <div class="form-group">
-    <label for="park_name">{{__('validation.attributes.park_name')}}:</label>
-    <input value="{{old('park_name', $park->park_name)}}" type="text" id="park_name" class="form-control @error('park_name') is-invalid @enderror" name="park_name">
-    @error('park_name')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <label for="address">{{__('validation.attributes.address')}}:</label>
-    <input value="{{old('address', $park->address)}}" type="text" id="address" class="form-control @error('address') is-invalid @enderror" name="address">
-    @error('address')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <img src="/storage/{{$park->image_path}}?{{ \Str::random(8) }}">
-    <label>
-      <input type="checkbox" id="delete_image" name="delete_image" value="1" {{old('delete_image') ? 'checked' : ''}}>
-      削除する
-    </label>
-  </div>
-
-  <div class="form-group" id="uploader">
-    <label for="upfile">{{__('validation.attributes.image_path')}}:</label>
-    <input type="file" id="upfile" class="form-control-file @error('upfile') is-invalid @enderror" name="upfile">
-    @error('upfile')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-
-  <div class="form-group">
-    <label for="park_type">{{__('validation.attributes.park_type')}}:</label>
-    <input value="{{old('park_type', $park->park_type)}}" type="text" id="park_type" class="form-control @error('park_type') is-invalid @enderror" name="park_type">
-    @error('park_type')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <label for="surface_area">{{__('validation.attributes.surface_area')}}:</label>
-    <input value="{{old('surface_area', $park->surface_area)}}" type="text" id="surface_area" class="form-control @error('surface_area') is-invalid @enderror" name="surface_area">
-    @error('surface_area')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <label for="management">{{__('validation.attributes.management')}}:</label>
-    <input value="{{old('management', $park->management)}}" type="text" id="management" class="form-control @error('management') is-invalid @enderror" name="management">
-    @error('management')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <label for="url">{{__('validation.attributes.url')}}:</label>
-    <input value="{{old('url', $park->url)}}" type="text" id="url" class="form-control @error('url') is-invalid @enderror" name="url">
-    @error('url')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <label for="map">{{__('validation.attributes.map')}}:</label>
-    <input value="{{old('map', $park->map)}}" type="text" id="map" class="form-control @error('map') is-invalid @enderror" name="map">
-    @error('map')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <label for="">{{__('validation.attributes.longitude')}}:</label>
-    <input value="{{old('longitude', $park->longitude)}}" type="text" id="longitude" class="form-control @error('longitude') is-invalid @enderror" name="longitude">
-    @error('longitude')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
-    <label for="">{{__('validation.attributes.latitude')}}:</label>
-    <input value="{{old('latitude', $park->latitude)}}" type="text" id="latitude" class="form-control @error('latitude') is-invalid @enderror" name="latitude">
-    @error('latitude')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
 
   <div class="form-check">
     <input value="0" type="hidden" name="is_toilet">
     <input {{old('is_toilet', $park->is_toilet) == '1' ? 'checked' : ''}} class="form-check-input" value="1" type="checkbox" id="is_toilet" name="is_toilet">
-    <label class="form-check-label" for="is_toilet">{{__('validation.attributes.is_toilet')}}</label>
+    <label class="form-check-label" for="is_toilet">{{__('validation.attributes.is_toilet')}}
+    </label>
   </div>
 
   <div class="form-check">
@@ -260,25 +150,7 @@
     <label class="form-check-label" for="is_reference_library">{{__('validation.attributes.is_reference_library')}}</label>
   </div>
 
-  <button type="submit" class="btn btn-primary">編集</button>
+  <button type="submit" class="btn btn-primary">編集する</button>
 </form>
 @endsection
 
-@section('script')
-<script type="module">
-function uploaderShowHide()
-{
-    if( $("#delete_image").prop('checked') ) {
-        $("#uploader").fadeIn()
-    } else {
-        $("#uploader").fadeOut()
-    }
-}
-$(function(){
-    uploaderShowHide()
-    $("#delete_image").click(function() {
-      uploaderShowHide()
-    });
-});
-</script>
-@endsection

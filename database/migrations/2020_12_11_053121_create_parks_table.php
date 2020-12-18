@@ -20,18 +20,18 @@ class CreateParksTable extends Migration
             // 住所
             $table->string('address');
             // 画像パス
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
 
             // 公園種別
             $table->string('park_type');
             // 面積
-            $table->integer('surface_area');
+            $table->integer('surface_area')->nullable();
             // 管理
-            $table->string('management');
+            $table->string('management')->nullable();
             // ホームページurl
-            $table->string('url');
+            $table->string('url')->nullable();
             // マップ
-            $table->text('map');
+            $table->text('map')->nullable();
 
             // 経度
             $table->double('longitude');

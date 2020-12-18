@@ -46,7 +46,7 @@
               </ul>
             @endif
           </div><!-- excep-03 -->
-          
+
           <div id="feat-04" class="feat_box">
             @if(!empty($park->getExerciseNames()))
               <h3>運動</h3>
@@ -57,7 +57,7 @@
               </ul>
             @endif
           </div><!-- excep-04 -->
-          
+
           <div id="feat-05" class="feat_box">
             @if(!empty($park->getOutdoorNames()))
               <h3>アウトドア</h3>
@@ -90,6 +90,12 @@
               </ul>
             @endif
           </div><!-- excep-07 -->
+          <div id="feat-08" class="feat_box">
+              <h3>公園の特徴を教えてください！</h3>
+              <p>
+                <a href="{{route('parks.user_edit', ['park'=>$park])}}">公園の特徴を入力する</a>
+              </p>
+          </div><!-- excep-08 -->
         </div>
 
         <input id="TAB-02" type="radio" value="checked" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">写真</label>

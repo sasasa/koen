@@ -11,15 +11,23 @@ class ParksController extends Controller
 {
     public function detail(Request $req, Park $park)
     {
+        $insect_photos = Photo::where('photo_type', '昆虫')->orderBy('id', 'desc')->get();
+        $count = $insect_photos->count();
+        if($count < 7) {
+            $num = 6 - $count;
+            $dummy = Photo::where('photo_type', 'ダミー')->get();
+            for($i=0; $i<$num; $i++) {
+                $insect_photos = $insect_photos->concat($dummy);
+            }
+        }
         return view('parks.detail', [
             'park' => $park,
-            'insect_photos' => Photo::where('photo_type', '昆虫')->orderBy('id', 'desc')->get(),
+            'insect_photos' => $insect_photos,
             'bird_photos' => Photo::where('photo_type', '鳥')->orderBy('id', 'desc')->get(),
             'plant_photos' => Photo::where('photo_type', '植物')->orderBy('id', 'desc')->get(),
         ]);
     }
-    
-    
+
     public function search(Request $req)
     {
         $park_query = Park::query();
@@ -338,11 +346,25 @@ class ParksController extends Controller
         ]);
     }
 
+    public function user_edit(Park $park)
+    {
+        return view('parks.user_edit', [
+            'park' => $park,
+        ]);
+    }
+
+    public function user_update(Request $req, Park $park)
+    {
+        $park->fill($req->all());
+        $park->save();
+
+        return redirect(route('parks.detail', ['park' => $park]));
+    }
+
     public function update(Request $req, Park $park)
     {
         if ($req->delete_image) {
             $this->validate($req, array_merge(Park::$rules, Park::$rules_image));
-            
             $file = $req->upfile;
             $file_name = basename($file->store('public'));
             Storage::disk('public')->delete($park->image_path);

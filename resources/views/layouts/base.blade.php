@@ -3,10 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
     <meta charset="UTF-8">
-    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>@yield('title') | 公園ポータルサイト</title>
@@ -23,11 +21,12 @@
     <header>
         <nav id="breadcrumbs">
             <ol>
-                <li><a href="">Top</a></li>
-                <li><a href="">地図から探す</a></li>
+                @if(empty($park) || (!empty($park) && request()->fullUrl() != route('parks.user_edit', ['park'=>$park])))
+                    <li><a href="">Top</a></li>
+                    <li><a href="">地図から探す</a></li>
+                @endif
             </ol>
         </nav>
-
         <nav id="nav_bar">
             <div id="logo_caption">
                 <h1>福岡県の最大級の<span>公園ポータルサイト</span></h1>
@@ -38,7 +37,7 @@
                 <ul id="pc_nav_site_ul">
                     <a href="search_map.html"><li>地図から探す</li></a>
                     <a href="#"><li>現在地から探す</li></a>
-                    <a href="search_feature.html"><li>特徴から探す</li></a>
+                    <a href="{{route('parks.search')}}"><li>特徴から探す</li></a>
                     <a href="#"><li>動植物から探す</li></a>
                 </ul>
                 <div id="tips_link"><a href="">公園なるほど情報</a></div>
@@ -54,7 +53,7 @@
                     <li><a href="#">TOP</a></li>
                     <li><a href="#">地図から探す</a></li>
                     <li><a href="#">現在地から探す</a></li>
-                    <li><a href="#">特徴から探す</a></li>
+                    <li><a href="{{route('parks.search')}}">特徴から探す</a></li>
                     <li><a href="#">動植物から探す</a></li>
                     <li><a href="#">公園なるほど情報</a></li>
                     </ul>

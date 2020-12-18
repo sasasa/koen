@@ -616,6 +616,15 @@ footer span {
   background-color: #707070;
   border: 0.1rem solid #707070;
 }
+#feat-08 {
+  width: 34rem;
+  margin-bottom: 20px;
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
 /* natrは「詳細」画面の「写真」表示関係 */
 /*「写真」表示全体の幅はここのwhidthによって決められている*/
 #natr {
@@ -1389,6 +1398,9 @@ input[type="checkbox"]:checked + #check {
     justify-content: flex-start;
     width: 100rem;
   }
+  #feat-08 {
+    width: 100rem;
+  }
   .natr_image_include {
     width: 13rem;
     height: 13rem;
@@ -1475,4 +1487,20 @@ input[type="checkbox"]:checked + #check {
 }
 .invalid-feedback strong{
   color: #CC5A12;
+}
+.user_edit {
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  margin: 20px auto;
+  width: 20rem;
+  font-size: 2rem;
+  .form-check {
+    margin-bottom: 10px;
+  }
+  button {
+    border: 1px solid #666666;
+    padding: 5px;
+  }
 }

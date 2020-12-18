@@ -179,7 +179,7 @@
   </tr>
   <tr>
     <th>{{__('validation.attributes.map')}}</th>
-    <td>{{$park->map}}</td>
+    <td>{{mb_substr($park->map, 0, 40). '...'}}</td>
   </tr>
   <tr>
     <th>{{__('validation.attributes.longitude')}}</th>
