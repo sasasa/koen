@@ -107,22 +107,24 @@
                 @foreach ($insect_photos as $photo)
                   <li class="natr_card">
                     <div class="natr_image_include">
-                      <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
+                      <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                        <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
+                      </a>
                     </div>
                     <span>{{$photo->comment}}</span>
                   </li>
                 @endforeach
               </ul>
-              画像をアップロードしよう！
+              昆虫の画像をアップロードしよう！
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
-                <input type="file" name="upfile">
+                <input type="file" name="upfile" accept="image/*" required>
                 @error('upfile')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <input type="text" name="comment">
+                <input type="text" name="comment" required>
                 @error('comment')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>
@@ -145,16 +147,16 @@
                   </li>
                 @endforeach
               </ul>
-              画像をアップロードしよう！
+              鳥の画像をアップロードしよう！
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
-                <input type="file" name="upfile">
+                <input type="file" name="upfile" accept="image/*" required>
                 @error('upfile')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <input type="text" name="comment">
+                <input type="text" name="comment" required>
                 @error('comment')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>
@@ -177,16 +179,16 @@
                   </li>
                 @endforeach
               </ul>
-              画像をアップロードしよう！
+              植物の画像をアップロードしよう！
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
-                <input type="file" name="upfile">
+                <input type="file" name="upfile" accept="image/*" required>
                 @error('upfile')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <input type="text" name="comment">
+                <input type="text" name="comment" required>
                 @error('comment')
                 <span class="invalid-feedback">
                     <strong>{{ $message }}</strong>

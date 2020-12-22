@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '公園管理')
+@section('title', 'フォト管理')
 
 @section('content')
 <form action="{{route('photos.index')}}" method="get" class="mb-5">
@@ -7,11 +7,11 @@
   
   <div class="form-group">
     <label for="park_id">{{__('validation.attributes.park_name')}}:</label>
-    {{ Form::select('park_id', $parks, $park_id, ['class'=>"form-control", 'id'=>'park_id']) }}  
+    {{ Form::select('park_id', $parks, $park_id, ['class'=>"form-control", 'id'=>'park_id']) }}
   </div>
   <div class="form-group">
     <label for="photo_type">{{__('validation.attributes.photo_type')}}:</label>
-    <input type="text" id="photo_type" name="photo_type" value="{{$photo_type}}" class="form-control">
+    {{ Form::select('photo_type', [''=>'選択してください','昆虫'=>'昆虫','鳥'=>'鳥','植物'=>'植物',], $photo_type, ['class'=>"form-control", 'id'=>'photo_type']) }}
   </div>
   <div class="form-group">
     <label for="comment">{{__('validation.attributes.comment')}}:</label>
@@ -24,7 +24,7 @@
   @foreach ($photos as $photo)
   <tr>
     <th>{{__('validation.attributes.park_name')}}</th>
-    <td>{{$photo->park->park_name}}</td>
+    <td>{{$photo->photo_type != 'ダミー' ? $photo->park->park_name : 'なし'}}</td>
   </tr>
   <tr>
     <th>{{__('validation.attributes.comment')}}</th>
@@ -41,12 +41,14 @@
   <tr>
     <th>操作</th>
     <td>
-      <a class="btn btn-info" href="{{route('photos.edit', ['photo' => $photo])}}">更新</a>
-      <form action="{{route('photos.destroy', ['photo' => $photo])}}" method="post">
-        @csrf
-        @method('delete')
-        <input type="submit" value="削除する" class="btn btn-danger btn-del">
-      </form>
+      @if ($photo->photo_type != 'ダミー')
+        <a class="btn btn-info" href="{{route('photos.edit', ['photo' => $photo])}}">更新</a>
+        <form action="{{route('photos.destroy', ['photo' => $photo])}}" method="post">
+          @csrf
+          @method('delete')
+          <input type="submit" value="削除する" class="btn btn-danger btn-del">
+        </form>
+      @endif
     </td>
   </tr>
   @endforeach

@@ -12,7 +12,7 @@
 
   <div class="form-group">
     <label for="photo_type">{{__('validation.attributes.photo_type')}}:</label>
-    <input value="{{old('photo_type', $photo->photo_type)}}" type="text" id="photo_type" class="form-control @error('photo_type') is-invalid @enderror" name="photo_type">
+    {{ Form::select('photo_type', [''=>'選択してください','昆虫'=>'昆虫','鳥'=>'鳥','植物'=>'植物',], old('photo_type', $photo->photo_type), empty($errors->first('photo_type')) ? ['class'=>"form-control", 'id'=>'photo_type'] : ['class'=>"form-control is-invalid", 'id'=>'photo_type']) }}
     @error('photo_type')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>

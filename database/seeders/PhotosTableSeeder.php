@@ -16,7 +16,7 @@ class PhotosTableSeeder extends Seeder
     {
         Photo::create([
             'photo_type' => 'ダミー',
-            'image_path' => 'nomiage.png',
+            'image_path' => 'noimage.png',
             'comment' => '',
             'park_id' => 0,
         ]);

@@ -11,20 +11,15 @@ class ParksController extends Controller
 {
     public function detail(Request $req, Park $park)
     {
-        $insect_photos = Photo::where('photo_type', '昆虫')->orderBy('id', 'desc')->get();
-        $count = $insect_photos->count();
-        if($count < 7) {
-            $num = 6 - $count;
-            $dummy = Photo::where('photo_type', 'ダミー')->get();
-            for($i=0; $i<$num; $i++) {
-                $insect_photos = $insect_photos->concat($dummy);
-            }
-        }
+        $insect_photos = $park->photos()->where('photo_type', '昆虫')->orderBy('id', 'desc')->get();
+        $bird_photos = $park->photos()->where('photo_type', '鳥')->orderBy('id', 'desc')->get();
+        $plant_photos = $park->photos()->where('photo_type', '植物')->orderBy('id', 'desc')->get();
         return view('parks.detail', [
             'park' => $park,
-            'insect_photos' => $insect_photos,
-            'bird_photos' => Photo::where('photo_type', '鳥')->orderBy('id', 'desc')->get(),
-            'plant_photos' => Photo::where('photo_type', '植物')->orderBy('id', 'desc')->get(),
+            'insect_photos' => Photo::alwaysSixInRow($insect_photos),
+            'bird_photos' => Photo::alwaysSixInRow($bird_photos),
+            'plant_photos' => Photo::alwaysSixInRow($plant_photos),
+            'reviews' => $park->reviews
         ]);
     }
 

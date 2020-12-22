@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\Park;
 use Illuminate\Support\Facades\Storage;
+use \InterventionImage;
 
 class PhotosController extends Controller
 {
@@ -27,13 +28,9 @@ class PhotosController extends Controller
         if ($req->comment) {
             $photo_query->where('comment', 'LIKE', '%'.$req->comment.'%');
         }
-        $parks = [];
-        Park::orderBy('id', 'DESC')->get()->each(function($park) use(&$parks) {
-            $parks[$park->id] = $park->park_name;
-        });
         
         return view('photos.index', [
-            'parks' => $parks,
+            'parks' => Park::optionFor(),
             'photos' => $photo_query->orderBy('id', 'DESC')->paginate(12),
             'comment' => $req->comment,
             'park_id' => $req->park_id,
@@ -52,7 +49,10 @@ class PhotosController extends Controller
         $this->validate($req, array_merge(Photo::$rules, Park::$rules_image));
 
         $file = $req->upfile;
-        $file_name = basename($file->store('public'));
+        $file_name = time() . '.' . $file->getClientOriginalExtension();
+        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+        InterventionImage::make($file)->resize(1080, null, function($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
+
         $photo = new Photo();
         $photo->fill(array_merge($req->all(), ['image_path' => $file_name]))->save();
 
@@ -85,8 +85,11 @@ class PhotosController extends Controller
             $this->validate($req, array_merge(Photo::$rules, Park::$rules_image));
             
             $file = $req->upfile;
-            $file_name = basename($file->store('public'));
             Storage::disk('public')->delete($photo->image_path);
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+            InterventionImage::make($file)->resize(1080, null, function($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
+
             $photo->image_path = $file_name;
         } else {
             $this->validate($req, Photo::$rules);
@@ -110,5 +113,14 @@ class PhotosController extends Controller
         $photo->delete();
 
         return redirect(route('photos.index'));
+    }
+
+
+    public function show(Request $req, Park $park, Photo $photo)
+    {
+        view('photos.show', [
+            'photo' => $photo,
+            'park' => $park,
+        ]);
     }
 }

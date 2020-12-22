@@ -25,7 +25,7 @@ class Park extends Model
             'file',
             'image',
             'mimes:jpeg,png',
-            'dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+            'dimensions:min_width=100,min_height=100,max_width=4000,max_height=4000',
         ],
     ];
 
@@ -284,5 +284,14 @@ class Park extends Model
             $ret[] = $this->getName('is_reference_library');
         }
         return $ret;
+    }
+
+    public static function optionFor()
+    {
+        $parks = [''=>'選択してください'];
+        self::orderBy('id', 'DESC')->get()->each(function($park) use(&$parks) {
+            $parks[$park->id] = $park->park_name;
+        });
+        return $parks;
     }
 }
