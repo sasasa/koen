@@ -118,18 +118,22 @@
               昆虫の画像をアップロードしよう！
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
-                <input type="file" name="upfile" accept="image/*" required>
-                @error('upfile')
-                <span class="invalid-feedback">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                <input type="text" name="comment" required>
-                @error('comment')
-                <span class="invalid-feedback">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <div class="upload-form__field">
+                  <input type="file" name="upfile" accept="image/*" required>
+                  @error('upfile')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+                <div class="upload-form__field">
+                  <input type="text" name="comment" required>
+                  @error('comment')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
                 <input type="hidden" name="park_id" value="{{$park->id}}">
                 <input type="hidden" name="photo_type" value="昆虫">
                 <input type="submit" value="アップロード">
@@ -150,18 +154,22 @@
               鳥の画像をアップロードしよう！
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
-                <input type="file" name="upfile" accept="image/*" required>
-                @error('upfile')
-                <span class="invalid-feedback">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                <input type="text" name="comment" required>
-                @error('comment')
-                <span class="invalid-feedback">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <div class="upload-form__field">
+                  <input type="file" name="upfile" accept="image/*" required>
+                  @error('upfile')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+                <div class="upload-form__field">
+                  <input type="text" name="comment" required>
+                  @error('comment')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
                 <input type="hidden" name="park_id" value="{{$park->id}}">
                 <input type="hidden" name="photo_type" value="鳥">
                 <input type="submit" value="アップロード">
@@ -182,18 +190,22 @@
               植物の画像をアップロードしよう！
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
-                <input type="file" name="upfile" accept="image/*" required>
-                @error('upfile')
-                <span class="invalid-feedback">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                <input type="text" name="comment" required>
-                @error('comment')
-                <span class="invalid-feedback">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <div class="upload-form__field">
+                  <input type="file" name="upfile" accept="image/*" required>
+                  @error('upfile')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+                <div class="upload-form__field">
+                  <input type="text" name="comment" required>
+                  @error('comment')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
                 <input type="hidden" name="park_id" value="{{$park->id}}">
                 <input type="hidden" name="photo_type" value="植物">
                 <input type="submit" value="アップロード">
@@ -208,7 +220,6 @@
             <div id="overview_map">
               <h3>マップ</h3>
               <div id="overview_map_exp">
-                {!! $park->map !!}
               </div><!-- overview_map_exp -->
             </div><!-- overview_map -->
             <div id="overview_infomation">
@@ -239,25 +250,78 @@
           </div><!-- overview -->
         </div><!-- appeal -->
 
-        <input id="TAB-04" type="radio" value="checked" name="TAB" class="tab-switch"><label class="tab-label" for="TAB-04">タグ</label>
+        <input id="TAB-04" type="radio" value="checked" name="TAB" class="tab-switch"><label class="tab-label" for="TAB-04">口コミ</label>
         <div class="appeal">
           <div>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
-            あいうえお<br>
+            @if ($reviews->isEmpty())
+              <h3>投稿がありません。</h3>
+            @else
+              @foreach ($reviews as $review)
+                <article>
+                  <h3>{{$review->title}}</h3>
+                  <div>{{$review->ageJp}} {{$review->genderJp}}　{{$review->created_at->format('Y年m月')}}</div>
+                  <div>
+                    {!! nl2br(e($review->body)) !!}
+                  </div>
+                </article>
+              @endforeach
+            @endif
           </div>
+          <form method="POST" action="{{route('parks.reviews.store', ['park'=>$park])}}" class="review">
+            @csrf
+            <div class="form-group">
+              <label for="title">{{__('validation.attributes.title')}}:</label>
+              <input value="{{old('title')}}" type="text" id="title" class="form-control @error('title') is-invalid @enderror" name="title">
+              @error('title')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+            </div>
 
+            <div class="form-group">
+              <label for="body">{{__('validation.attributes.body')}}:</label>
+              <textarea rows="4" id="body" class="form-control @error('body') is-invalid @enderror" name="body">{{old('body')}}</textarea>
+              @error('body')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <p class="control-label"><b>{{__('validation.attributes.gender')}}</b></p>
+              
+              @foreach (\App\Models\Review::$genders as $key => $label)
+                <div class="radio-inline">
+                  <input {{old('gender') == $key ? 'checked' : ''}} type="radio" value="{{$key}}" name="gender" id="gender_{{$key}}">
+                    <label for="gender_{{$key}}">{{$label}}</label>
+                </div>
+              @endforeach
+
+              @error('gender')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label for="age">{{__('validation.attributes.age')}}:</label>
+              {{ Form::select('age', \App\Models\Review::$ages, old('age'), empty($errors->first('age')) ? ['class'=>"form-control", 'id'=>'age'] : ['class'=>"form-control is-invalid", 'id'=>'age']) }}
+
+              @error('age')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+
+            </div>
+            <div>
+              <input type="hidden" name="park_id" value="{{$park->id}}">
+              <button type="submit" class="btn btn-primary">登録</button>
+            </div>
+          </form>
         </div><!-- appeal -->
       </div>
     </div><!-- result_expression -->
@@ -285,5 +349,81 @@ $(function(){
     sessionStorage.setItem('hash', location.hash);
   })
 })
+</script>
+<script>
+// マップを形成する変数群
+let map;
+let markerList = [];
+let infoWindowList = [];
+let currentInfoWindow = null;
+
+// 地図の初期値
+const mapOptions = { 
+    //博多駅
+    center: {lat: {{$park->latitude}}, lng: {{$park->longitude}}}, // 地図の中心を指定
+    zoom: 15 // 地図のズームを指定
+};
+
+// マーカーの定義
+const markerData = [ 
+    {
+        //明治公園
+        name: '明治公園',
+        lat: {{$park->latitude}},
+        lng: {{$park->longitude}},
+        info: '<strong style="color:green;">{{$park->park_name}}</strong>',
+        // icon: park,
+    },
+];
+
+// APIに引き渡す関数
+function initMap() {
+    // 地図の作成
+    map = new google.maps.Map(document.getElementById('overview_map_exp'), mapOptions);
+
+    // マーカー毎の処理
+    for (var i = 0; i < markerData.length; i++) {
+        // マーカーオブジェクトを作る
+        // 先に座標オブジェクトを作って当てはめる
+        let markerLatLng = new google.maps.LatLng({
+          lat: markerData[i]['lat'],
+          lng: markerData[i]['lng']
+        });
+        markerList[i] = new google.maps.Marker({ // マーカーの追加
+            position: markerLatLng, // 地図内のマーカーを立てる位置を指定
+            map: map // マーカーを立てる地図を指定
+        });
+        
+        // マーカーの画像を変更（あれば）
+        if (markerData[i]['icon']){
+            markerList[i].setOptions({
+                icon: {
+                    url: markerData[i]['icon']
+                }
+            });
+        }
+        // 吹き出しオブジェクトを作る
+        infoWindowList[i] = new google.maps.InfoWindow({ 
+            content: markerData[i]['info'] // 吹き出しに表示する内容
+        });
+        // マーカーにクリックイベントを追加
+        markerEvent(i); 
+    }
+    // Google Maps Platformの「チュートリアル：マーカーのクラスタリング」からそのまま貼る`
+    new MarkerClusterer(map, markerList, {
+      imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+    });
+}
+
+// マーカーにクリックイベントを追加する関数
+function markerEvent(i) {
+    markerList[i].addListener('click', function() { // マーカーをクリックしたとき
+        if (currentInfoWindow) {
+            currentInfoWindow.close();
+        }
+        infoWindowList[i].open(map, markerList[i]); // 吹き出しの表示
+        currentInfoWindow = infoWindowList[i];
+    });
+}
 </script>
 @endsection

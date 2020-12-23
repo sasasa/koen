@@ -11,11 +11,6 @@ use \InterventionImage;
 
 class PhotosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $req)
     {
         $photo_query = Photo::query();
@@ -38,12 +33,6 @@ class PhotosController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $req, Park $park)
     {
         $this->validate($req, array_merge(Photo::$rules, Park::$rules_image));
@@ -59,12 +48,6 @@ class PhotosController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Photo $photo)
     {
         return view('photos.edit', [
@@ -72,13 +55,6 @@ class PhotosController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $req, Photo $photo)
     {
         if ($req->delete_image) {
@@ -101,12 +77,6 @@ class PhotosController extends Controller
         return redirect(route('photos.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Photo $photo)
     {
         Storage::disk('public')->delete($photo->image_path);

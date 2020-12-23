@@ -196,6 +196,11 @@ return [
 
         'comment' => 'コメント',
         'photo_type' => 'タイプ',
+
+        'title' => 'タイトル',
+        'body' => '本文',
+        'gender' => '性別',
+        'age' => '年齢',
     ],
 
 ];

@@ -754,20 +754,6 @@ footer span {
   position: relative;
 }
 
-#overview_map_exp::before {
-  content: "";
-  display: inline-block;
-  padding-top: 56.25%;
-}
-
-#overview_map_exp iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 #overview_infomation {
   width: 100%;
 }
@@ -1740,7 +1726,15 @@ input[type=checkbox]:checked + #check {
   border: 1px solid #666666;
 }
 
-.invalid-feedback strong {
+.upload-form__field {
+  margin-bottom: 10px;
+}
+
+.upload-form input[type=submit] {
+  padding: 5px;
+}
+
+.invalid-feedback {
   color: #CC5A12;
 }
 
@@ -1760,6 +1754,14 @@ input[type=checkbox]:checked + #check {
 }
 
 .user_edit button {
+  border: 1px solid #666666;
+  padding: 5px;
+}
+
+.review input,
+.review textarea,
+.review select,
+.review button {
   border: 1px solid #666666;
   padding: 5px;
 }

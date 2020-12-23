@@ -9,9 +9,6 @@
     <meta name="description" content="">
     <title>@yield('title') | 公園ポータルサイト</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Styles -->
     <link href="{{ asset('css/destyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -77,6 +74,10 @@
         <span>運営&nbsp;株式会社Grow-up</span>
     </footer>
 </div>
-@yield('script')
+    <script defer src="{{ asset('js/app.js') }}"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArS7a0PfkbWeM9-YdpmjU-ikR92TVFQzA&callback=initMap"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+    @yield('script')
+    <!-- Scripts -->
 </body>
 </html>

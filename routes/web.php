@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ParksController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\ReviewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,17 +25,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('parks', ParksController::class);
-    Route::resource('photos', PhotosController::class, ['except'=>['store']]);
+    Route::resource('photos', PhotosController::class, ['except'=>['store', 'show',]]);
+    Route::resource('reviews', ReviewsController::class, ['except'=>['store']]);
 });
-
-Route::resource('parks.photos', PhotosController::class, ['except'=>[
-    'index',
-    'edit',
-    'show',
-    'create',
-    'update',
-    'destroy',
-]]);
 
 Route::get('/search', [ParksController::class, 'search'])->name('parks.search');
 Route::get('/detail/{park}', [ParksController::class, 'detail'])->name('parks.detail');
@@ -42,3 +35,19 @@ Route::get('/user_edit/{park}', [ParksController::class, 'user_edit'])->name('pa
 Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name('parks.user_update');
 
 Route::redirect('/', '/search', 301);
+
+Route::resource('parks.photos', PhotosController::class, ['except'=>[
+    'index',
+    'edit',
+    'create',
+    'update',
+    'destroy',
+]]);
+Route::resource('parks.reviews', ReviewsController::class, ['except'=>[
+    'index',
+    'edit',
+    'show',
+    'create',
+    'update',
+    'destroy',
+]]);

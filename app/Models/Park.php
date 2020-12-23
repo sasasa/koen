@@ -75,6 +75,10 @@ class Park extends Model
     {
         return $this->hasMany('App\Models\Photo');
     }
+    public function reviews(): object
+    {
+        return $this->hasMany('App\Models\Review');
+    }
 
     public function getName(string $name): string
     {

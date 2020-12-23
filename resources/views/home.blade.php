@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a class="btn btn-info" href="{{route('parks.index')}}">公園一覧</a>
-                    <a class="btn btn-info" href="{{route('photos.index')}}">フォト一覧</a>
+                    <a class="btn btn-info" href="{{route('parks.index')}}">公園管理</a>
+                    <a class="btn btn-info" href="{{route('photos.index')}}">フォト管理</a>
+                    <a class="btn btn-info" href="{{route('reviews.index')}}">口コミ管理</a>
                 </div>
             </div>
         </div>
