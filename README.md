@@ -5,13 +5,16 @@ GRANT ALL PRIVILEGES ON koen.* TO root@localhost IDENTIFIED BY '';
 
 php artisan make:model Park -m
 php artisan make:model Photo -m
+php artisan make:model Review -m
 
 php artisan make:controller ParksController
 php artisan make:controller PhotosController --resource
+php artisan make:controller ReviewsController --resource
 
 php artisan make:seeder ParksTableSeeder
 php artisan make:seeder UsersTableSeeder
 php artisan make:seeder PhotosTableSeeder
+php artisan make:seeder ReviewsTableSeeder
 php artisan db:seed --class=PhotosTableSeeder
 
 php artisan make:command ParkCSVLoader

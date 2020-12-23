@@ -29,12 +29,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('reviews', ReviewsController::class, ['except'=>['store']]);
 });
 
-Route::get('/search', [ParksController::class, 'search'])->name('parks.search');
+Route::get('/search_feature', [ParksController::class, 'search'])->name('parks.search');
 Route::get('/detail/{park}', [ParksController::class, 'detail'])->name('parks.detail');
 Route::get('/user_edit/{park}', [ParksController::class, 'user_edit'])->name('parks.user_edit');
 Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name('parks.user_update');
 
-Route::redirect('/', '/search', 301);
+Route::view('/', 'index')->name('index');
 
 Route::resource('parks.photos', PhotosController::class, ['except'=>[
     'index',
