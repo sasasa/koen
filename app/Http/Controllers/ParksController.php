@@ -30,6 +30,13 @@ class ParksController extends Controller
         ]);
     }
 
+    public function search_by_location(Request $req)
+    {
+        return view('parks.search_by_location', [
+            
+        ]);
+    }
+
     public function search_by_plant_and_animal(Request $req, string $comment = null)
     {
         $photos = Photo::whereNotIn('photo_type', ['ダミー'])->

@@ -10,8 +10,8 @@
     <title>@yield('title') | 公園ポータルサイト</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/destyle.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/destyle.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -35,7 +35,7 @@
             <div id="pc_nav_site">
                 <ul id="pc_nav_site_ul">
                     <a href="search_map.html"><li>地図から探す</li></a>
-                    <a href="#"><li>現在地から探す</li></a>
+                    <a href="{{route('parks.search_by_location')}}"><li>現在地から探す</li></a>
                     <a href="{{route('parks.search')}}"><li>特徴から探す</li></a>
                     <a href="{{route('parks.search_by_plant_and_animal')}}"><li>動植物から探す</li></a>
                 </ul>
@@ -51,7 +51,7 @@
                     <ul id="nav-content_large_ul">
                     <li><a href="#">TOP</a></li>
                     <li><a href="#">地図から探す</a></li>
-                    <li><a href="#">現在地から探す</a></li>
+                    <li><a href="{{route('parks.search_by_location')}}">現在地から探す</a></li>
                     <li><a href="{{route('parks.search')}}">特徴から探す</a></li>
                     <li><a href="{{route('parks.search_by_plant_and_animal')}}">動植物から探す</a></li>
                     <li><a href="#">公園なるほど情報</a></li>
@@ -76,7 +76,7 @@
         <span>運営&nbsp;株式会社Grow-up</span>
     </footer>
 </div>
-    <script defer src="{{ asset('js/app.js') }}"></script>
+    <script defer src="{{ secure_asset('js/app.js') }}"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArS7a0PfkbWeM9-YdpmjU-ikR92TVFQzA&callback=initMap"></script>
     <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
     @yield('script')
