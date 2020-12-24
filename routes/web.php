@@ -6,6 +6,7 @@ use App\Http\Controllers\ParksController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\TagsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('parks', ParksController::class);
     Route::resource('photos', PhotosController::class, ['except'=>['store', 'show',]]);
     Route::resource('reviews', ReviewsController::class, ['except'=>['store']]);
+    Route::resource('tags', TagsController::class);
 });
 
 Route::get('/search_feature', [ParksController::class, 'search'])->name('parks.search');

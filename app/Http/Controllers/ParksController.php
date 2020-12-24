@@ -11,9 +11,15 @@ class ParksController extends Controller
 {
     public function detail(Request $req, Park $park)
     {
-        $insect_photos = $park->photos()->where('photo_type', '昆虫')->orderBy('id', 'desc')->get();
-        $bird_photos = $park->photos()->where('photo_type', '鳥')->orderBy('id', 'desc')->get();
-        $plant_photos = $park->photos()->where('photo_type', '植物')->orderBy('id', 'desc')->get();
+        $insect_photos = $park->photos()->
+                        where('photo_type', '昆虫')->
+                        orderBy('id', 'desc')->get();
+        $bird_photos = $park->photos()->
+                        where('photo_type', '鳥')->
+                        orderBy('id', 'desc')->get();
+        $plant_photos = $park->photos()->
+                        where('photo_type', '植物')->
+                        orderBy('id', 'desc')->get();
         return view('parks.detail', [
             'park' => $park,
             'insect_photos' => Photo::alwaysSixInRow($insect_photos),
@@ -376,8 +382,13 @@ class ParksController extends Controller
 
     public function destroy(Park $park)
     {
-        Storage::disk('public')->delete($park->image_path);
-        $park->delete();
+        if($park->photos->isEmpty() && $park->reviews->isEmpty() && $park->tags->isEmpty()) {
+            Storage::disk('public')->delete($park->image_path);
+            $park->delete();
+        } else {
+            session()->flash('message', $park->park_name. 'に紐づけてあるデータが存在するため削除できません。');
+        }
+
 
         return redirect(route('parks.index'));
     }

@@ -2,6 +2,15 @@
 @section('title', '公園管理')
 
 @section('content')
+@if (session('message'))
+<div class="alert alert-danger mt-5">
+  <h3>削除に失敗しました</h3>
+  <ul>
+    <li>{{ session('message') }}</li>
+  </ul>
+</div>
+@endif
+
 <form action="{{route('parks.index')}}" method="get" class="mb-5">
   <div class="form-group">
     <label for="park_name">{{__('validation.attributes.park_name')}}:</label>
@@ -188,6 +197,16 @@
   <tr>
     <th>{{__('validation.attributes.latitude')}}</th>
     <td>{{$park->latitude}}</td>
+  </tr>
+  <tr>
+    <th>{{__('validation.attributes.tag')}}</th>
+    <td>
+      <ul>
+        @foreach ($park->tags as $tag)
+          <li>{{$tag->tag}}</li>
+        @endforeach
+      </ul>
+    </td>
   </tr>
   <tr>
     <th>{{__('validation.attributes.is_toilet')}}</th>

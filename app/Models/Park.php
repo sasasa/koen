@@ -70,7 +70,10 @@ class Park extends Model
         'is_art_museum',
         'is_reference_library',
     ];
-
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag');
+    }
     public function photos(): object
     {
         return $this->hasMany('App\Models\Photo');

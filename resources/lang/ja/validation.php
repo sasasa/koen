@@ -194,13 +194,15 @@ return [
         'is_art_museum' => '美術館',
         'is_reference_library' => '資料館',
 
-        'comment' => 'コメント',
+        'comment' => 'タグ',
         'photo_type' => 'タイプ',
 
         'title' => 'タイトル',
         'body' => '本文',
         'gender' => '性別',
         'age' => '年齢',
+
+        'tag' => 'タグ',
     ],
 
 ];

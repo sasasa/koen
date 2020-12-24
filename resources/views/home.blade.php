@@ -16,6 +16,7 @@
                     <a class="btn btn-info" href="{{route('parks.index')}}">公園管理</a>
                     <a class="btn btn-info" href="{{route('photos.index')}}">フォト管理</a>
                     <a class="btn btn-info" href="{{route('reviews.index')}}">口コミ管理</a>
+                    <a class="btn btn-info" href="{{route('tags.index')}}">タグ管理</a>
                 </div>
             </div>
         </div>

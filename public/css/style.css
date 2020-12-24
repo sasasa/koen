@@ -740,7 +740,7 @@ footer span {
 
 #overview_map {
   width: 100%;
-  height: 27rem;
+  min-height: 27rem;
 }
 
 #overview_map h3 {
@@ -751,11 +751,15 @@ footer span {
   width: 100%;
   border: 1px solid #707070;
   height: auto;
-  position: relative;
+  min-height: 250px;
 }
 
 #overview_infomation {
   width: 100%;
+}
+
+#overview_infomation h3 {
+  padding: 2rem 0;
 }
 
 #overview_infomation_details {
@@ -1648,7 +1652,7 @@ input[type=checkbox]:checked + #check {
   }
 
   #overview_map_exp {
-    height: 450px;
+    min-height: 450px;
   }
 
   #overview_infomation {

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\Park;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use \InterventionImage;
 
@@ -40,10 +41,18 @@ class PhotosController extends Controller
         $file = $req->upfile;
         $file_name = time() . '.' . $file->getClientOriginalExtension();
         //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-        InterventionImage::make($file)->resize(1080, null, function($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
+        InterventionImage::make($file)->
+        resize(1080, null, function($constraint) {$constraint->aspectRatio();})->
+        save(storage_path('app/public/'.$file_name));
 
         $photo = new Photo();
         $photo->fill(array_merge($req->all(), ['image_path' => $file_name]))->save();
+
+        $tag = Tag::updateOrCreate(
+            ['tag' => mb_convert_kana($req->comment, 'Hcsa')],
+            ['tag' => mb_convert_kana($req->comment, 'Hcsa')],
+        );
+        $park->tags()->attach($tag->id);
 
         return redirect()->back();
     }

@@ -11,8 +11,8 @@ class Photo extends Model
     use HasFactory;
 
     public static $rules = [
-        'comment' => 'required|max:20',
-        'photo_type' => 'required|max:10',
+        'comment' => 'required|min:2|max:20',
+        'photo_type' => 'required|min:2|max:10',
     ];
 
     protected $fillable = [

@@ -368,7 +368,7 @@ const mapOptions = {
 const markerData = [ 
     {
         //明治公園
-        name: '明治公園',
+        name: '{{$park->park_name}}',
         lat: {{$park->latitude}},
         lng: {{$park->longitude}},
         info: '<strong style="color:green;">{{$park->park_name}}</strong>',
