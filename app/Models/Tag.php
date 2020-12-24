@@ -10,7 +10,7 @@ class Tag extends Model
     use HasFactory;
 
     public static $rules = [
-        'tag' => 'required|min:2|max:20',
+        'tag' => 'required|min:1|max:20',
     ];
 
     protected $fillable = [

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Park;
 use App\Models\Photo;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class ParksController extends Controller
@@ -26,6 +27,23 @@ class ParksController extends Controller
             'bird_photos' => Photo::alwaysSixInRow($bird_photos),
             'plant_photos' => Photo::alwaysSixInRow($plant_photos),
             'reviews' => $park->reviews
+        ]);
+    }
+
+    public function search_by_plant_and_animal(Request $req, string $comment = null)
+    {
+        $photos = Photo::whereNotIn('photo_type', ['ダミー'])->
+                orderBy('id', 'DESC')->limit(100)->get();
+        if($comment) {
+            $parks = Tag::where('tag', mb_convert_kana($comment, 'Hcsa'))->
+                        first()->parks()->paginate(12);
+        } else {
+            $parks = collect([]);
+        }
+
+        return view('parks.search_by_plant_and_animal', [
+            'photos' => $photos,
+            'parks' => $parks,
         ]);
     }
 

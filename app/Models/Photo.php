@@ -11,8 +11,8 @@ class Photo extends Model
     use HasFactory;
 
     public static $rules = [
-        'comment' => 'required|min:2|max:20',
-        'photo_type' => 'required|min:2|max:10',
+        'comment' => 'required|min:1|max:20',
+        'photo_type' => 'required|min:1|max:10',
     ];
 
     protected $fillable = [
@@ -30,8 +30,8 @@ class Photo extends Model
     public static function alwaysSixInRow(Collection $collection): Collection
     {
         $count = $collection->count();
-        if($count < 7) {
-            $num = 6 - $count;
+        if($count <= 7) {
+            $num = 7 - $count;
             $dummy = self::where('photo_type', 'ダミー')->get();
             for($i=0; $i<$num; $i++) {
                 $collection = $collection->concat($dummy);

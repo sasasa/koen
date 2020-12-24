@@ -1512,3 +1512,21 @@ input[type="checkbox"]:checked + #check {
     padding: 5px;
   }
 }
+
+.photo {
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    width: 100px;
+    min-height: 100px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 1000px) {
+  .photo {
+    width: 1000px;
+  }
+  
+}

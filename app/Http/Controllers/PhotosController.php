@@ -8,7 +8,7 @@ use App\Models\Photo;
 use App\Models\Park;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
-use \InterventionImage;
+use Intervention\Image\Facades\Image as InterventionImage;
 
 class PhotosController extends Controller
 {
@@ -42,8 +42,9 @@ class PhotosController extends Controller
         $file_name = time() . '.' . $file->getClientOriginalExtension();
         //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
         InterventionImage::make($file)->
-        resize(1080, null, function($constraint) {$constraint->aspectRatio();})->
-        save(storage_path('app/public/'.$file_name));
+        resize(1080, null, function($constraint) {
+            $constraint->upsize();
+        })->save(storage_path('app/public/'. $file_name));
 
         $photo = new Photo();
         $photo->fill(array_merge($req->all(), ['image_path' => $file_name]))->save();
@@ -52,7 +53,9 @@ class PhotosController extends Controller
             ['tag' => mb_convert_kana($req->comment, 'Hcsa')],
             ['tag' => mb_convert_kana($req->comment, 'Hcsa')],
         );
-        $park->tags()->attach($tag->id);
+        if (!$park->tags()->find($tag->id)) {
+            $park->tags()->attach($tag->id);
+        }
 
         return redirect()->back();
     }
@@ -73,7 +76,9 @@ class PhotosController extends Controller
             Storage::disk('public')->delete($photo->image_path);
             $file_name = time() . '.' . $file->getClientOriginalExtension();
             //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-            InterventionImage::make($file)->resize(1080, null, function($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
+            InterventionImage::make($file)->resize(1080, null, function($constraint) {
+                $constraint->upsize();;
+            })->save(storage_path('app/public/'. $file_name));
 
             $photo->image_path = $file_name;
         } else {

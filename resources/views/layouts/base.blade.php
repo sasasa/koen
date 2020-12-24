@@ -37,7 +37,7 @@
                     <a href="search_map.html"><li>地図から探す</li></a>
                     <a href="#"><li>現在地から探す</li></a>
                     <a href="{{route('parks.search')}}"><li>特徴から探す</li></a>
-                    <a href="#"><li>動植物から探す</li></a>
+                    <a href="{{route('parks.search_by_plant_and_animal')}}"><li>動植物から探す</li></a>
                 </ul>
                 <div id="tips_link"><a href="">公園なるほど情報</a></div>
             </div><!-- pc_nav_site -->
@@ -53,7 +53,7 @@
                     <li><a href="#">地図から探す</a></li>
                     <li><a href="#">現在地から探す</a></li>
                     <li><a href="{{route('parks.search')}}">特徴から探す</a></li>
-                    <li><a href="#">動植物から探す</a></li>
+                    <li><a href="{{route('parks.search_by_plant_and_animal')}}">動植物から探す</a></li>
                     <li><a href="#">公園なるほど情報</a></li>
                     </ul>
                     <ul id="nav-content_small_ul">
