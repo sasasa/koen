@@ -24,7 +24,7 @@
       </div>
 
       <div class="search_card">
-        <a href="#">
+        <a href="{{route('parks.search_by_location')}}">
           <li>
             <img alt="現在地情報から探します" src="../img/walking2_man/drawable-mdpi/walking2_man.png">
             <div class="search_card_title">現在地から<span>探す</span></div>

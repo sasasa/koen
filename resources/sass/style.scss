@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* idは1ページ内なら流用してもいい */
+
 
 
 
@@ -558,9 +558,6 @@ footer span {
   display: flex;
   flex-wrap: wrap;
 }
-.tab-label {
-
-}
 .feat_box {
   padding-top: 1rem;
   border-bottom: 0.1rem solid #707070;
@@ -709,13 +706,13 @@ footer span {
 .tab-label {
   color: #707070;
   border-bottom: 1px solid #707070;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   height: 2.3rem;
   line-height: 0rem;
-  padding: 2rem 2rem;
+  padding: 1rem;
   text-align: center;
   order: -1;
-  width: 12.5rem;
+  width: 9rem;
 }
 .appeal {
     width: 100%;
@@ -736,6 +733,155 @@ footer span {
 .tab-switch {
     display: none;
 }
+
+/* wordmouth_area_incは「マップ」と「基本情報」を内包し幅と高さを決める */
+#wordmouth_area_inc {
+  padding-top: 1rem;
+}
+#wordmouth_area {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+#wordmouth_area a {
+  border: 1px solid #269512;
+  border-radius: 0.5rem;
+  color:  #269512;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.8rem 5rem;
+  // display: inline-block;
+  // height: 2rem;
+}
+.wordmouth {
+  color: #707070;
+  border: 1px solid #707070;
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 6px rgba(0,0,0,.15);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.wordmouth h3 {
+  font-weight: bold;
+}
+.wordmouth ul {
+  display: flex;
+  padding: 1rem 1rem 1rem 0;
+}
+.wordmouth li {
+  padding-right: 1rem;
+}
+#form_area {
+  padding: 5rem 0;
+}
+#form_area h3 {
+  padding-bottom: 2rem;
+}
+#form_area label {
+  display: block;
+  color: #707070;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 2rem 0 1rem 0;
+}
+#form_area textarea, #form_area input[type="text"] {
+  border: 1px solid #707070;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+#form_area select {
+  border: 1px solid #707070;
+  border-radius: 0.5rem;
+  color: #707070;
+  font-size: 1.2rem;
+  padding: 0.5rem 3rem 0.5rem 0.5rem;
+}
+/* 「必須項目入力してください」と隙間を開けるためmargin-bottom */
+.form_block {
+  display: block;
+  margin-bottom: 1rem;
+}
+.pd_right {
+  padding-right: 1rem;
+}
+#form_area select {
+  -moz-appearance: menulist;
+  -webkit-appearance: menulist;
+}
+#form_area select::-ms-expand {
+  display: block;
+}
+input[type="submit"] {
+  border: 1px solid #269512;
+  border-radius: 0.5rem;
+  background-color: #269512;
+  color:  #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.8rem 5rem;
+}
+.require {
+  color: #ff3333;
+}
+p.require {
+  border: 1px solid #ff3333;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+}
+#submit {
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+}
+/* 「もっと表示する」機能css */
+/* https://copypet.jp/502/よりコピペしてくる 一部改変 */
+.cp_box *, .cp_box *:before, .cp_box *:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cp_box {
+	width: auto;
+  margin: 2em auto;
+}
+.cp_box label {
+	position: relative;
+	display: block;
+	width: 80%;
+	margin: auto;
+	padding: 0.3em 1em;
+	cursor: pointer;
+	transition: all 0.3s;
+	text-align: center;
+	color: #707070;
+}
+.cp_box label:hover {
+  transition: all 0.3s;
+  font-weight: bold;
+}
+.cp_box input {
+  display: none;
+}
+.cp_box .cp_container {
+	position: relative;
+	z-index: 10;
+	overflow: scroll;
+  height: 20rem;
+	margin-top: -1px;
+	transition: height 0.3s ease-in-out,box-shadow 0.6s linear;
+	background: rgba(255, 255, 255, 0.5);
+}
+.cp_box input:checked ~ div {
+	transition: height 0.5s ease-in-out,box-shadow 0.1s linear;
+}
+/* 続きを読むを押すと表示されるテキストの高さ */
+.cp_box input:checked ~ div.cp_container {
+	height: 50rem;
+}
+/* 「もっと表示する」機能css終わり */
 
 
 /* ======================================== */
@@ -1396,10 +1542,9 @@ input[type="checkbox"]:checked + #check {
     width: 13rem;
     height: 13rem;
   }
-  // #natr ul {
-  //   margin-bottom: 12rem;
-
-  // }
+  #natr ul {
+    margin-bottom: 12rem;
+  }
   #natr li {
     margin: 0 1rem 5rem 1rem;
   }
@@ -1467,7 +1612,10 @@ input[type="checkbox"]:checked + #check {
   {
     width: 90%;
   }
-
+  /* result_deateails_feature.html */
+  .tab-label {
+    width: 25%;
+  }
 }
 
 .upload-form {

@@ -250,79 +250,79 @@
           </div><!-- overview -->
         </div><!-- appeal -->
 
-        <input id="TAB-04" type="radio" value="checked" name="TAB" class="tab-switch"><label class="tab-label" for="TAB-04">口コミ</label>
+
+        <input id="TAB-04" type="radio" value="checked" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-04">口コミ</label>
         <div class="appeal">
-          <div>
-            @if ($reviews->isEmpty())
-              <h3>投稿がありません。</h3>
-            @else
-              @foreach ($reviews as $review)
-                <article>
-                  <h3>{{$review->title}}</h3>
-                  <div>{{$review->ageJp}} {{$review->genderJp}}　{{$review->created_at->format('Y年m月')}}</div>
-                  <div>
-                    {!! nl2br(e($review->body)) !!}
-                  </div>
-                </article>
-              @endforeach
-            @endif
-          </div>
-          <form method="POST" action="{{route('parks.reviews.store', ['park'=>$park])}}" class="review">
-            @csrf
-            <div class="form-group">
-              <label for="title">{{__('validation.attributes.title')}}:</label>
-              <input value="{{old('title')}}" type="text" id="title" class="form-control @error('title') is-invalid @enderror" name="title">
-              @error('title')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-            </div>
+          <div id="wordmouth_area_inc"><!-- wordmouth_area_incは「マップ」と「基本情報」を内包し幅と高さを決める -->
+            <section id="wordmouth_area">
+              <a href="#message">投稿はこちら</a>
 
-            <div class="form-group">
-              <label for="body">{{__('validation.attributes.body')}}:</label>
-              <textarea rows="4" id="body" class="form-control @error('body') is-invalid @enderror" name="body">{{old('body')}}</textarea>
-              @error('body')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-            </div>
+              @if ($reviews->isEmpty())
+                <p>口コミ募集中です！</p>
+              @else
+                <div class="cp_box">
+                  <input id="cp00" type="checkbox">
+                  <div class="cp_container">
+                    @foreach ($reviews as $review)
+                      <article class="wordmouth">
+                        <h3>{{$review->title}}</h3>
+                        <ul>
+                          <li>'年齢'{{$review->ageJp}}代</li>
+                          <li>'性別'{{$review->genderJp}}</li>
+                          <li>'投稿日時'{{$review->created_at->format('Y年m月')}}</li>
+                        </ul>
+                        <p>
+                          {!! nl2br(e($review->body)) !!}
+                        </p>
+                      </article>
+                    @endforeach
+                  </div><!-- class="cp_container" -->
+                  <label for="cp00">もっと表示する</label>
+                </div><!-- class="cp_box" -->
+              @endif
+            </section><!-- wordmouth_area -->
 
-            <div class="form-group">
-              <p class="control-label"><b>{{__('validation.attributes.gender')}}</b></p>
-              
-              @foreach (\App\Models\Review::$genders as $key => $label)
-                <div class="radio-inline">
-                  <input {{old('gender') == $key ? 'checked' : ''}} type="radio" value="{{$key}}" name="gender" id="gender_{{$key}}">
-                    <label for="gender_{{$key}}">{{$label}}</label>
-                </div>
-              @endforeach
+            <section id="form_area">
+              <h3 id="message">口コミを書く</h3>
+              <form method="post" action="{{route('parks.reviews.store', ['park'=>$park])}}">
+                @csrf
+                <p>
+                  <label for="id_title">タイトル</label>
+                  <span class="require">*必須</span>
+                  <input value="{{old('title')}}" type="text" id="id_title" class="@error('title') is-invalid @enderror" name="title">
+                </p>
+                  <label for="id_message">本文</label>
+                  <span class="require">*必須</span>
+                  <textarea rows="4" cols="40" id="id_message" class="@error('body') is-invalid @enderror" name="body">{{old('body')}}</textarea>
+                <p>
+                  <label>性別</label>
+                  <span class="form_block">
+                    @foreach (\App\Models\Review::$genders as $key => $label)
+                      <input {{old('gender') == $key ? 'checked' : ''}} type="radio" name="gender" value="{{$key}}" id="gender_{{$key}}">
+                      <span for="gender_{{$key}}" class="pd_right">{{$label}}</span>
+                    @endforeach
+                  </span>
+                </p>
+                <p>
+                  <label>年齢</label>
+                  <span class="form_block">
+                    {{ Form::select('age', \App\Models\Review::$ages, old('age'),
+                      empty($errors->first('age')) ? ['id'=>'age'] : ['class'=>"is-invalid", 'id'=>'age']) }}
+                  </span>
+                </p>
+                <!-- if(バリデーションエラー発生) -->
+                <p class="require">必須項目が入力されていません</p>
+                <!-- } -->
+                <span id="submit">
+                  <input type="hidden" name="park_id" value="{{$park->id}}">
+                  <input type="submit" value="投稿する" />
+                </span>
+              </form>
+            </section>
 
-              @error('gender')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-            </div>
+          </div><!-- wordmouth -->
+        </div><!-- class="appeal" -->
 
-            <div class="form-group">
-              <label for="age">{{__('validation.attributes.age')}}:</label>
-              {{ Form::select('age', \App\Models\Review::$ages, old('age'), empty($errors->first('age')) ? ['class'=>"form-control", 'id'=>'age'] : ['class'=>"form-control is-invalid", 'id'=>'age']) }}
-
-              @error('age')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-
-            </div>
-            <div>
-              <input type="hidden" name="park_id" value="{{$park->id}}">
-              <button type="submit" class="btn btn-primary">登録</button>
-            </div>
-          </form>
-        </div><!-- appeal -->
       </div>
     </div><!-- result_expression -->
 
@@ -342,7 +342,7 @@ $(function(){
     const hash = sessionStorage.getItem('hash');
     $(hash).trigger('click')
   }
-  
+
   $('.tab-switch').click(function() {
     const id = $(this).attr('id')
     location.hash = '#' + id;

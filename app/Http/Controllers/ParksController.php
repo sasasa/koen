@@ -33,7 +33,6 @@ class ParksController extends Controller
     public function search_by_location(Request $req)
     {
         return view('parks.search_by_location', [
-            
         ]);
     }
 

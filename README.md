@@ -12,7 +12,7 @@ php artisan make:controller ParksController
 php artisan make:controller PhotosController --resource
 php artisan make:controller ReviewsController --resource
 php artisan make:controller TagsController --resource
-
+php artisan make:controller Api/SearchParksController
 
 php artisan make:seeder ParksTableSeeder
 php artisan make:seeder UsersTableSeeder
