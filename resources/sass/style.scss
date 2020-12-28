@@ -372,6 +372,7 @@ input {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 10rem;
 }
 #side_note {
   display: flex;
@@ -456,6 +457,7 @@ footer span {
   justify-content: center;
   width: 100%;
   height: 50.2rem;
+  margin-bottom: 8rem;
 }
 
 
@@ -1500,6 +1502,7 @@ input[type="checkbox"]:checked + #check {
 }
 #re_choice_button {
   margin: 0;
+  margin-bottom: 8rem;
 }
 #largeul li:first-child div {
   width: 31.5rem;
@@ -1629,6 +1632,10 @@ input[type="checkbox"]:checked + #check {
   /* result_deateails_feature.html */
   .tab-label {
     width: 25%;
+  }
+
+  #section_side_note_area {
+    margin-bottom: 0;
   }
 }
 

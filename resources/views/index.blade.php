@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', '')
+@section('title', '公園ポータル')
 
 @section('content')
 
@@ -15,7 +15,7 @@
 
     <ul id="simple_search">
       <div class="search_card">
-        <a href="search_map.html">
+        <a href="{{route('parks.search_map')}}">
           <li>
             <img alt="地図から探します" src="../img/map_book_chizuchou/drawable-mdpi/map_book_chizuchou.png">
             <div class="search_card_title">地図から<span>探す</span></div>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="search_card">
-        <a href="#">
+        <a href="{{route('parks.search_by_plant_and_animal')}}">
           <li>
             <img alt="生息する動植物から探します" src="../img/bird_kojukei/drawable-mdpi/bird_kojukei.png">
             <div class="search_card_title">動植物から<span>探す</span></div>

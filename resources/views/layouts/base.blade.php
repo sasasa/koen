@@ -16,14 +16,14 @@
 <body>
 <div id="wrapper">
     <header>
-        <nav id="breadcrumbs">
-            <ol>
-                @if(empty($park) || (!empty($park) && request()->fullUrl() != route('parks.user_edit', ['park'=>$park])))
-                    <li><a href="">Top</a></li>
-                    <li><a href="">地図から探す</a></li>
-                @endif
-            </ol>
-        </nav>
+        @if(request()->path() != '/' && (empty($park) || (!empty($park) && request()->fullUrl() != route('parks.user_edit', ['park'=>$park]))))
+            <nav id="breadcrumbs">
+                <ol>
+                    <li><a href="/">Top</a></li>
+                    <li><a href="{{route('parks.search_map')}}">地図から探す</a></li>
+                </ol>
+            </nav>
+        @endif
         <nav id="nav_bar">
             <div id="logo_caption">
                 <a href="{{route('index')}}">
@@ -34,7 +34,7 @@
 
             <div id="pc_nav_site">
                 <ul id="pc_nav_site_ul">
-                    <a href="search_map.html"><li>地図から探す</li></a>
+                    <a href="{{route('parks.search_map')}}"><li>地図から探す</li></a>
                     <a href="{{route('parks.search_by_location')}}"><li>現在地から探す</li></a>
                     <a href="{{route('parks.search')}}"><li>特徴から探す</li></a>
                     <a href="{{route('parks.search_by_plant_and_animal')}}"><li>動植物から探す</li></a>
@@ -49,8 +49,8 @@
                 <label class="nav-unshown" id="nav-close" for="nav-input"></label>
                 <div id="nav-content">
                     <ul id="nav-content_large_ul">
-                    <li><a href="#">TOP</a></li>
-                    <li><a href="#">地図から探す</a></li>
+                    <li><a href="/">TOP</a></li>
+                    <li><a href="{{route('parks.search_map')}}">地図から探す</a></li>
                     <li><a href="{{route('parks.search_by_location')}}">現在地から探す</a></li>
                     <li><a href="{{route('parks.search')}}">特徴から探す</a></li>
                     <li><a href="{{route('parks.search_by_plant_and_animal')}}">動植物から探す</a></li>

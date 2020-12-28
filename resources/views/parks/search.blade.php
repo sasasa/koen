@@ -13,7 +13,7 @@
           <span>地域</span>
           <div class="cp_ipselect cp_sl01">
           <select name="area" required>
-            <option value="" hidden>地域を選択してください</option>
+            <option value="">地域を選択してください</option>
             <option value="福岡市" {{$area==='福岡市' ? 'selected' : ''}}>福岡市</option>
             <option value="北九州" {{$area==='北九州' ? 'selected' : ''}}>北九州</option>
             <option value="久留米" {{$area==='久留米' ? 'selected' : ''}}>久留米</option>
@@ -349,4 +349,14 @@
 </form>
 
 
+@endsection
+
+
+@section('script')
+<script type="module">
+  
+  if ($('.catalog_ex_item').length) {
+    $("html,body").animate({scrollTop:$('#catalog_result').offset().top - 60});
+  }
+</script>
 @endsection

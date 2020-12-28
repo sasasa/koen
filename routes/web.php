@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/search_feature', [ParksController::class, 'search'])->name('parks.search');
+Route::get('/search_map', [ParksController::class, 'search_map'])->name('parks.search_map');
 Route::get('/search_by_location', [ParksController::class, 'search_by_location'])->name('parks.search_by_location');
 Route::get('/search_by_plant_and_animal/{comment?}', [ParksController::class, 'search_by_plant_and_animal'])->name('parks.search_by_plant_and_animal');
 Route::get('/detail/{park}', [ParksController::class, 'detail'])->name('parks.detail');

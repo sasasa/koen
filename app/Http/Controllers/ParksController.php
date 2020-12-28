@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ParksController extends Controller
 {
+    public function search_map()
+    {
+        return view('parks.search_map');
+    }
+    
     public function detail(Request $req, Park $park)
     {
         $insect_photos = $park->photos()->
