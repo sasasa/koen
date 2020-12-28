@@ -741,8 +741,12 @@ footer span {
 #wordmouth_area {
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
+  .emptybox {
+    margin-top: 4rem;
+  }
 }
 #wordmouth_area a {
   border: 1px solid #269512;
@@ -802,8 +806,11 @@ footer span {
   display: block;
   margin-bottom: 1rem;
 }
-.pd_right {
-  padding-right: 1rem;
+#form_area .pd_right {
+  padding-right: 1.2rem;
+
+  display: inline;
+  font-size: 1.2rem;
 }
 #form_area select {
   -moz-appearance: menulist;
@@ -830,6 +837,7 @@ p.require {
   font-size: 1.2rem;
   text-align: center;
   padding: 1rem;
+  margin-top: 1rem;
 }
 #submit {
   display: flex;
@@ -844,7 +852,7 @@ p.require {
 }
 
 .cp_box {
-	width: auto;
+	// width: auto;
   margin: 2em auto;
 }
 .cp_box label {
@@ -1318,6 +1326,12 @@ input[type="checkbox"]:checked + #check {
    {
     width: 100rem;
   }
+  .appeal,
+  #wordmouth_area_inc,
+  #wordmouth_area,
+  .cp_container {
+    width: 100rem;
+}
   /* index.html */
   #section_main_image_area {
     background-image: url("../img/top-head2/drawable-mdpi/top-head2.png");
@@ -1543,7 +1557,7 @@ input[type="checkbox"]:checked + #check {
     height: 13rem;
   }
   #natr ul {
-    margin-bottom: 12rem;
+    margin-bottom: 6rem;
   }
   #natr li {
     margin: 0 1rem 5rem 1rem;
@@ -1621,7 +1635,8 @@ input[type="checkbox"]:checked + #check {
 .upload-form {
   margin-bottom: 4rem;
   input {
-    border: 1px solid #666666;
+    border: 1px solid #707070;
+    border-radius: 0.5rem;
   }
   &__field {
     margin-bottom: 10px;

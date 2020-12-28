@@ -826,8 +826,13 @@ td {
 #wordmouth_area {
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+#wordmouth_area .emptybox {
+  margin-top: 4rem;
 }
 
 #wordmouth_area a {
@@ -899,8 +904,10 @@ td {
   margin-bottom: 1rem;
 }
 
-.pd_right {
-  padding-right: 1rem;
+#form_area .pd_right {
+  padding-right: 1.2rem;
+  display: inline;
+  font-size: 1.2rem;
 }
 
 #form_area select {
@@ -932,6 +939,7 @@ p.require {
   font-size: 1.2rem;
   text-align: center;
   padding: 1rem;
+  margin-top: 1rem;
 }
 
 #submit {
@@ -951,7 +959,6 @@ p.require {
 }
 
 .cp_box {
-  width: auto;
   margin: 2em auto;
 }
 
@@ -1539,6 +1546,13 @@ input[type=checkbox]:checked + #check {
     width: 100rem;
   }
 
+  .appeal,
+  #wordmouth_area_inc,
+  #wordmouth_area,
+  .cp_container {
+    width: 100rem;
+  }
+
   /* index.html */
 
   #section_main_image_area {
@@ -1819,7 +1833,7 @@ input[type=checkbox]:checked + #check {
   }
 
   #natr ul {
-    margin-bottom: 12rem;
+    margin-bottom: 6rem;
   }
 
   #natr li {
@@ -1916,7 +1930,8 @@ input[type=checkbox]:checked + #check {
 }
 
 .upload-form input {
-  border: 1px solid #666666;
+  border: 1px solid #707070;
+  border-radius: 0.5rem;
 }
 
 .upload-form__field {

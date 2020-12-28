@@ -119,7 +119,7 @@
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
-                  <input type="file" name="upfile" accept="image/*" required>
+                  画像：<input type="file" name="upfile" accept="image/*" required>
                   @error('upfile')
                   <span class="invalid-feedback">
                       <strong>{{ $message }}</strong>
@@ -127,7 +127,7 @@
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  <input type="text" name="comment" required>
+                  タグ：<input type="text" name="comment" required>
                   @error('comment')
                   <span class="invalid-feedback">
                       <strong>{{ $message }}</strong>
@@ -155,7 +155,7 @@
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
-                  <input type="file" name="upfile" accept="image/*" required>
+                  画像：<input type="file" name="upfile" accept="image/*" required>
                   @error('upfile')
                   <span class="invalid-feedback">
                       <strong>{{ $message }}</strong>
@@ -163,7 +163,7 @@
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  <input type="text" name="comment" required>
+                  タグ：<input type="text" name="comment" required>
                   @error('comment')
                   <span class="invalid-feedback">
                       <strong>{{ $message }}</strong>
@@ -191,7 +191,7 @@
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
-                  <input type="file" name="upfile" accept="image/*" required>
+                  画像：<input type="file" name="upfile" accept="image/*" required>
                   @error('upfile')
                   <span class="invalid-feedback">
                       <strong>{{ $message }}</strong>
@@ -199,7 +199,7 @@
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  <input type="text" name="comment" required>
+                  タグ：<input type="text" name="comment" required>
                   @error('comment')
                   <span class="invalid-feedback">
                       <strong>{{ $message }}</strong>
@@ -258,7 +258,7 @@
               <a href="#message">投稿はこちら</a>
 
               @if ($reviews->isEmpty())
-                <p>口コミ募集中です！</p>
+                <p class="emptybox">口コミ募集中です！</p>
               @else
                 <div class="cp_box">
                   <input id="cp00" type="checkbox">
@@ -289,30 +289,41 @@
                 <p>
                   <label for="id_title">タイトル</label>
                   <span class="require">*必須</span>
-                  <input value="{{old('title')}}" type="text" id="id_title" class="@error('title') is-invalid @enderror" name="title">
+                  <input value="{{old('title')}}" type="text" id="id_title" class="@error('title') is-invalid @enderror" name="title" required>
                 </p>
+                @error('title')
+                  <p class="require">{{ $message }}</p>
+                @enderror
+                <p>
                   <label for="id_message">本文</label>
                   <span class="require">*必須</span>
-                  <textarea rows="4" cols="40" id="id_message" class="@error('body') is-invalid @enderror" name="body">{{old('body')}}</textarea>
+                  <textarea rows="4" cols="40" id="id_message" class="@error('body') is-invalid @enderror" name="body" required>{{old('body')}}</textarea>
+                </p>
+                @error('body')
+                  <p class="require">{{ $message }}</p>
+                @enderror
                 <p>
                   <label>性別</label>
                   <span class="form_block">
                     @foreach (\App\Models\Review::$genders as $key => $label)
-                      <input {{old('gender') == $key ? 'checked' : ''}} type="radio" name="gender" value="{{$key}}" id="gender_{{$key}}">
-                      <span for="gender_{{$key}}" class="pd_right">{{$label}}</span>
+                      <input {{old('gender') == $key ? 'checked' : ''}} type="radio" name="gender" value="{{$key}}" id="gender_{{$key}}" required>
+                      <label for="gender_{{$key}}" class="pd_right">{{$label}}</label>
                     @endforeach
                   </span>
                 </p>
+                @error('gender')
+                  <p class="require">{{ $message }}</p>
+                @enderror
                 <p>
                   <label>年齢</label>
                   <span class="form_block">
                     {{ Form::select('age', \App\Models\Review::$ages, old('age'),
-                      empty($errors->first('age')) ? ['id'=>'age'] : ['class'=>"is-invalid", 'id'=>'age']) }}
+                      empty($errors->first('age')) ? ['id'=>'age', 'required'=>true] : ['class'=>"is-invalid", 'id'=>'age', 'required'=>true]) }}
                   </span>
                 </p>
-                <!-- if(バリデーションエラー発生) -->
-                <p class="require">必須項目が入力されていません</p>
-                <!-- } -->
+                @error('age')
+                  <p class="require">{{ $message }}</p>
+                @enderror
                 <span id="submit">
                   <input type="hidden" name="park_id" value="{{$park->id}}">
                   <input type="submit" value="投稿する" />
@@ -348,6 +359,10 @@ $(function(){
     location.hash = '#' + id;
     sessionStorage.setItem('hash', location.hash);
   })
+
+  if ($('p.require').length) {
+    $("html,body").animate({scrollTop:$('#message').offset().top});
+  }
 })
 </script>
 <script>
