@@ -1694,6 +1694,21 @@ input[type="checkbox"]:checked + #check {
   }
 }
 
+.back-link {
+  text-align: center;
+  margin: 20px auto;
+  a {
+    font-size: 2rem;
+    border: 1px solid #bbbbbb;
+    border-radius: 2px;
+    padding: 5px;
+  }
+}
+
+.map-pin {
+  color: green;
+}
+
 @media (min-width: 1000px) {
   .photo {
     width: 1000px;

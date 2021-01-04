@@ -18,12 +18,12 @@ class ParksTableSeeder extends Seeder
     {
         Artisan::call('park:csv:loader');
         for($i=0; $i<100; $i++) {
-            if (!Storage::disk('public')->exists('koen99.jpg'))
+            if (!Storage::disk('public')->exists('koen99.png'))
             {
-                if ( Storage::disk('public')->exists('koen.jpg') ) {
-                    Storage::disk('public')->copy('koen.jpg', 'koen'. $i. '.jpg');
+                if ( Storage::disk('public')->exists('koen.png') ) {
+                    Storage::disk('public')->copy('koen.png', 'koen'. $i. '.png');
                 } else {
-                    throw new \Exception('storage/app/public内にkoen.jpgが存在しないのでSeedingを終了する');
+                    throw new \Exception('storage/app/public内にkoen.pngが存在しないのでSeedingを終了する');
                 }
             }
             // Park::create([

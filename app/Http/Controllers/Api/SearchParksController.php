@@ -13,7 +13,7 @@ class SearchParksController extends Controller
         $latitude = $req->latitude; //33.587596999999995;
         $longitude = $req->longitude; //130.4006734;
         $parks = Park::geofence($latitude, $longitude, 0, 2)->get()->each(function($park){
-            $park->map = '<strong style="color:green;"><a href="'.route('parks.detail', ['park'=>$park]) .'">'. $park->park_name. '</a></strong>';
+            $park->map = '<strong class="map-pin"><a href="'.route('parks.detail', ['park'=>$park]) .'">'. $park->park_name. '</a></strong>';
         });
         return [
             'parks' => $parks

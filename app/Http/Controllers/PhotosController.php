@@ -43,6 +43,7 @@ class PhotosController extends Controller
         //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
         InterventionImage::make($file)->
         resize(1080, null, function($constraint) {
+            $constraint->aspectRatio();
             $constraint->upsize();
         })->save(storage_path('app/public/'. $file_name));
 
@@ -77,7 +78,8 @@ class PhotosController extends Controller
             $file_name = time() . '.' . $file->getClientOriginalExtension();
             //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
             InterventionImage::make($file)->resize(1080, null, function($constraint) {
-                $constraint->upsize();;
+                $constraint->aspectRatio();
+                $constraint->upsize();
             })->save(storage_path('app/public/'. $file_name));
 
             $photo->image_path = $file_name;
@@ -102,7 +104,7 @@ class PhotosController extends Controller
 
     public function show(Request $req, Park $park, Photo $photo)
     {
-        view('photos.show', [
+        return view('photos.show', [
             'photo' => $photo,
             'park' => $park,
         ]);

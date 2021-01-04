@@ -58,7 +58,7 @@ class ParkCSVLoader extends Command
                     'longitude' => $line[8],
                     // 緯度
                     'latitude' => $line[7],
-                    'image_path' => 'koen.jpg',
+                    'image_path' => 'koen.png',
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);

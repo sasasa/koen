@@ -10,8 +10,8 @@
     <title>@yield('title') | 公園ポータルサイト</title>
 
     <!-- Styles -->
-    <link href="{{ secure_asset('css/destyle.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/destyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -76,7 +76,7 @@
         <span>運営&nbsp;株式会社Grow-up</span>
     </footer>
 </div>
-    <script defer src="{{ secure_asset('js/app.js') }}"></script>
+    <script defer src="{{ asset('js/app.js') }}"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArS7a0PfkbWeM9-YdpmjU-ikR92TVFQzA&callback=initMap"></script>
     <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
     @yield('script')

@@ -24,7 +24,7 @@ let markerData = [
         address: '',
         latitude: 0,
         longitude: 0,
-        map: '<strong style="color:green;"></strong>',
+        map: '<strong class="map-pin"></strong>',
         // icon: park,
     },
 ];
