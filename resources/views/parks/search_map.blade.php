@@ -344,8 +344,12 @@ $(function() {
           .then((response) => {
             markerData = response.data.parks
             mapOptions = response.data.mapOptions
-            alert(JSON.stringify(response.data.req))
+            markerList = [];
+            infoWindowList = [];
+            currentInfoWindow = null;
+            // alert(JSON.stringify(response.data.req))
             createMap();
+            $("html, body").animate({scrollTop: $('#re_choice_button').offset().top-50}, 400, "swing")
           })
           .catch((error) => {
               console.log(error);

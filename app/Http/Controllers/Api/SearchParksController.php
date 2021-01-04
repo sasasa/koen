@@ -116,8 +116,8 @@ class SearchParksController extends Controller
             $park_query->where('address', 'LIKE', '%'.$req->area.'%');
             if($req->area == '福岡市') {
                 $lat = 33.60639;
-                $lng = 130.41806;
-                $zoom = 12;
+                $lng = 130.34806;
+                $zoom = 11;
             }
             $parks = $park_query->orderBy('id', 'DESC')->get()->each(function($park){
                 $park->map = '<strong class="map-pin"><a href="'.route('parks.detail', ['park'=>$park]) .'">'. $park->park_name. '</a></strong>';
