@@ -19,7 +19,6 @@ let currentInfoWindow = null;
 // マーカーの定義
 let markerData = [
     {
-        //明治公園
         park_name: '',
         address: '',
         latitude: 0,
@@ -38,7 +37,7 @@ function getPosition() {
     function(position) {
 
         axios
-          .post("{{route('api.parks.index')}}", {
+          .post("{{route('api.parks.search_by_location')}}", {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           })

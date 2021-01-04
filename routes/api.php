@@ -18,5 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['middleware' => ['api']], function(){
-    Route::post('/parks', [SearchParksController::class, 'index'])->name('api.parks.index');
+    Route::post('/parks_by_location', [SearchParksController::class, 'search_by_location'])->
+    name('api.parks.search_by_location');
+    Route::post('/parks_from_map', [SearchParksController::class, 'search_from_map'])->
+    name('api.parks.search_from_map');
 });

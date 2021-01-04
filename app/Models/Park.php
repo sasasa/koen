@@ -42,6 +42,7 @@ class Park extends Model
 
         'longitude',
         'latitude',
+        
         'is_toilet',
         'is_management_room',
         'is_store',
