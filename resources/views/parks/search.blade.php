@@ -230,42 +230,41 @@
   @if (!$parks->isEmpty())
     <section id="section_catalog_result">
       <div id="catalog_result">
-      <h2>検索結果一覧</h2>
-      <dl>
-        <dt>地域</dt>
-        <dd>{{$area}}</dd>
-      </dl>
-      <dl>
-        <dt>特徴</dt>
-
-        <dd>{{$is_toilet == '1' ? 'トイレ、' : ''}}</dd>
-        <dd>{{$is_management_room == '1' ? '管理室' : ''}}</dd>
-        <dd>{{$is_store == '1' ? '売店、' : ''}}</dd>
-        <dd>{{$is_parking == '1' ? '駐車場、' : ''}}</dd>
-        <dd>{{$is_diaper == '1' ? 'おむつ、' : ''}}</dd>
-        <dd>{{$is_playing_equipment == '1' ? '遊具、' : ''}}</dd>
-        <dd>{{$is_playing_with_sand == '1' ? '砂遊び、' : ''}}</dd>
-        <dd>{{$is_playing_in_water == '1' ? '水遊び、' : ''}}</dd>
-        <dd>{{$is_river == '1' ? '川・池、' : ''}}</dd>
-        <dd>{{$is_flower_bed == '1' ? '花壇、' : ''}}</dd>
-        <dd>{{$is_cherry_blossom == '1' ? '桜、' : ''}}</dd>
-        <dd>{{$is_promenade == '1' ? '遊歩道、' : ''}}</dd>
-        <dd>{{$is_running == '1' ? 'ランニング、' : ''}}</dd>
-        <dd>{{$is_baseball == '1' ? '野球場、' : ''}}</dd>
-        <dd>{{$is_tennis == '1' ? 'テニス、' : ''}}</dd>
-        <dd>{{$is_gym == '1' ? '体育館、' : ''}}</dd>
-        <dd>{{$is_multipurpose_ground == '1' ? '多目的グラウンド、' : ''}}</dd>
-        <dd>{{$is_accommodation == '1' ? '宿泊施設、' : ''}}</dd>
-        <dd>{{$is_campground == '1' ? 'キャンプ場、' : ''}}</dd>
-        <dd>{{$is_kitchen == '1' ? '炊事場、' : ''}}</dd>
-        <dd>{{$is_fishing == '1' ? 'フィッシング、' : ''}}</dd>
-        <dd>{{$is_multipurpose_toilet == '1' ? '多目的トイレ、' : ''}}</dd>
-        <dd>{{$is_wheelchair_accessible == '1' ? '車椅子対応、' : ''}}</dd>
-        <dd>{{$is_dog_run == '1' ? 'ドッグラン、' : ''}}</dd>
-        <dd>{{$is_boat == '1' ? 'ボート、' : ''}}</dd>
-        <dd>{{$is_art_museum == '1' ? '美術館、' : ''}}</dd>
-        <dd>{{$is_reference_library == '1' ? '資料館、' : ''}}</dd>
-      </dl>
+        <h2>検索結果一覧</h2>
+        <dl>
+          <dt>地域</dt>
+          <dd>{{$area}}</dd>
+        </dl>
+        <dl>
+          <dt>特徴</dt>
+          <dd>{{$is_toilet == '1' ? 'トイレ、' : ''}}</dd>
+          <dd>{{$is_management_room == '1' ? '管理室' : ''}}</dd>
+          <dd>{{$is_store == '1' ? '売店、' : ''}}</dd>
+          <dd>{{$is_parking == '1' ? '駐車場、' : ''}}</dd>
+          <dd>{{$is_diaper == '1' ? 'おむつ、' : ''}}</dd>
+          <dd>{{$is_playing_equipment == '1' ? '遊具、' : ''}}</dd>
+          <dd>{{$is_playing_with_sand == '1' ? '砂遊び、' : ''}}</dd>
+          <dd>{{$is_playing_in_water == '1' ? '水遊び、' : ''}}</dd>
+          <dd>{{$is_river == '1' ? '川・池、' : ''}}</dd>
+          <dd>{{$is_flower_bed == '1' ? '花壇、' : ''}}</dd>
+          <dd>{{$is_cherry_blossom == '1' ? '桜、' : ''}}</dd>
+          <dd>{{$is_promenade == '1' ? '遊歩道、' : ''}}</dd>
+          <dd>{{$is_running == '1' ? 'ランニング、' : ''}}</dd>
+          <dd>{{$is_baseball == '1' ? '野球場、' : ''}}</dd>
+          <dd>{{$is_tennis == '1' ? 'テニス、' : ''}}</dd>
+          <dd>{{$is_gym == '1' ? '体育館、' : ''}}</dd>
+          <dd>{{$is_multipurpose_ground == '1' ? '多目的グラウンド、' : ''}}</dd>
+          <dd>{{$is_accommodation == '1' ? '宿泊施設、' : ''}}</dd>
+          <dd>{{$is_campground == '1' ? 'キャンプ場、' : ''}}</dd>
+          <dd>{{$is_kitchen == '1' ? '炊事場、' : ''}}</dd>
+          <dd>{{$is_fishing == '1' ? 'フィッシング、' : ''}}</dd>
+          <dd>{{$is_multipurpose_toilet == '1' ? '多目的トイレ、' : ''}}</dd>
+          <dd>{{$is_wheelchair_accessible == '1' ? '車椅子対応、' : ''}}</dd>
+          <dd>{{$is_dog_run == '1' ? 'ドッグラン、' : ''}}</dd>
+          <dd>{{$is_boat == '1' ? 'ボート、' : ''}}</dd>
+          <dd>{{$is_art_museum == '1' ? '美術館、' : ''}}</dd>
+          <dd>{{$is_reference_library == '1' ? '資料館、' : ''}}</dd>
+        </dl>
       </div><!-- catalog_result -->
       <section id="section_catalog_ex">
         <div id="catalog_ex">
@@ -297,7 +296,6 @@
             </div><!--  catalog_ex_item1 -->
           @endforeach
         </div><!-- catalog_ex -->
-        
       </section><!-- section_catalog_ex -->
     </section><!-- section_catalog_result -->
     {{ $parks->appends(request()->input())->links() }}

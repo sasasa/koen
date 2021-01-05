@@ -1109,6 +1109,7 @@ p.require {
   height: 3.3rem;
   color: #707070;
   padding: 0.7rem 0;
+  min-width: 18rem;
 }
 
 .catalog_ex_item_inner_picture {
