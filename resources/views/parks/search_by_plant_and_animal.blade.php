@@ -5,7 +5,7 @@
 <div class="photo">
   @foreach ($photos as $photo)
   <div class="photo__list">
-    <a href="{{route('parks.search_by_plant_and_animal', ['comment'=>$photo->comment])}}">
+    <a href="{{route('parks.search_by_plant_and_animal', ['tag'=>mb_convert_kana($photo->comment, 'Hcsa')])}}">
       <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}" title="{{$photo->comment}}">
     </a>
   </div>

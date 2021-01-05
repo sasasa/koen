@@ -41,12 +41,12 @@ class ParksController extends Controller
         ]);
     }
 
-    public function search_by_plant_and_animal(Request $req, string $comment = null)
+    public function search_by_plant_and_animal(Request $req, string $tag = null)
     {
         $photos = Photo::whereNotIn('photo_type', ['ダミー'])->
                 orderBy('id', 'DESC')->limit(100)->get();
-        if($comment) {
-            $parks = Tag::where('tag', mb_convert_kana($comment, 'Hcsa'))->
+        if($tag) {
+            $parks = Tag::where('tag', $tag)->
                         first()->parks()->paginate(12);
         } else {
             $parks = collect([]);
