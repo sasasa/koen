@@ -122,6 +122,14 @@ class SearchParksController extends Controller
             $parks = $park_query->orderBy('id', 'DESC')->get()->each(function($park){
                 $park->map = '<strong class="map-pin"><a href="'.route('parks.detail', ['park'=>$park]) .'">'. $park->park_name. '</a></strong>';
             });
+            if ($parks->isNotEmpty()) {
+                $lat = $parks->avg(function($park){
+                    return $park->latitude;
+                });
+                $lng = $parks->avg(function($park){
+                    return $park->longitude;
+                });
+            }
         }
         return [
             'parks' =>  $parks,
