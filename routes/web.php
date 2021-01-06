@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\RootController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('photos', PhotosController::class, ['except'=>['store', 'show',]]);
     Route::resource('reviews', ReviewsController::class, ['except'=>['store']]);
     Route::resource('tags', TagsController::class);
+    Route::resource('articles', ArticlesController::class);
 });
 
 Route::get('/search_feature', [ParksController::class, 'search'])->name('parks.search');
@@ -39,7 +42,8 @@ Route::get('/detail/{park}', [ParksController::class, 'detail'])->name('parks.de
 Route::get('/user_edit/{park}', [ParksController::class, 'user_edit'])->name('parks.user_edit');
 Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name('parks.user_update');
 
-Route::view('/', 'index')->name('index');
+Route::get('/', [RootController::class, 'index'])->name('root.index');
+Route::get('/article/{article}', [RootController::class, 'show'])->name('root.show');
 
 Route::resource('parks.photos', PhotosController::class, ['except'=>[
     'index',

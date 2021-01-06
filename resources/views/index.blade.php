@@ -65,18 +65,20 @@
   <div id="infomation">
     <h2>公園なるほど情報</h2>
     <ul>
-      <a href="infomation.html">
-        <li id="infomation_first"><span>公園種別って？</span></li>
-      </a>
-      <a href="#">
-        <li id="infomation_second"><span>公園種別って？</span></li>
-      </a>
-      <a href="#">
-        <li id="infomation_third"><span>公園種別って？</span></li>
-      </a>
-      <a href="#">
-        <li id="infomation_fourth"><span>公園種別って？</span></li>
-      </a>
+      @foreach ($articles as $article)
+        <a href="{{ route('root.show', ['article'=>$article]) }}">
+          <li id="infomation_{{ $loop->iteration }}">
+            <span>{{ $article->title }}</span>
+          </li>
+        </a>
+        <style>
+          #infomation_{{ $loop->iteration }} {
+            background-image: url("/storage/{{$article->image_path}}");
+            background-repeat: no-repeat;
+            background-size: 7rem;
+          }
+        </style>
+      @endforeach
     </ul>
   </div><!-- infomation -->
 </section>

@@ -26,7 +26,7 @@
         @endif
         <nav id="nav_bar">
             <div id="logo_caption">
-                <a href="{{route('index')}}">
+                <a href="{{route('root.index')}}">
                     <h1>福岡県の最大級の<span>公園ポータルサイト</span></h1>
                 </a>
                 <div id="space"></div>

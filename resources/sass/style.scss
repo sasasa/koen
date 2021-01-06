@@ -278,6 +278,7 @@ body {
 .search_card img {
   height: 9.5rem;
   width: 8rem;
+  object-fit: cover;
   padding-top: 1rem;
 }
 .search_card_title {
@@ -1043,6 +1044,7 @@ p.require {
   width:  37.5rem;
   height: 100%;
   background: no-repeat url(../img/park_head_naruhodo/drawable-mdpi/park_head_naruhodo.png);
+  background-size: cover;
 }
 #inform_head_area span {
   color: #fff;
@@ -1562,7 +1564,7 @@ input[type="checkbox"]:checked + #check {
     height: 13rem;
   }
   #natr ul {
-    margin-bottom: 6rem;
+    // margin-bottom: 1rem;
   }
   #natr li {
     margin: 0 1rem 5rem 1rem;
@@ -1642,7 +1644,7 @@ input[type="checkbox"]:checked + #check {
 }
 
 .upload-form {
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
   input {
     border: 1px solid #707070;
     border-radius: 0.5rem;
