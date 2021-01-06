@@ -7,6 +7,7 @@ use App\Models\Park;
 use App\Models\Photo;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as InterventionImage;
 
 class ParksController extends Controller
 {
@@ -26,11 +27,15 @@ class ParksController extends Controller
         $plant_photos = $park->photos()->
                         where('photo_type', '植物')->
                         orderBy('id', 'desc')->get();
+        $facility_photos = $park->photos()->
+                            where('photo_type', '施設')->
+                            orderBy('id', 'desc')->get();
         return view('parks.detail', [
             'park' => $park,
             'insect_photos' => Photo::alwaysSixInRow($insect_photos),
             'bird_photos' => Photo::alwaysSixInRow($bird_photos),
             'plant_photos' => Photo::alwaysSixInRow($plant_photos),
+            'facility_photos' => Photo::alwaysSixInRow($facility_photos),
             'reviews' => $park->reviews
         ]);
     }
@@ -396,8 +401,14 @@ class ParksController extends Controller
         if ($req->delete_image) {
             $this->validate($req, array_merge(Park::$rules, Park::$rules_image));
             $file = $req->upfile;
-            $file_name = basename($file->store('public'));
             Storage::disk('public')->delete($park->image_path);
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+            InterventionImage::make($file)->
+            resize(1080, null, function($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save(storage_path('app/public/'. $file_name));
             $park->image_path = $file_name;
         } else {
             $this->validate($req, Park::$rules);

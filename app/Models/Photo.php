@@ -15,6 +15,14 @@ class Photo extends Model
         'photo_type' => 'required|min:1|max:10',
     ];
 
+    public static $optionsForSelect = [
+        ''=>'選択してください',
+        '昆虫'=>'昆虫',
+        '鳥'=>'鳥',
+        '植物'=>'植物',
+        '施設' => '施設',
+    ];
+
     protected $fillable = [
         'comment',
         'park_id',

@@ -11,7 +11,7 @@
   </div>
   <div class="form-group">
     <label for="photo_type">{{__('validation.attributes.photo_type')}}:</label>
-    {{ Form::select('photo_type', [''=>'選択してください','昆虫'=>'昆虫','鳥'=>'鳥','植物'=>'植物',], $photo_type, ['class'=>"form-control", 'id'=>'photo_type']) }}
+    {{ Form::select('photo_type', App\Models\Photo::$optionsForSelect, $photo_type, ['class'=>"form-control", 'id'=>'photo_type']) }}
   </div>
   <div class="form-group">
     <label for="comment">{{__('validation.attributes.comment')}}:</label>

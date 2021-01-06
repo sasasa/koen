@@ -215,6 +215,44 @@
                 <input type="submit" value="アップロード">
               </form>
             </div><!-- 植木 -->
+            <div id="facility">
+              <h3>施設</h3>
+              <ul>
+                @foreach ($facility_photos as $photo)
+                  <li class="natr_card">
+                    <div class="natr_image_include">
+                      <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                        <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
+                      </a>
+                    </div>
+                    <span>{{$photo->comment}}</span>
+                  </li>
+                @endforeach
+              </ul>
+              施設の画像をアップロードしよう！
+              <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
+                @csrf
+                <div class="upload-form__field">
+                  画像：<input type="file" name="upfile" accept="image/*" required>
+                  @error('upfile')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+                <div class="upload-form__field">
+                  タグ：<input type="text" name="comment" required>
+                  @error('comment')
+                  <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+                <input type="hidden" name="park_id" value="{{$park->id}}">
+                <input type="hidden" name="photo_type" value="施設">
+                <input type="submit" value="アップロード">
+              </form>
+            </div><!-- facility -->
           </div><!-- natr -->
         </div>
 
