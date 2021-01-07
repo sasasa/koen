@@ -119,8 +119,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        Storage::disk('public')->delete($article->image_path);
+        $article->delete();
+        
+        return redirect(route('articles.index'));
     }
 }
