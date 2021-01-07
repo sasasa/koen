@@ -17,6 +17,7 @@ php artisan make:controller TagsController --resource
 php artisan make:controller Api/SearchParksController
 php artisan make:controller ArticlesController --resource
 php artisan make:controller RootController
+php artisan make:controller SiteMapController
 
 php artisan make:seeder ParksTableSeeder
 php artisan make:seeder UsersTableSeeder

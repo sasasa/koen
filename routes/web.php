@@ -9,6 +9,7 @@ use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\RootController;
+use App\Http\Controllers\SiteMapController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,3 +61,4 @@ Route::resource('parks.reviews', ReviewsController::class, ['except'=>[
     'update',
     'destroy',
 ]]);
+Route::get('sitemap.xml', [SiteMapController::class, 'sitemap'])->name('sitemap');
