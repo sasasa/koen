@@ -14,11 +14,20 @@ class PhotosTableSeeder extends Seeder
      */
     public function run()
     {
-        Photo::create([
-            'photo_type' => 'ダミー',
-            'image_path' => 'noimage.png',
-            'comment' => '',
-            'park_id' => 0,
-        ]);
+        if( env('APP_ENV', 'production') === 'local' ) {
+            Photo::create([
+                'photo_type' => 'ダミー',
+                'image_path' => 'noimage.png',
+                'comment' => '',
+                'park_id' => 0,
+            ]);
+        } else {
+            Photo::create([
+                'photo_type' => 'ダミー',
+                'image_path' => 'noimage.png',
+                'comment' => '',
+                'park_id' => 0,
+            ]);
+        }
     }
 }

@@ -14,11 +14,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'saeki',
-            'email' => 'masaakisaeki@gmail.com',
-            'password' => bcrypt('hogehoge'),
-            'email_verified_at' => now(),
-        ]);
+        if( env('APP_ENV', 'production') === 'local' ) {
+            User::create([
+                'name' => 'saeki',
+                'email' => 'masaakisaeki@gmail.com',
+                'password' => bcrypt('hogemoge'),
+                'email_verified_at' => now(),
+            ]);
+        } else {
+            User::create([
+                'name' => 'saeki',
+                'email' => 'masaakisaeki@gmail.com',
+                'password' => bcrypt('hogemoge'),
+                'email_verified_at' => now(),
+            ]);
+        }
     }
 }

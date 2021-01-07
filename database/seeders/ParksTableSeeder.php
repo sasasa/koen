@@ -16,16 +16,20 @@ class ParksTableSeeder extends Seeder
      */
     public function run()
     {
-        Artisan::call('park:csv:loader');
-        for($i=0; $i<100; $i++) {
-            if (!Storage::disk('public')->exists('koen99.png'))
-            {
-                if ( Storage::disk('public')->exists('koen.png') ) {
-                    Storage::disk('public')->copy('koen.png', 'koen'. $i. '.png');
-                } else {
-                    throw new \Exception('storage/app/public内にkoen.pngが存在しないのでSeedingを終了する');
-                }
-            }
+        if( env('APP_ENV', 'production') === 'local' ) {
+            Artisan::call('park:csv:loader');
+        } else {
+            Artisan::call('park:csv:loader');
+        }
+        // for($i=0; $i<100; $i++) {
+        //     if (!Storage::disk('public')->exists('koen99.png'))
+        //     {
+        //         if ( Storage::disk('public')->exists('koen.png') ) {
+        //             Storage::disk('public')->copy('koen.png', 'koen'. $i. '.png');
+        //         } else {
+        //             throw new \Exception('storage/app/public内にkoen.pngが存在しないのでSeedingを終了する');
+        //         }
+        //     }
             // Park::create([
             //     'park_name' => '福岡第'. $i . "公園",
             //     'address' => '福岡市城南区友丘5-14-7',
@@ -67,6 +71,6 @@ class ParksTableSeeder extends Seeder
             //     'is_art_museum' => false,
             //     'is_reference_library' => false,
             // ]);
-        }
+        // }
     }
 }

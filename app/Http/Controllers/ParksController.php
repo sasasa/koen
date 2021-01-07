@@ -366,7 +366,14 @@ class ParksController extends Controller
         $this->validate($req, array_merge(Park::$rules, Park::$rules_image));
 
         $file = $req->upfile;
-        $file_name = basename($file->store('public'));
+        $file_name = time() . '.' . $file->getClientOriginalExtension();
+        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+        InterventionImage::make($file)->
+        resize(1080, null, function($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save(storage_path('app/public/'. $file_name));
+
         $park = new Park();
         $park->fill(array_merge($req->all(), ['image_path' => $file_name]));
         $park->save();
@@ -401,7 +408,11 @@ class ParksController extends Controller
         if ($req->delete_image) {
             $this->validate($req, array_merge(Park::$rules, Park::$rules_image));
             $file = $req->upfile;
-            Storage::disk('public')->delete($park->image_path);
+            if($park->image_path != 'koen.png') {
+                // デフォルトの画像は消さない
+                Storage::disk('public')->delete($park->image_path);
+            }
+
             $file_name = time() . '.' . $file->getClientOriginalExtension();
             //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
             InterventionImage::make($file)->
