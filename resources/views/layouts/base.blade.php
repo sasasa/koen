@@ -59,7 +59,7 @@
                     <ul id="nav-content_small_ul">
                     <li><a href="#">ご利用の案内</a></li>
                     <li><a href="#">広告掲載について</a></li>
-                    <li><a href="#">ご意見・ご要望</a></li>
+                    <li><a href="{{ route('inquiries.create') }}">ご意見・ご要望</a></li>
                     <li><a href="#">プライバシーポリシー</a></li>
                     </ul>
                 </div>

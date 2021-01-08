@@ -10,6 +10,7 @@ use App\Http\Controllers\TagsController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\RootController;
 use App\Http\Controllers\SiteMapController;
+use App\Http\Controllers\InquiriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('reviews', ReviewsController::class, ['except'=>['store']]);
     Route::resource('tags', TagsController::class);
     Route::resource('articles', ArticlesController::class);
+    Route::resource('inquiries', InquiriesController::class, ['except'=>['create', 'store']]);
 });
 
 Route::get('/search_feature', [ParksController::class, 'search'])->name('parks.search');
@@ -46,6 +48,7 @@ Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name
 Route::get('/', [RootController::class, 'index'])->name('root.index');
 Route::get('/article/{article}', [RootController::class, 'show'])->name('root.show');
 
+Route::resource('inquiries', InquiriesController::class, ['only'=>['create', 'store']]);
 Route::resource('parks.photos', PhotosController::class, ['except'=>[
     'index',
     'edit',

@@ -87,7 +87,7 @@
   <ul id="side_note">
     <a href="#"><li><span>利用規約</span></li></a>
     <a href="#"><li><span>広告掲載について</span></li></a>
-    <a href="contact.html"><li><span>お問い合わせ</span></li></a>
+    <a href="{{ route('inquiries.create') }}"><li><span>お問い合わせ</span></li></a>
     <a href="#"><li><span>プライバシーポリシー</span></li></a>
   </ul>
 </section><!-- section_side_note_area -->
