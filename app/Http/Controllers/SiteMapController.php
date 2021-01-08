@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Models\Park;
 use App\Models\Article;
 use App\Models\Photo;
+use App\Models\Tag;
 
 class SiteMapController extends Controller
 {
@@ -14,7 +15,6 @@ class SiteMapController extends Controller
     {
         $sitemap = \App::make("sitemap");
         $now = Carbon::now();
-        // add items to the sitemap (url, date, priority, freq)
 
         $articles = Article::orderBy('id', 'DESC')->limit(4)->get();
         $images = [];
@@ -46,6 +46,11 @@ class SiteMapController extends Controller
             ];
         }
         $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.9', 'weekly', $images);
+        $tags = Tag::orderBy('id', 'DESC')->get();
+        foreach ($tags as $tag) {
+            $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $tag->tag), $now, '0.9', 'weekly', $images);
+        }
+
 
         $parks = Park::orderBy('created_at', 'DESC')->get();
         foreach ($parks as $park) {
