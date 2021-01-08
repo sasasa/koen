@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Park;
 use App\Models\Article;
+use App\Models\Photo;
 
 class SiteMapController extends Controller
 {
@@ -31,7 +32,20 @@ class SiteMapController extends Controller
         $sitemap->add(\URL::to('/search_feature'), $now, '0.9', 'weekly');
         $sitemap->add(\URL::to('/search_map'), $now, '0.9', 'weekly');
         $sitemap->add(\URL::to('/search_by_location'), $now, '0.9', 'weekly');
-        $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.9', 'weekly');
+
+
+        $photos = Photo::whereNotIn('photo_type', ['ダミー'])->
+                            orderBy('id', 'DESC')->limit(100)->get();
+        $images = [];
+        foreach ($photos as $photo) {
+            $images[] = [
+                'url' => \URL::to('/storage/'. $photo->image_path),
+                'title' => $photo->comment,
+                'caption' => $photo->photo_type,
+                'geo_location' => $photo->park->address,
+            ];
+        }
+        $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.9', 'weekly', $images);
 
         $parks = Park::orderBy('created_at', 'DESC')->get();
         foreach ($parks as $park) {

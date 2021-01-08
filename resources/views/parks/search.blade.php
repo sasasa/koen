@@ -297,8 +297,8 @@
           @endforeach
         </div><!-- catalog_ex -->
       </section><!-- section_catalog_ex -->
+      {{ $parks->appends(request()->input())->links() }}
     </section><!-- section_catalog_result -->
-    {{ $parks->appends(request()->input())->links() }}
   @else
     <section id="section_catalog_result">
       <div id="catalog_result">
@@ -339,7 +339,7 @@
           <dd>{{$is_reference_library == '1' ? '資料館、' : ''}}</dd>
         </dl>
         </div><!-- catalog_result -->
-      <section id="section_catalog_ex">
+      <section id="section_catalog_ex" class="no-search-results">
         検索結果は有りません。
       </section>
     </section>

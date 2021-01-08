@@ -13,6 +13,14 @@
 </div>
 
 @if (!$parks->isEmpty())
+<section id="section_catalog_result">
+  <div id="catalog_result">
+    <h2>検索結果一覧</h2>
+    <dl>
+      <dt>特徴</dt>
+      <dd>{{ request()->tag }}</dd>
+    </dl>
+  </div><!-- catalog_result -->
   <section id="section_catalog_ex">
     <div id="catalog_ex">
       @foreach ($parks as $park)
@@ -45,6 +53,7 @@
     </div><!-- catalog_ex -->
   </section><!-- section_catalog_ex -->
   {{ $parks->appends(request()->input())->links() }}
+</section><!-- section_catalog_result -->
 @endif
 
 
@@ -53,7 +62,9 @@
 @section('script')
 <script type="module">
 $(function(){
-  $("html, body").animate({scrollTop: $('.park').offset().top-50}, 400, "swing")
+  if ($('.catalog_ex_item').length) {
+    $("html,body").animate({scrollTop:$('#catalog_result').offset().top - 60});
+  }
 })
 </script>
 @endsection
