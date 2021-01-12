@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Inquiry;
 
 class InquiriesController extends Controller
 {
@@ -29,12 +30,24 @@ class InquiriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+        $this->validate($req, Inquiry::$rules);
+
+        $inquiry = new Inquiry();
+        $inquiry->fill($req->all())->save();
+
+        return redirect(route('inquiries.done', ['inquiry' => $inquiry]));
+    }
+
+    public function done(Inquiry $inquiry)
+    {
+        return view('inquiries.done', [
+            'inquiry' => $inquiry,
+        ]);
     }
 
     /**

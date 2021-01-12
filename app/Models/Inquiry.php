@@ -10,11 +10,11 @@ class Inquiry extends Model
     use HasFactory;
 
     public static $rules = [
-        'inquiry_name' => 'required|min:6|max:60',
-        'inquiry_name_kana' => 'required|min:10|max:2000',
-        'email' => '',
-        'inquiry_title' => '',
-        'inquiry_body' => '',
+        'inquiry_name' => 'required|min:2|max:30',
+        'inquiry_name_kana' => 'required|min:2|max:30',
+        'email' => 'required|email:strict,dns,spoof',
+        'inquiry_title' => 'required|min:2|max:30',
+        'inquiry_body' => 'required|min:2|max:2000',
     ];
 
     protected $fillable = [

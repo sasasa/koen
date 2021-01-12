@@ -28,14 +28,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::resource('parks', ParksController::class);
-    Route::resource('photos', PhotosController::class, ['except'=>['store', 'show',]]);
-    Route::resource('reviews', ReviewsController::class, ['except'=>['store']]);
-    Route::resource('tags', TagsController::class);
-    Route::resource('articles', ArticlesController::class);
-    Route::resource('inquiries', InquiriesController::class, ['except'=>['create', 'store']]);
-});
+
 
 Route::get('/search_feature', [ParksController::class, 'search'])->name('parks.search');
 Route::get('/search_map', [ParksController::class, 'search_map'])->name('parks.search_map');
@@ -48,20 +41,29 @@ Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name
 Route::get('/', [RootController::class, 'index'])->name('root.index');
 Route::get('/article/{article}', [RootController::class, 'show'])->name('root.show');
 
-Route::resource('inquiries', InquiriesController::class, ['only'=>['create', 'store']]);
-Route::resource('parks.photos', PhotosController::class, ['except'=>[
-    'index',
-    'edit',
-    'create',
-    'update',
-    'destroy',
-]]);
-Route::resource('parks.reviews', ReviewsController::class, ['except'=>[
-    'index',
-    'edit',
-    'show',
-    'create',
-    'update',
-    'destroy',
-]]);
-Route::get('sitemap.xml', [SiteMapController::class, 'sitemap'])->name('sitemap');
+Route::resource('/inquiries', InquiriesController::class)->only([
+    'create', 'store',
+]);
+Route::get('/inquiries/{inquiry}/done', [InquiriesController::class, 'done'])->name('inquiries.done');
+
+Route::resource('/parks.photos', PhotosController::class)->only([
+    'store', 'show',
+]);
+Route::resource('/parks.reviews', ReviewsController::class)->only([
+    'store',
+]);
+Route::get('/sitemap.xml', [SiteMapController::class, 'sitemap'])->name('sitemap');
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/parks', ParksController::class);
+    Route::resource('/photos', PhotosController::class)->except([
+        'store', 'show',
+    ]);
+    Route::resource('/reviews', ReviewsController::class)->except([
+        'store',
+    ]);
+    Route::resource('/tags', TagsController::class);
+    Route::resource('/articles', ArticlesController::class);
+    Route::resource('/inquiries', InquiriesController::class);
+});

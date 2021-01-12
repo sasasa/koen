@@ -2014,6 +2014,25 @@ input[type=checkbox]:checked + #check {
   font-size: 1.8rem;
 }
 
+.contact_form .submit {
+  width: 20rem;
+}
+
+.contact_form input[type=submit] {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.contact_form p.require {
+  width: 90%;
+}
+
+#sbox1 {
+  width: 100%;
+  height: 4rem;
+  font-size: 4rem;
+}
+
 @media (min-width: 1000px) {
   .photo {
     width: 1000px;
