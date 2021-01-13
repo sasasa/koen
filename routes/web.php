@@ -44,7 +44,7 @@ Route::get('/article/{article}', [RootController::class, 'show'])->name('root.sh
 Route::resource('/inquiries', InquiriesController::class)->only([
     'create', 'store',
 ]);
-Route::get('/inquiries/{inquiry}/done', [InquiriesController::class, 'done'])->name('inquiries.done');
+Route::get('/inquiries/done', [InquiriesController::class, 'done'])->name('inquiries.done');
 
 Route::resource('/parks.photos', PhotosController::class)->only([
     'store', 'show',
@@ -65,5 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
     ]);
     Route::resource('/tags', TagsController::class);
     Route::resource('/articles', ArticlesController::class);
-    Route::resource('/inquiries', InquiriesController::class);
+    Route::resource('/inquiries', InquiriesController::class)->except([
+        'create', 'store',
+    ]);
 });

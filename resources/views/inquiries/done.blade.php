@@ -12,14 +12,10 @@
   <!--contact_head_sub_section -->
 
   <!-- フォーム -->
-  <div id="contact_form_area">
+  <div id="thank_you_area">
     <h2>
-      お問い合わせありがとうございます。改めてご連絡いたします。
-      以下の内容でお問い合わせを受け付けいたしました。
+      お問い合わせありがとうございます。必ずしも返信をお約束するものではありませんことをご了承ください。
     </h2>
-    <hr>
-      <p>{{$inquiry->inquiry_name}}</p>
-    <hr>
   </div><!-- contact_form_area -->
 </section><!-- section_contact_form_area -->
 

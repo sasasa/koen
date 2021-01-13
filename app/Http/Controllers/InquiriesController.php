@@ -12,9 +12,34 @@ class InquiriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        //
+        
+        $inquiry_query = Inquiry::query();
+        if ($req->inquiry_name) {
+            $inquiry_query->where('inquiry_name', 'LIKE', '%'.$req->inquiry_name.'%');
+        }
+        if ($req->inquiry_name_kana) {
+            $inquiry_query->where('inquiry_name_kana', 'LIKE', '%'.$req->inquiry_name_kana.'%');
+        }
+        if ($req->email) {
+            $inquiry_query->where('email', 'LIKE', '%'.$req->email.'%');
+        }
+        if ($req->inquiry_title) {
+            $inquiry_query->where('inquiry_title', 'LIKE', '%'.$req->inquiry_title.'%');
+        }
+        if ($req->inquiry_body) {
+            $inquiry_query->where('inquiry_body', 'LIKE', '%'.$req->inquiry_body.'%');
+        }
+
+        return view('inquiries.index', [
+            'inquiries' => $inquiry_query->orderBy('id', 'DESC')->paginate(12),
+            'inquiry_name' => $req->inquiry_name,
+            'inquiry_name_kana' => $req->inquiry_name_kana,
+            'email' => $req->email,
+            'inquiry_title' => $req->inquiry_title,
+            'inquiry_body' => $req->inquiry_body,
+        ]);
     }
 
     /**
@@ -43,11 +68,9 @@ class InquiriesController extends Controller
         return redirect(route('inquiries.done', ['inquiry' => $inquiry]));
     }
 
-    public function done(Inquiry $inquiry)
+    public function done()
     {
-        return view('inquiries.done', [
-            'inquiry' => $inquiry,
-        ]);
+        return view('inquiries.done');
     }
 
     /**
@@ -75,13 +98,15 @@ class InquiriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, Inquiry $inquiry)
     {
-        //
+        $inquiry->is_reply = !$inquiry->is_reply;
+        $inquiry->save();
+        return redirect(route('inquiries.index'));
     }
 
     /**
@@ -90,8 +115,10 @@ class InquiriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Inquiry $inquiry)
     {
-        //
+        $inquiry->delete();
+        
+        return redirect(route('inquiries.index'));
     }
 }

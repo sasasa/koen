@@ -16,6 +16,11 @@ class ParksTableSeeder extends Seeder
      */
     public function run()
     {
+        if ( Storage::disk('public')->exists('koen.png') ) {
+            
+        } else {
+            throw new \Exception('storage/app/public 内に koen.png が存在しないので Seeding を終了する');
+        }
         if( env('APP_ENV', 'production') === 'local' ) {
             Artisan::call('park:csv:loader');
         } else {

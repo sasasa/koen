@@ -1736,6 +1736,16 @@ input[type="checkbox"]:checked + #check {
   font-size: 4rem;
 }
 
+#thank_you_area {
+  padding-top: 3rem;
+  width: 37.5rem;
+  font-size: 3rem;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (min-width: 1000px) {
   .photo {
     width: 1000px;

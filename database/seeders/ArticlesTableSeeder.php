@@ -21,7 +21,7 @@ class ArticlesTableSeeder extends Seeder
                     if ( Storage::disk('public')->exists('article.png') ) {
                         Storage::disk('public')->copy('article.png', 'article'. $i. '.png');
                     } else {
-                        throw new \Exception('storage/app/public内にarticle.pngが存在しないのでSeedingを終了する');
+                        throw new \Exception('storage/app/public 内に article.png が存在しないので Seeding を終了する');
                     }
                 }
                 Article::create([

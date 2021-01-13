@@ -20,6 +20,9 @@ class CreateInquiriesTable extends Migration
             $table->string('email');
             $table->string('inquiry_title');
             $table->text('inquiry_body');
+
+            // 返信済
+            $table->boolean('is_reply')->default(false);
             $table->timestamps();
         });
     }

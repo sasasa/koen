@@ -18,7 +18,7 @@
                     <a class="btn btn-info mb-2" href="{{route('reviews.index')}}">口コミ管理</a>
                     <a class="btn btn-info mb-2" href="{{route('tags.index')}}">タグ管理</a>
                     <a class="btn btn-info mb-2" href="{{route('articles.index')}}">公園なるほど情報管理</a>
-                    <a class="btn btn-info mb-2" href="{{route('inquiries.index')}}">問い合わせ管理</a>
+                    <a class="btn btn-info mb-2" href="{{route('inquiries.index')}}">お問い合わせ管理</a>
                 </div>
             </div>
         </div>
