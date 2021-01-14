@@ -2,7 +2,6 @@
 
 
 
-
 html {
   font-size: 62.5%;
 }
@@ -278,7 +277,6 @@ body {
 .search_card img {
   height: 9.5rem;
   width: 8rem;
-  object-fit: cover;
   padding-top: 1rem;
 }
 .search_card_title {
@@ -373,7 +371,6 @@ input {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 10rem;
 }
 #side_note {
   display: flex;
@@ -458,7 +455,6 @@ footer span {
   justify-content: center;
   width: 100%;
   height: 50.2rem;
-  margin-bottom: 8rem;
 }
 
 
@@ -480,7 +476,7 @@ footer span {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  height: auto;
+  height: 89.8rem;
   width: 100%;
 }
 #narrow_search_area {
@@ -548,9 +544,8 @@ footer span {
 }
 #result_expression_area_image_area img {
   max-width: 100%;
-  height: 17rem;
-  width: 37.5rem;
-  object-fit: cover;
+  height: auto;
+  width /***/:auto;
 }
 #result_expression {
   height: auto;
@@ -585,7 +580,7 @@ footer span {
   text-align: center;
   border-radius: 0.8rem;
   line-height: 2.3rem;
-  margin: 0.5rem 0.5rem;
+  margin: 0 0.5rem;
 }
 /* featは「詳細」画面の「特徴」表示関係 */
 #feat-01 li {
@@ -616,17 +611,8 @@ footer span {
   background-color: #707070;
   border: 0.1rem solid #707070;
 }
-#feat-08 {
-  width: 34rem;
-  margin-bottom: 20px;
-  a {
-    display: inline-block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-}
 /* natrは「詳細」画面の「写真」表示関係 */
-/*「写真」表示全体の幅はここのwhidthによって決められている*/
+/*「写真」表示全体の幅はここのwidthによって決められている*/
 #natr {
   width: 37.5rem;
   display: flex;
@@ -650,16 +636,12 @@ footer span {
   border: 1px solid #707070;
   border-radius: 0.5rem;
 }
-.natr_image_include img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
 #natr ul {
   display: flex;
-  height: auto;
+  height: 22rem;
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin-bottom: 4rem;
 }
 #natr li {
   margin: 0 1rem 0.5rem 1rem;
@@ -670,7 +652,7 @@ footer span {
 }
 #overview_map {
   width: 100%;
-  min-height: 27rem;
+  height: 27rem;
 }
 #overview_map h3 {
   padding: 2rem 0;
@@ -679,15 +661,15 @@ footer span {
   width: 100%;
   border: 1px solid #707070;
   height: auto;
-  min-height: 250px;
+}
+#overview_map_exp img {
+  max-width: 100%;
+  height: auto;
+  width /***/:auto;
 }
 #overview_infomation {
   width: 100%;
-  h3 {
-    padding: 2rem 0;
-  }
 }
-
 #overview_infomation_details {
   width: 100%;
 }
@@ -707,15 +689,15 @@ footer span {
 /* https://web.monogusa-note.com/flexible-tabs-only-cssのラジオボタン描画 */
 
 .tab-label {
-  color: #707070;
-  border-bottom: 1px solid #707070;
-  font-size: 1.4rem;
-  height: 2.3rem;
-  line-height: 0rem;
-  padding: 1rem;
-  text-align: center;
-  order: -1;
-  width: 9rem;
+    color: #707070;
+    border-bottom: 1px solid #707070;
+    font-size: 1.4rem;
+    height: 2.3rem;
+    line-height: 0rem;
+    padding: 1rem;
+    text-align: center;
+    order: -1;
+    width: 9rem;
 }
 .appeal {
     width: 100%;
@@ -723,14 +705,14 @@ footer span {
 }
 /* アクティブなタブ */
 .tab-switch:checked+.tab-label {
-  font-weight: bold;
-  border-bottom: 0.3rem solid #269512;
+    font-weight: bold;
+    border-bottom: 0.3rem solid #269512;
 }
-.tab-switch:checked+.tab-label+.appeal{
-  display: block;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.tab-switch:checked+.tab-label+.appeal {
+     display: block;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
 }
 /* ラジオボタン非表示 */
 .tab-switch {
@@ -744,12 +726,8 @@ footer span {
 #wordmouth_area {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-content: center;
   justify-content: center;
-  flex-direction: column;
-  .emptybox {
-    margin-top: 4rem;
-  }
 }
 #wordmouth_area a {
   border: 1px solid #269512;
@@ -758,8 +736,6 @@ footer span {
   font-size: 1.1rem;
   font-weight: bold;
   padding: 0.8rem 5rem;
-  // display: inline-block;
-  // height: 2rem;
 }
 .wordmouth {
   color: #707070;
@@ -809,11 +785,8 @@ footer span {
   display: block;
   margin-bottom: 1rem;
 }
-#form_area .pd_right {
-  padding-right: 1.2rem;
-
-  display: inline;
-  font-size: 1.2rem;
+.pd_right {
+  padding-right: 1rem;
 }
 #form_area select {
   -moz-appearance: menulist;
@@ -840,7 +813,6 @@ p.require {
   font-size: 1.2rem;
   text-align: center;
   padding: 1rem;
-  margin-top: 1rem;
 }
 #submit {
   display: flex;
@@ -855,7 +827,7 @@ p.require {
 }
 
 .cp_box {
-	// width: auto;
+	width: auto;
   margin: 2em auto;
 }
 .cp_box label {
@@ -893,8 +865,6 @@ p.require {
 	height: 50rem;
 }
 /* 「もっと表示する」機能css終わり */
-
-
 /* ======================================== */
 /*  searched_catalog.html */
 /* ======================================== */
@@ -909,8 +879,6 @@ p.require {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 20px;
-  margin-bottom: 5rem;
 }
 #catalog_result {
   width: 37.5rem;
@@ -949,7 +917,6 @@ p.require {
   justify-content: center;
   background-color: #F7F7F7;
   width: 100%;
-  margin-bottom: 20px;
 }
 #catalog_ex {
   width: 37.5rem;
@@ -957,15 +924,13 @@ p.require {
 }
 .catalog_ex_item {
   width: 35rem;
-  min-height: 21rem;
+  height: 21rem;
   padding: 1rem 0;
 }
 .catalog_ex_item_inner {
   display: flex;
   flex-wrap: wrap;
-  height: auto;
-  min-height: 21rem;
-
+  height: 100%;
   width: 100%;
   border: 0.1rem solid #707070;
   border-radius: 0.5rem;
@@ -983,7 +948,6 @@ p.require {
   height: 3.3rem;
   color: #707070;
   padding: 0.7rem 0;
-  min-width: 18rem;
 }
 .catalog_ex_item_inner_picture {
   height: 7.7rem;
@@ -993,15 +957,14 @@ p.require {
   border: 0.1rem solid #fff;
   border-radius: 0.5rem;
   max-width: 100%;
-  height: 7.7rem;
-  width: 15.8rem;
-  object-fit: cover;
+  height: auto;
+  width /***/:auto;
 }
 .catalog_ex_item_inner_tag_area {
   position: relative;
   padding: 0 1rem;
   width: 15.2rem;
-  min-height: 7.7rem;
+  height: 7.7rem;
 }
 .catalog_ex_item_inner_tag {
   border: 0.1rem solid #fff;
@@ -1023,13 +986,13 @@ p.require {
   bottom: 0;
   right: 0;
 }
-
+.catalog_ex_item_inner_baloon span {
+}
 .catalog_ex_item_inner_anker a {
   font-size: 1.4rem;
   color: #707070;
   height: 7.7rem;
 }
-
 
 /* ======================================== */
 /*  list_information.html */
@@ -1102,8 +1065,6 @@ p.require {
   background-size: 5.5rem;
 }*/
 
-
-
 /* ======================================== */
 /*  infomation.html */
 /* ======================================== */
@@ -1120,7 +1081,6 @@ p.require {
   width:  37.5rem;
   height: 100%;
   background: no-repeat url(../img/park_head_naruhodo/drawable-mdpi/park_head_naruhodo.png);
-  background-size: cover;
 }
 #inform_head_area span {
   color: #fff;
@@ -1245,16 +1205,10 @@ p.require {
   height: 4rem;
   width: 35rem;
   margin-right: 2rem;
-  margin-bottom: 8rem;
 }
-#re_choice_button button {
+#re_choice_button span {
   color: #707070;
   font-size: 1.6rem;
-  user-select: none;
-  display: block;
-  height: 100%;
-  width: 100%;
-  text-align: center;
 }
 #check, #btn {
   display:none;
@@ -1268,7 +1222,7 @@ input[type="checkbox"]:checked + #check {
 #btn:checked + #check {
   display:block;
 }
-/* これ以後は開いた後に表示されるもので「search_feature.html」が
+/* これ以降は開いた後に表示されるもので「search_feature.html」が
 機能としてそのまま持つ。つまり#re_search_featureをコピーすれば開いた後の
 表示を持つことができる */
  #re_search_feature {
@@ -1400,20 +1354,15 @@ input[type="checkbox"]:checked + #check {
     height: 4.5rem;
 
   }
+  /* width: 37.5rem;の設定をもつもの */
   #main_image_area, #infomation,#form1_area, #form1 ,#re_search_area,
   #narrow_search_area, #result_expression_area,
-  #natr, #overview_map, #overview, #catalog_ex, #catalog_result,
-  #local_select, #re_search_button, #re_choice_button, .catalog_ex_item,
-  #inform_head_area, #inform_descr_area, #contact_form_area, #list_inform_area
-  {
+   #natr, #overview_map, #overview,#catalog_ex, #catalog_result,
+   #local_select, #re_search_button, #re_choice_button, .catalog_ex_item,
+   #inform_head_area, #inform_descr_area, #contact_form_area, #list_inform_area
+   {
     width: 100rem;
   }
-  .appeal,
-  #wordmouth_area_inc,
-  #wordmouth_area,
-  .cp_container {
-    width: 100rem;
-}
   /* index.html */
   #section_main_image_area {
     background-image: url("../img/top-head2/drawable-mdpi/top-head2.png");
@@ -1448,11 +1397,6 @@ input[type="checkbox"]:checked + #check {
     margin-bottom: 10rem;
     width: 100rem;
     height: 40.7rem;
-  }
-  #result_expression_area_image_area img {
-    width: 100rem;
-    height: 40.7rem;
-    object-fit: cover;
   }
   .search_card {
     width: 25%;
@@ -1582,7 +1526,6 @@ input[type="checkbox"]:checked + #check {
 }
 #re_choice_button {
   margin: 0;
-  margin-bottom: 8rem;
 }
 #largeul li:first-child div {
   width: 31.5rem;
@@ -1620,7 +1563,7 @@ input[type="checkbox"]:checked + #check {
   padding-bottom: 1rem;
 }
  #re_search_feature {
-    height: auto;
+    height: 100%;
     width:100%;
     display: block;
     padding-top: 5rem;
@@ -1632,15 +1575,12 @@ input[type="checkbox"]:checked + #check {
     justify-content: flex-start;
     width: 100rem;
   }
-  #feat-08 {
-    width: 100rem;
-  }
   .natr_image_include {
     width: 13rem;
     height: 13rem;
   }
   #natr ul {
-    // margin-bottom: 1rem;
+    margin-bottom: 12rem; 
   }
   #natr li {
     margin: 0 1rem 5rem 1rem;
@@ -1652,7 +1592,7 @@ input[type="checkbox"]:checked + #check {
     height: 50.7rem;
   }
   #overview_map_exp {
-    min-height: 450px;
+    height: auto;
   }
   #overview_infomation {
     padding: 10rem 0;
@@ -1667,11 +1607,6 @@ input[type="checkbox"]:checked + #check {
     order: 0;
     padding-right: 1rem;
   }
-  .catalog_ex_item_inner_picture img{
-    height: 14rem;
-    width: 35rem;
-  }
-
   .catalog_ex_item_inner h3 {
     height: 4rem;
     width: 50rem;
@@ -1695,14 +1630,14 @@ input[type="checkbox"]:checked + #check {
     position: absolute;
     left: 36rem;
     top: 10rem;
-    min-height: 5rem;
+    height: 5rem;
     width: 55rem;
     order: 4;
   }
   /* list_information.html */
-  .list_inform li {
-    width: 50%;
-  }
+.list_inform li {
+  width: 50%;
+}
   /*  infomation.html  */
   #inform_head_area {
     background-size: 100% 100%;
@@ -1717,118 +1652,4 @@ input[type="checkbox"]:checked + #check {
   .tab-label {
     width: 25%;
   }
-
-  #section_side_note_area {
-    margin-bottom: 0;
-  }
-}
-
-.upload-form {
-  margin-bottom: 6rem;
-  input {
-    border: 1px solid #707070;
-    border-radius: 0.5rem;
-  }
-  &__field {
-    margin-bottom: 10px;
-  }
-  input[type="submit"] {
-    padding: 5px;
-  }
-}
-.invalid-feedback {
-  color: #CC5A12;
-}
-
-.user_edit {
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 3rem;
-  }
-  margin: 20px auto;
-  width: 20rem;
-  font-size: 2rem;
-  .form-check {
-    margin-bottom: 10px;
-  }
-  button {
-    border: 1px solid #666666;
-    padding: 5px;
-  }
-}
-
-.review {
-  input,
-  textarea,
-  select,
-  button {
-    border: 1px solid #666666;
-    padding: 5px;
-  }
-}
-
-.photo {
-  display: flex;
-  flex-wrap: wrap;
-
-  img {
-    width: 100px;
-    min-height: 100px;
-    object-fit: cover;
-  }
-}
-
-.back-link {
-  text-align: center;
-  margin: 20px auto;
-  a {
-    font-size: 2rem;
-    border: 1px solid #bbbbbb;
-    border-radius: 2px;
-    padding: 5px;
-  }
-}
-
-.map-pin {
-  color: green;
-}
-
-.no-search-results {
-  font-size: 1.8rem;
-}
-
-.contact_form {
-  .submit {
-    width: 20rem;
-  }
-  input[type="submit"] {
-    margin-top: 5rem;
-    text-align: center;
-  }
-  p.require {
-    width: 90%;
-  }
-}
-
-#sbox1 {
-  width: 100%;
-  height: 4rem;
-  font-size: 4rem;
-}
-
-#thank_you_area {
-  padding-top: 3rem;
-  width: 37.5rem;
-  font-size: 3rem;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@media (min-width: 1000px) {
-  .photo {
-    width: 1000px;
-  }
-  
 }

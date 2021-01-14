@@ -20,6 +20,16 @@
   </div>
 
   <div class="form-group">
+    <label for="article_type">{{__('validation.attributes.article_type')}}:</label>
+    {{ Form::select('article_type', \App\Models\Article::$types, old('article_type', $article->article_type), empty($errors->first('article_type')) ? ['class'=>"form-control", 'id'=>'article_type'] : ['class'=>"form-control is-invalid", 'id'=>'article_type']) }}
+    @error('article_type')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+
+  <div class="form-group">
     <label for="body">{{__('validation.attributes.body')}}:</label>
     <textarea rows="10" id="body" class="form-control @error('body') is-invalid @enderror" name="body">{{old('body', $article->body)}}</textarea>
     @error('body')

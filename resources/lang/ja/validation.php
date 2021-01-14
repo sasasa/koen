@@ -203,6 +203,7 @@ return [
         'age' => '年齢',
 
         'tag' => 'タグ',
+        'article_type' => '記事タイプ',
 
         'inquiry_name' => 'お名前',
         'inquiry_name_kana' => 'お名前（ひらがな）',

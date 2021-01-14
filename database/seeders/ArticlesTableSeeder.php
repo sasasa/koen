@@ -27,6 +27,7 @@ class ArticlesTableSeeder extends Seeder
                 Article::create([
                     'image_path' => 'article'. $i. '.png',
                     'title' => '公園種別って？その'. $i,
+                    'article_type' => 1,
                     'body' => '<h4>小見出し</h4>
                     <p>公園には実は規模によって種別が変わります、公園には実は規模によって種別が変わります。公園には実は規模によって種別が変わります、公園には実は規模によって種別が変わります。公園には実は規模によって種別が変わります、公園には実は規模によって種別が変わります。</p>
                     <h4>小見出し</h4>

@@ -10,6 +10,7 @@
     <title>@yield('title') | 公園ポータルサイト</title>
 
     <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/destyle.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
@@ -39,7 +40,7 @@
                     <a href="{{route('parks.search')}}"><li>特徴から探す</li></a>
                     <a href="{{route('parks.search_by_plant_and_animal')}}"><li>動植物から探す</li></a>
                 </ul>
-                <div id="tips_link"><a href="">公園なるほど情報</a></div>
+                <div id="tips_link"><a href="{{ route('root.list') }}">公園なるほど情報</a></div>
             </div><!-- pc_nav_site -->
 
             <!--- ハンバーガーメニューここから  --->
@@ -54,7 +55,7 @@
                     <li><a href="{{route('parks.search_by_location')}}">現在地から探す</a></li>
                     <li><a href="{{route('parks.search')}}">特徴から探す</a></li>
                     <li><a href="{{route('parks.search_by_plant_and_animal')}}">動植物から探す</a></li>
-                    <li><a href="#">公園なるほど情報</a></li>
+                    <li><a href="{{ route('root.list') }}">公園なるほど情報</a></li>
                     </ul>
                     <ul id="nav-content_small_ul">
                     <li><a href="#">ご利用の案内</a></li>

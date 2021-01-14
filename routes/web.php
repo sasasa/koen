@@ -40,6 +40,7 @@ Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name
 
 Route::get('/', [RootController::class, 'index'])->name('root.index');
 Route::get('/article/{article}', [RootController::class, 'show'])->name('root.show');
+Route::get('/article', [RootController::class, 'list'])->name('root.list');
 
 Route::resource('/inquiries', InquiriesController::class)->only([
     'create', 'store',

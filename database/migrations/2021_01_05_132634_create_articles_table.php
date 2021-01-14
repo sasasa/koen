@@ -18,6 +18,9 @@ class CreateArticlesTable extends Migration
             // タイトル
             $table->string('title');
 
+            // タイプ
+            $table->tinyInteger('article_type');
+
             // 画像
             $table->string('image_path')->nullable();
 

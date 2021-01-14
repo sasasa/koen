@@ -1028,6 +1028,7 @@ p.require {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 20px;
+  margin-bottom: 5rem;
 }
 
 #catalog_result {
@@ -1079,6 +1080,7 @@ p.require {
 
 #catalog_ex {
   width: 37.5rem;
+  padding-bottom: 1rem;
 }
 
 .catalog_ex_item {
@@ -1163,6 +1165,88 @@ p.require {
   color: #707070;
   height: 7.7rem;
 }
+
+/* ======================================== */
+
+/*  list_information.html */
+
+/* ======================================== */
+
+#section_list_inform {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#section_list_inform h2 {
+  border-left: 0.4rem solid #269512;
+  color: #707070;
+  height: 2.5rem;
+  font-size: 2rem;
+  padding-left: 0.6rem;
+  margin-bottom: 4rem;
+}
+
+#list_inform_area {
+  width: 37.5rem;
+  padding: 5rem 0;
+}
+
+.list_inform {
+  border: 1px solid #269512;
+  border-radius: 0.5rem;
+  padding-bottom: 0.29rem;
+  background-color: #F7F7F7;
+  margin-bottom: 2rem;
+}
+
+.list_inform ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.list_inform li {
+  width: 100%;
+  padding: 1rem;
+}
+
+.inform_item {
+  background-repeat: no-repeat;
+  background-size: 5.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #00000029;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  height: 5.6rem;
+}
+
+.list_inform a {
+  display: block;
+  padding: 1rem 0;
+  text-decoration: none;
+}
+
+.list_inform h3 {
+  font-size: 1.8rem;
+  color: #707070;
+  padding: 2rem 0 0 1rem;
+}
+
+.list_inform span {
+  color: #707070;
+  font-size: 1.6rem;
+  position: relative;
+  top: 5px;
+  left: 80px;
+}
+
+/*
+#infomation_first {
+  background-image: url("../img/top_article_icon/drawable-mdpi/top_article_icon.png");
+  background-repeat: no-repeat;
+  background-size: 5.5rem;
+}*/
 
 /* ======================================== */
 
@@ -1549,7 +1633,8 @@ input[type=checkbox]:checked + #check {
   .catalog_ex_item,
   #inform_head_area,
   #inform_descr_area,
-  #contact_form_area {
+  #contact_form_area,
+  #list_inform_area {
     width: 100rem;
   }
 
@@ -1581,7 +1666,7 @@ input[type=checkbox]:checked + #check {
   }
 
   #search_area {
-    height: 40rem;
+    height: 47rem;
     position: relative;
     top: -20rem;
   }
@@ -1907,6 +1992,12 @@ input[type=checkbox]:checked + #check {
     min-height: 5rem;
     width: 55rem;
     order: 4;
+  }
+
+  /* list_information.html */
+
+  .list_inform li {
+    width: 50%;
   }
 
   /*  infomation.html  */

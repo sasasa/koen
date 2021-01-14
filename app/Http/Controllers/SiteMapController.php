@@ -73,20 +73,24 @@ class SiteMapController extends Controller
                 ];
             }
             $sitemap->add(\URL::to('/detail/'. $park->id), $now, '1.0', 'weekly', $images);
+            $sitemap->add(\URL::to('/user_edit/'. $park->id), $now, '0.8', 'weekly');
         }
 
         $articles = Article::orderBy('created_at', 'DESC')->get();
+        $all_images = [];
         foreach ($articles as $article) {
             $images = [];
-            $images[] = [
+            $ary = [
                 'url' => \URL::to('/storage/'. $article->image_path),
                 'title' => $article->title,
                 'caption' => $article->title,
                 'geo_location' => '',
             ];
+            $images[] = $ary;
+            $all_images[] = $ary;
             $sitemap->add(\URL::to('/article/'. $article->id), $now, '0.9', 'weekly', $images);
         }
-
+        $sitemap->add(\URL::to('/article'), $now, '0.9', 'weekly', $all_images);
         
     
         // generate your sitemap (format, filename)
