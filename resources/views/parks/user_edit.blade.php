@@ -1,9 +1,9 @@
 @extends('layouts.base')
-@section('title', '公園の特徴を教えてください！')
+@section('title', $park->park_name. 'の特徴を教えてください！')
 
 @section('content')
 <form action="{{route('parks.user_update', ['park'=>$park])}}" method="post" class="user_edit">
-  <h1>公園の特徴を教えてください！</h1>
+  <h1>{{ $park->park_name }}の特徴を教えてください！</h1>
 
   @csrf
   @method('PATCH')

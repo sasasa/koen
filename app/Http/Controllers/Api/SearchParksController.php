@@ -113,8 +113,10 @@ class SearchParksController extends Controller
         }
         if ($req->area) {
             // areaを使った検索
-            $park_query->where('address', 'LIKE', '%'.$req->area.'%');
-            if($req->area == '福岡市') {
+            if ($req->area != "all") {
+                $park_query->where('address', 'LIKE', '%'.$req->area.'%');
+            }
+            if($req->area == '福岡市' || $req->area == 'all') {
                 $lat = 33.60639;
                 $lng = 130.34806;
                 $zoom = 11;

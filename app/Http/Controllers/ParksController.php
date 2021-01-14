@@ -66,6 +66,10 @@ class ParksController extends Controller
     public function search(Request $req)
     {
         $park_query = Park::query();
+        if ($req->search) {
+            $park_query->orWhere('park_name', 'LIKE', '%'.$req->search.'%');
+            $park_query->orWhere('address', 'LIKE', '%'.$req->search.'%');
+        }
         if ($req->park_name) {
             $park_query->where('park_name', 'LIKE', '%'.$req->park_name.'%');
         }
@@ -155,7 +159,9 @@ class ParksController extends Controller
         }
         if ($req->area) {
             // areaを使った検索
-            $park_query->where('address', 'LIKE', '%'.$req->area.'%');
+            if ($req->area != '全て') {
+                $park_query->where('address', 'LIKE', '%'.$req->area.'%');
+            }
 
             $parks = $park_query->orderBy('id', 'DESC')->paginate(12);
         } else {

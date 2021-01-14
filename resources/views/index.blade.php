@@ -53,8 +53,9 @@
 
     <!-- 検索バー -->
     <div id="form1_area">
-      <form id="form1" action="自分のサイトURL" method="get">
-        <input id="sbox1" name="search" type="search" size="30" maxlength="255" placeholder="公園名などを入力" />
+      <form id="form1" action="{{ route('parks.search') }}" method="GET">
+        <input id="sbox1" name="search" type="search" maxlength="255" placeholder="地名などを入力" />
+        <input type="hidden" name="area" value="全て">
         <!--<input id="sbtn1" type="submit" value="検索" /> -->
       </form>
     </div><!-- form1_area -->

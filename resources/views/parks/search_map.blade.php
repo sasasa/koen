@@ -14,12 +14,13 @@
           <div class="cp_ipselect cp_sl01">
           <select name="area" required>
             <option value="">地域を選択してください</option>
+            <option value="all">全て</option>
             <option value="福岡市">福岡市</option>
-            <option value="北九州">北九州</option>
+            {{-- <option value="北九州">北九州</option>
             <option value="久留米">久留米</option>
             <option value="筑紫">筑紫</option>
             <option value="京築">京築</option>
-            <option value="有明">有明</option>
+            <option value="有明">有明</option> --}}
           </select>
           </div><!-- cp_ipselect cp_sl01 -->
         </div><!-- local_select -->
