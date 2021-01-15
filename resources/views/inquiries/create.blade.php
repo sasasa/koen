@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'お問い合わせ')
+@section('title', 'ご意見・ご要望のお問い合わせ')
 
 @section('content')
 <section id="section_contact_area">

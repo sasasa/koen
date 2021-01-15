@@ -107,9 +107,13 @@
                 @foreach ($insect_photos as $photo)
                   <li class="natr_card">
                     <div class="natr_image_include">
-                      <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                      @if ($photo->comment != '')
+                        <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                          <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
+                        </a>
+                      @else
                         <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
-                      </a>
+                      @endif
                     </div>
                     <span>{{$photo->comment}}</span>
                   </li>
@@ -145,9 +149,13 @@
                 @foreach ($bird_photos as $photo)
                   <li class="natr_card">
                     <div class="natr_image_include">
-                      <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                      @if ($photo->comment != '')
+                        <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                          <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
+                        </a>
+                      @else
                         <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
-                      </a>
+                      @endif
                     </div>
                     <span>{{$photo->comment}}</span>
                   </li>
@@ -183,9 +191,13 @@
                 @foreach ($plant_photos as $photo)
                   <li class="natr_card">
                     <div class="natr_image_include">
-                      <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                      @if ($photo->comment != '')
+                        <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                          <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
+                        </a>
+                      @else
                         <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
-                      </a>
+                      @endif
                     </div>
                     <span>{{$photo->comment}}</span>
                   </li>
@@ -221,9 +233,13 @@
                 @foreach ($facility_photos as $photo)
                   <li class="natr_card">
                     <div class="natr_image_include">
-                      <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                      @if ($photo->comment != '')
+                        <a href="{{route('parks.photos.show', ['park'=>$park,'photo'=>$photo])}}">
+                          <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
+                        </a>
+                      @else
                         <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}">
-                      </a>
+                      @endif
                     </div>
                     <span>{{$photo->comment}}</span>
                   </li>

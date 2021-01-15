@@ -17,11 +17,30 @@
 <body>
 <div id="wrapper">
     <header>
-        @if(request()->path() != '/' && (empty($park) || (!empty($park) && request()->fullUrl() != route('parks.user_edit', ['park'=>$park]))))
+        @if (
+            ( !empty($park) && request()->fullUrl() == route('parks.user_edit', ['park'=>$park]) ) ||
+            ( !empty($park) && !empty($photo) && request()->fullUrl() == route('parks.photos.show', ['park'=>$park, 'photo'=>$photo]) )
+        )
             <nav id="breadcrumbs">
                 <ol>
                     <li><a href="/">Top</a></li>
-                    <li><a href="{{route('parks.search_map')}}">地図から探す</a></li>
+                    <li><a href="{{ route('parks.detail', ['park'=>$park]) }}">{{ $park->park_name }}</a></li>
+                    <li>@yield('title')</li>
+                </ol>
+            </nav>
+        @elseif ( !empty($article) && request()->fullUrl() == route('root.show', ['article'=>$article]))
+            <nav id="breadcrumbs">
+                <ol>
+                    <li><a href="/">Top</a></li>
+                    <li><a href="{{ route('root.list') }}">公園なるほど情報の一覧</a></li>
+                    <li>@yield('title')</li>
+                </ol>
+            </nav>
+        @elseif ( request()->path() != '/')
+            <nav id="breadcrumbs">
+                <ol>
+                    <li><a href="/">Top</a></li>
+                    <li>@yield('title')</li>
                 </ol>
             </nav>
         @endif

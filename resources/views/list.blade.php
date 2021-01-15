@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', '公園なるほど情報一覧')
+@section('title', '公園なるほど情報の一覧')
 
 @section('content')
 <section id="section_list_inform">
