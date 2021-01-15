@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', $park->address.'に在る'.$park->park_name.'の特徴を教えてください！')
+
 @section('title', $park->park_name. 'の特徴を教えてください！')
 
 @section('content')

@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', $park->address.'に在る'.$park->park_name.'の詳細な情報です。公園の特徴や動植物の写真や口コミ情報を見ることができます。')
+
 @section('title', $park->park_name)
 
 @section('content')

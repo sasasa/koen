@@ -16,6 +16,10 @@
     <td>{{$article->article_type}}</td>
   </tr>
   <tr>
+    <th>{{__('validation.attributes.description')}}</th>
+    <td>{{$article->description}}</td>
+  </tr>
+  <tr>
     <th>{{__('validation.attributes.body')}}</th>
     <td>{!! strip_tags($article->body, $allowedTags) !!}</td>
   </tr>

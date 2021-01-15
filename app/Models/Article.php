@@ -15,7 +15,8 @@ class Article extends Model
 
     public static $rules = [
         'title' => 'required|min:6|max:60',
-        'body' => 'required|min:10|max:2000',
+        'body' => 'required|min:10|max:3000',
+        'description' => 'required|min:10|max:120',
         'article_type' => 'required|in:'.self::PARK.','.self::PLANT.','.self::ANIMAL,
     ];
 
@@ -31,5 +32,6 @@ class Article extends Model
         'body',
         'image_path',
         'article_type',
+        'description',
     ];
 }

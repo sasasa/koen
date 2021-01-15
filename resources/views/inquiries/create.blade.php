@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', '公園ポータルサイトにご意見・ご要望がございましたらお問い合わせフォームから入力してください。')
+
 @section('title', 'ご意見・ご要望のお問い合わせ')
 
 @section('content')

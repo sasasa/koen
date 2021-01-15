@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', $article->description)
+
 @section('title', $article->title)
 
 @section('content')

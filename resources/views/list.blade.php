@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', '公園なるほど情報で公園に詳しくなれる。公園の豆知識を不定期で連載していきます。また公園で見られる植物や動物のなるほど情報も連載していきます。')
+
 @section('title', '公園なるほど情報の一覧')
 
 @section('content')
@@ -12,7 +15,11 @@
                     <li>
                         <div class="inform_item" style="background-image: url('/storage/{{$article->image_path}}')">
                             <a href="{{ route('root.show', ['article'=>$article]) }}">
-                                <span>{{ $article->title }}</span>
+                                @if(mb_strlen($article->title) > 13)
+                                    <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
+                                @else
+                                    <span>{{ $article->title }}</span>
+                                @endif
                             </a>
                         </div>
                     </li>
@@ -26,7 +33,11 @@
                     <li>
                         <div class="inform_item" style="background-image: url('/storage/{{$article->image_path}}')">
                             <a href="{{ route('root.show', ['article'=>$article]) }}">
-                                <span>{{ $article->title }}</span>
+                                @if(mb_strlen($article->title) > 13)
+                                    <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
+                                @else
+                                    <span>{{ $article->title }}</span>
+                                @endif
                             </a>
                         </div>
                     </li>
@@ -40,7 +51,11 @@
                     <li>
                         <div class="inform_item" style="background-image: url('/storage/{{$article->image_path}}')">
                             <a href="{{ route('root.show', ['article'=>$article]) }}">
-                                <span>{{ $article->title }}</span>
+                                @if(mb_strlen($article->title) > 13)
+                                    <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
+                                @else
+                                    <span>{{ $article->title }}</span>
+                                @endif
                             </a>
                         </div>
                     </li>

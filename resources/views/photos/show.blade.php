@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', $park->address.'に在る'.$park->park_name. 'の'. $photo->comment. 'の写真です。')
+
 @section('title', $park->park_name. 'の'. $photo->comment)
 
 @section('content')

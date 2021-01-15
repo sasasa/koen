@@ -29,6 +29,17 @@
   </div>
 
   <div class="form-group">
+    <label for="description">{{__('validation.attributes.description')}}:</label>
+    <input value="{{old('description')}}" type="text" id="description" class="form-control @error('description') is-invalid @enderror" name="description">
+    @error('description')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+    meta descriptionに表示されます
+  </div>
+
+  <div class="form-group">
     <label for="body">{{__('validation.attributes.body')}}:</label>
     <textarea rows="10" id="body" class="form-control @error('body') is-invalid @enderror" name="body">{{old('body')}}</textarea>
     @error('body')

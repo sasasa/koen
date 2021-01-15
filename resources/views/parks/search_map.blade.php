@@ -1,5 +1,8 @@
 
 @extends('layouts.base')
+
+@section('description', '地域と特徴を入力して検索するとマップ上に公園が表示されます。マップから好きな公園を見つけることができます。')
+
 @section('title', '公園を地図から探す')
 
 @section('content')

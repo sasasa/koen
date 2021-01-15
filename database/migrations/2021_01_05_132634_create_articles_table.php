@@ -24,6 +24,9 @@ class CreateArticlesTable extends Migration
             // 画像
             $table->string('image_path')->nullable();
 
+            // 要約
+            $table->string('description');
+
             // 本文
             $table->text('body');
             

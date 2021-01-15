@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', '現在地から公園を検索することができます。現在地情報を利用することを許可していただくと近くにある公園がマップ上に表示されます。')
+
 @section('title', '公園を現在地から探す')
 
 @section('content')

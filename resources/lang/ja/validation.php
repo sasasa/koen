@@ -204,6 +204,7 @@ return [
 
         'tag' => 'タグ',
         'article_type' => '記事タイプ',
+        'description' => '記事要約',
 
         'inquiry_name' => 'お名前',
         'inquiry_name_kana' => 'お名前（ひらがな）',

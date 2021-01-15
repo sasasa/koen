@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', '公園を地図から探したり、現在地から探したり、特徴から探したり、動植物から探したり、地名から探したりできるポータルサイトです。好きな公園を見つけてください。公園に詳しくなれる公園なるほど情報も用意しています。')
+
 @section('title', '公園ポータル')
 
 @section('content')
@@ -69,7 +72,11 @@
       @foreach ($articles as $article)
         <a href="{{ route('root.show', ['article'=>$article]) }}">
           <li id="infomation_{{ $loop->iteration }}">
-            <span>{{ $article->title }}</span>
+            @if(mb_strlen($article->title) > 13)
+              <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
+            @else
+              <span>{{ $article->title }}</span>
+            @endif
           </li>
         </a>
         <style>

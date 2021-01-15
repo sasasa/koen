@@ -1,4 +1,7 @@
 @extends('layouts.base')
+
+@section('description', '動植物の写真をクリックするとその写真のキーワードに紐づいた公園を検索することができます。写真から公園を検索することができます。')
+
 @section('title', '公園を動植物から探す')
 
 @section('content')

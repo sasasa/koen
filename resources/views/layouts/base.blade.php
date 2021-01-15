@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="公園">
+    <meta name="description" content="@yield('description')">
     <title>@yield('title') | 公園ポータルサイト</title>
 
     <!-- Styles -->
