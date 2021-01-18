@@ -17,7 +17,7 @@
           <div class="cp_ipselect cp_sl01">
           <select name="area" required>
             <option value="">地域を選択してください</option>
-            <option value="全て" {{$area==='all' ? 'selected' : ''}}>全て</option>
+            <option value="全て" {{$area==='全て' ? 'selected' : ''}}>全て</option>
             <option value="福岡市" {{$area==='福岡市' ? 'selected' : ''}}>福岡市</option>
             {{-- <option value="北九州" {{$area==='北九州' ? 'selected' : ''}}>北九州</option>
             <option value="久留米" {{$area==='久留米' ? 'selected' : ''}}>久留米</option>

@@ -49,7 +49,12 @@
                 <a href="{{route('root.index')}}">
                     <h1>福岡県の最大級の<span>公園ポータルサイト</span></h1>
                 </a>
-                <div id="space"></div>
+                <div id="space">
+                    <form action="{{ route('parks.search') }}" method="GET">
+                        <input name="search" type="search" placeholder="地名を入力">
+                        <input type="hidden" name="area" value="全て">
+                    </form>
+                </div>
             </div>
 
             <div id="pc_nav_site">

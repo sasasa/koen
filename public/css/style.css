@@ -78,6 +78,12 @@ body {
   width: 10.5rem;
 }
 
+#space input[type=search] {
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  width: 10.5rem;
+}
+
 #tips_link {
   padding: 0 1rem;
 }
