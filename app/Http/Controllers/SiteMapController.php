@@ -48,7 +48,7 @@ class SiteMapController extends Controller
         $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.9', 'weekly', $images);
         $tags = Tag::orderBy('id', 'DESC')->get();
         foreach ($tags as $tag) {
-            $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $tag->tag), $now, '0.9', 'weekly', $images);
+            $sitemap->add(\URL::to('/search_by_plant_and_animal?photo='. $tag->tag), $now, '0.9', 'weekly', $images);
         }
 
 
