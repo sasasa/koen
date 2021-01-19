@@ -1,18 +1,46 @@
 @extends('layouts.base')
 
-@section('description', '動植物の写真をクリックするとその写真のキーワードに紐づいた公園を検索することができます。写真から公園を検索することができます。')
+@section('description', '動植物の写真をクリックするとその写真のキーワードに紐づいた公園を検索することができます。動植物の写真から公園を検索することができます。')
 
 @section('title', '公園を動植物から探す')
 
 @section('content')
 <div class="photo">
-  @foreach ($photos as $photo)
-  <div class="photo__list">
-    <a href="{{route('parks.search_by_plant_and_animal', ['tag'=>mb_convert_kana($photo->comment, 'Hcsa')])}}">
-      <img src="/storage/{{$photo->image_path}}" alt="{{$photo->comment}}" title="{{$photo->comment}}">
-    </a>
-  </div>
-  @endforeach
+  <form method="GET" action="{{route('parks.search_by_plant_and_animal')}}" >
+    @foreach ($insect_photos as $key => $photos)
+      <div class="photo__list">
+        <label for="ch_{{ $photos[0]->id }}">
+        {{-- <a href="{{route('parks.search_by_plant_and_animal', ['tag'=>mb_convert_kana($key, 'Hcsa')])}}"> --}}
+          <img src="/storage/{{$photos[0]->image_path}}" alt="{{$key}}" title="{{$key}}">
+        {{-- </a> --}}
+        <input {{ request()->photo == mb_convert_kana($key, 'Hcsa') ? 'checked' : '' }} id="ch_{{ $photos[0]->id }}" name="photo" type="radio" value="{{ mb_convert_kana($key, 'Hcsa') }}">
+        {{ mb_convert_kana($key, 'Hcsa') }}</label>
+      </div>
+    @endforeach
+
+    @foreach ($bird_photos as $key => $photos)
+      <div class="photo__list">
+        <label for="ch_{{ $photos[0]->id }}">
+        {{-- <a href="{{route('parks.search_by_plant_and_animal', ['tag'=>mb_convert_kana($key, 'Hcsa')])}}"> --}}
+          <img src="/storage/{{$photos[0]->image_path}}" alt="{{$key}}" title="{{$key}}">
+        {{-- </a> --}}
+        <input {{ request()->photo == mb_convert_kana($key, 'Hcsa') ? 'checked' : '' }} id="ch_{{ $photos[0]->id }}" name="photo" type="radio" value="{{ mb_convert_kana($key, 'Hcsa') }}">
+        {{ mb_convert_kana($key, 'Hcsa') }}</label>
+      </div>
+    @endforeach
+
+    @foreach ($plant_photos as $key => $photos)
+    <div class="photo__list">
+      <label for="ch_{{ $photos[0]->id }}">
+      {{-- <a href="{{route('parks.search_by_plant_and_animal', ['tag'=>mb_convert_kana($key, 'Hcsa')])}}"> --}}
+        <img src="/storage/{{$photos[0]->image_path}}" alt="{{$key}}" title="{{$key}}">
+      {{-- </a> --}}
+      <input {{ request()->photo == mb_convert_kana($key, 'Hcsa') ? 'checked' : '' }} id="ch_{{ $photos[0]->id }}" name="photo" type="radio" value="{{ mb_convert_kana($key, 'Hcsa') }}">
+      {{ mb_convert_kana($key, 'Hcsa') }}</label>
+    </div>
+    @endforeach
+    <input type="submit" value="検索">
+  </form>
 </div>
 
 @if (!$parks->isEmpty())
