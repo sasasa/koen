@@ -1,5 +1,6 @@
 @charset "UTF-8";
-
+@import "variables";
+@import "mixins";
 
 
 
@@ -8,7 +9,8 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue",
+  color: $font_color;
+    font-family: "Helvetica Neue",
     Arial,
     "Hiragino Kaku Gothic ProN",
     "Hiragino Sans",
@@ -198,6 +200,7 @@ body {
 }
 #nav-content_small_ul {
   width: 100%;
+  margin-top: 4rem;
 }
 #nav-content_small_ul li {
   color: #707070;
@@ -1214,6 +1217,83 @@ p.require {
   border-radius: 0.5rem;
   font-size: 2rem;
 }
+
+/* ======================================== */
+/* privacy_policy.html */
+/* ======================================== */
+#section_privacy_area {
+  @include flex($justify:center,$align:stretch,$wrap:wrap);
+  p {
+    line-height: 1.8rem;
+  }
+  h2 {
+    color: $color_base;
+    background-color: $color_main;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+  #praivacy_area {
+    width: $width_sp;
+    .privacy_outer {
+      h3 {
+        border-left: 0.4rem solid $color_main;
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        padding: 0.15rem;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+        .privacy_inner {
+          h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+          }
+          p {
+            margin-bottom: 1rem;
+          }
+        }
+    }
+  }
+  #preparer {
+    text-align: end;
+    width: $width_sp;
+    margin-bottom: 2Srem;
+    span {
+      display: block;
+    }
+  }
+
+}
+@media (min-width: 1000px) {
+  #section_privacy_area {
+    padding-top: 1rem;
+    h2 {
+      color: $font_color;
+      background-color: $color_base;
+      text-align: left;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 1rem 0;
+      margin-bottom: 3rem;
+      width: $width_pc;
+    }
+    #praivacy_area {
+      width: $width_pc;
+    }
+    #preparer {
+      width: $width_pc;
+      padding-top: 10rem;
+    }
+  }
+}
+
 /* ======================================== */
 /* 共通項目 */
 /* ======================================== */

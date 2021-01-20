@@ -75,17 +75,17 @@
                 <div id="nav-content">
                     <ul id="nav-content_large_ul">
                     <li><a href="/">TOP</a></li>
-                    <li><a href="{{route('parks.search_map')}}">地図から探す</a></li>
-                    <li><a href="{{route('parks.search_by_location')}}">現在地から探す</a></li>
-                    <li><a href="{{route('parks.search')}}">特徴から探す</a></li>
-                    <li><a href="{{route('parks.search_by_plant_and_animal')}}">動植物から探す</a></li>
+                    <li><a href="{{ route('parks.search_map') }}">地図から探す</a></li>
+                    <li><a href="{{ route('parks.search_by_location') }}">現在地から探す</a></li>
+                    <li><a href="{{ route('parks.search') }}">特徴から探す</a></li>
+                    <li><a href="{{ route('parks.search_by_plant_and_animal') }}">動植物から探す</a></li>
                     <li><a href="{{ route('root.list') }}">公園なるほど情報</a></li>
                     </ul>
                     <ul id="nav-content_small_ul">
-                    <li><a href="#">ご利用の案内</a></li>
-                    <li><a href="#">広告掲載について</a></li>
+                    <li><a href="{{ route('root.terms_of_use') }}">利用規約</a></li>
+                    <li><a href="{{ route('root.about_advertising') }}">広告掲載について</a></li>
                     <li><a href="{{ route('inquiries.create') }}">ご意見・ご要望</a></li>
-                    <li><a href="#">プライバシーポリシー</a></li>
+                    <li><a href="{{ route('root.privacy_policy') }}">プライバシーポリシー</a></li>
                     </ul>
                 </div>
             </div>

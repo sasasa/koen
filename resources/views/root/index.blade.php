@@ -2,7 +2,7 @@
 
 @section('description', '公園を地図から探したり、現在地から探したり、特徴から探したり、動植物から探したり、地名から探したりできるポータルサイトです。好きな公園を見つけてください。公園に詳しくなれる公園なるほど情報も用意しています。')
 
-@section('title', '公園ポータル')
+@section('title', 'トップページ')
 
 @section('content')
 
@@ -73,7 +73,7 @@
         <a href="{{ route('root.show', ['article'=>$article]) }}">
           <li id="infomation_{{ $loop->iteration }}">
             @if(mb_strlen($article->title) > 13)
-              <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
+              <span>{{ mb_substr($article->title, 0, 13). '…' }}</span>
             @else
               <span>{{ $article->title }}</span>
             @endif
@@ -93,10 +93,10 @@
 
 <section id="section_side_note_area" class="scrol_shift">
   <ul id="side_note">
-    <a href="#"><li><span>利用規約</span></li></a>
-    <a href="#"><li><span>広告掲載について</span></li></a>
+    <a href="{{ route('root.terms_of_use') }}"><li><span>利用規約</span></li></a>
+    <a href="{{ route('root.about_advertising') }}"><li><span>広告掲載について</span></li></a>
     <a href="{{ route('inquiries.create') }}"><li><span>お問い合わせ</span></li></a>
-    <a href="#"><li><span>プライバシーポリシー</span></li></a>
+    <a href="{{ route('root.privacy_policy') }}"><li><span>プライバシーポリシー</span></li></a>
   </ul>
 </section><!-- section_side_note_area -->
 @endsection

@@ -5,6 +5,7 @@ html {
 }
 
 body {
+  color: #707070;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
@@ -214,6 +215,7 @@ body {
 
 #nav-content_small_ul {
   width: 100%;
+  margin-top: 4rem;
 }
 
 #nav-content_small_ul li {
@@ -1378,6 +1380,102 @@ p.require {
   border: 0.1rem solid #707070;
   border-radius: 0.5rem;
   font-size: 2rem;
+}
+
+/* ======================================== */
+
+/* privacy_policy.html */
+
+/* ======================================== */
+
+#section_privacy_area {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+}
+
+#section_privacy_area p {
+  line-height: 1.8rem;
+}
+
+#section_privacy_area h2 {
+  color: #fff;
+  background-color: #269512;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+#section_privacy_area #praivacy_area {
+  width: 37.5rem;
+}
+
+#section_privacy_area #praivacy_area .privacy_outer h3 {
+  border-left: 0.4rem solid #269512;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.15rem;
+}
+
+#section_privacy_area #praivacy_area .privacy_outer p {
+  margin-bottom: 1rem;
+}
+
+#section_privacy_area #praivacy_area .privacy_outer .privacy_inner h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+#section_privacy_area #praivacy_area .privacy_outer .privacy_inner p {
+  margin-bottom: 1rem;
+}
+
+#section_privacy_area #preparer {
+  text-align: end;
+  width: 37.5rem;
+  margin-bottom: 2Srem;
+}
+
+#section_privacy_area #preparer span {
+  display: block;
+}
+
+@media (min-width: 1000px) {
+  #section_privacy_area {
+    padding-top: 1rem;
+  }
+
+  #section_privacy_area h2 {
+    color: #707070;
+    background-color: #fff;
+    text-align: left;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem 0;
+    margin-bottom: 3rem;
+    width: 100rem;
+  }
+
+  #section_privacy_area #praivacy_area {
+    width: 100rem;
+  }
+
+  #section_privacy_area #preparer {
+    width: 100rem;
+    padding-top: 10rem;
+  }
 }
 
 /* ======================================== */

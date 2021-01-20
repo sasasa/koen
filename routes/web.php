@@ -41,6 +41,10 @@ Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name
 Route::get('/', [RootController::class, 'index'])->name('root.index');
 Route::get('/article/{article}', [RootController::class, 'show'])->name('root.show');
 Route::get('/article', [RootController::class, 'list'])->name('root.list');
+Route::get('/terms_of_use', [RootController::class, 'terms_of_use'])->name('root.terms_of_use');
+Route::get('/about_advertising', [RootController::class, 'about_advertising'])->name('root.about_advertising');
+Route::get('/privacy_policy', [RootController::class, 'privacy_policy'])->name('root.privacy_policy');
+
 
 Route::resource('/inquiries', InquiriesController::class)->only([
     'create', 'store',
@@ -50,9 +54,13 @@ Route::get('/inquiries/done', [InquiriesController::class, 'done'])->name('inqui
 Route::resource('/parks.photos', PhotosController::class)->only([
     'store', 'show',
 ]);
-Route::resource('/parks.reviews', ReviewsController::class)->only([
-    'store',
-]);
+// Route::resource('/park.reviews', ReviewsController::class)->only([
+//     'store',
+// ]);
+Route::post('/parks/{park}/reviews', [ReviewsController::class, 'store'])->name('parks.reviews.store');
+
+
+
 Route::get('/sitemap.xml', [SiteMapController::class, 'sitemap'])->name('sitemap');
 
 

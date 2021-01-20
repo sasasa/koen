@@ -1,0 +1,13 @@
+@mixin flex($justify:space-between,$align:center,$wrap:nowrap) {
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    justify-content: $justify;
+    -webkit-box-pack: $justify;
+    -ms-flex-pack: $justify;
+    align-items: $align;
+    -webkit-box-align: $align;
+    -ms-flex-align: $align;
+    flex-wrap: $wrap;
+    -ms-flex-wrap: $wrap;
+  }
