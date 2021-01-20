@@ -2145,8 +2145,12 @@ input[type=checkbox]:checked + #check {
   padding: 5px;
 }
 
-.invalid-feedback {
-  color: #CC5A12;
+.invalid {
+  color: #ff3333;
+}
+
+.form-title {
+  font-size: 1.6rem;
 }
 
 .user_edit {

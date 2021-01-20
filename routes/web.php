@@ -54,9 +54,6 @@ Route::get('/inquiries/done', [InquiriesController::class, 'done'])->name('inqui
 Route::resource('/parks.photos', PhotosController::class)->only([
     'store', 'show',
 ]);
-// Route::resource('/park.reviews', ReviewsController::class)->only([
-//     'store',
-// ]);
 Route::post('/parks/{park}/reviews', [ReviewsController::class, 'store'])->name('parks.reviews.store');
 
 

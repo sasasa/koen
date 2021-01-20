@@ -11,7 +11,7 @@ class Photo extends Model
     use HasFactory;
 
     public static $rules = [
-        'comment' => 'required|min:1|max:20',
+        'comment' => 'required|min:1|max:20|hiragana',
         'photo_type' => 'required|min:1|max:10',
     ];
 

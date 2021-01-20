@@ -36,9 +36,11 @@ class PhotosController extends Controller
 
     public function store(Request $req, Park $park)
     {
-        $this->validate($req, array_merge(Photo::$rules, Park::$rules_image));
+        $this->validate($req, array_merge(Photo::$rules, Park::$rules_image), [
+            'comment.hiragana' => ':attributeはひらがなで入力してください。',
+        ]);
 
-        $file = $req->upfile;
+        $file = $req->insect_upfile;
         $file_name = time() . '.' . $file->getClientOriginalExtension();
         //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
         InterventionImage::make($file)->
@@ -48,7 +50,10 @@ class PhotosController extends Controller
         })->save(storage_path('app/public/'. $file_name));
 
         $photo = new Photo();
-        $photo->fill(array_merge($req->all(), ['image_path' => $file_name]))->save();
+        $photo->fill(array_merge($req->all(), [
+            'image_path' => $file_name,
+            'comment' => mb_convert_kana($req->insect_comment, 'Hcsa')
+        ]))->save();
 
         $tag = Tag::updateOrCreate(
             ['tag' => mb_convert_kana($req->comment, 'Hcsa')],

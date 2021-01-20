@@ -122,22 +122,24 @@
                   </li>
                 @endforeach
               </ul>
-              昆虫の画像をアップロードしよう！
+              <div class="form-title">
+                昆虫の画像をアップロードしよう！
+              </div>
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
-                  画像：<input type="file" name="upfile" accept="image/*" required>
-                  @error('upfile')
-                  <span class="invalid-feedback">
+                  画像：<input type="file" name="insect_upfile" accept="image/*" required>
+                  @error('insect_upfile')
+                  <span class="invalid insect-invalid">
                       <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  タグ：<input type="text" name="comment" required>
-                  @error('comment')
-                  <span class="invalid-feedback">
-                      <strong>{{ $message }}</strong>
+                  タグ：<input type="text" name="insect_comment" value="{{ old('insect_comment') }}" required>
+                  @error('insect_comment')
+                  <span class="invalid insect-invalid">
+                    <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
@@ -164,22 +166,24 @@
                   </li>
                 @endforeach
               </ul>
+              <div class="form-title">
               鳥の画像をアップロードしよう！
+              </div>
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
                   画像：<input type="file" name="upfile" accept="image/*" required>
                   @error('upfile')
-                  <span class="invalid-feedback">
-                      <strong>{{ $message }}</strong>
+                  <span class="invalid bird-invalid">
+                    <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  タグ：<input type="text" name="comment" required>
+                  タグ：<input type="text" name="comment" value="{{ old('comment') }}" required>
                   @error('comment')
-                  <span class="invalid-feedback">
-                      <strong>{{ $message }}</strong>
+                  <span class="invalid bird-invalid">
+                    <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
@@ -206,22 +210,24 @@
                   </li>
                 @endforeach
               </ul>
+              <div class="form-title">
               植物の画像をアップロードしよう！
+              </div>
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
                   画像：<input type="file" name="upfile" accept="image/*" required>
                   @error('upfile')
-                  <span class="invalid-feedback">
-                      <strong>{{ $message }}</strong>
+                  <span class="invalid plant-invalid">
+                    <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  タグ：<input type="text" name="comment" required>
+                  タグ：<input type="text" name="comment" value="{{ old('comment') }}" required>
                   @error('comment')
-                  <span class="invalid-feedback">
-                      <strong>{{ $message }}</strong>
+                  <span class="invalid plant-invalid">
+                    <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
@@ -248,22 +254,24 @@
                   </li>
                 @endforeach
               </ul>
+              <div class="form-title">
               施設の画像をアップロードしよう！
+              </div>
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
                   画像：<input type="file" name="upfile" accept="image/*" required>
                   @error('upfile')
-                  <span class="invalid-feedback">
-                      <strong>{{ $message }}</strong>
+                  <span class="invalid facility-invalid">
+                    <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  タグ：<input type="text" name="comment" required>
+                  タグ：<input type="text" name="comment" value="{{ old('comment') }}" required>
                   @error('comment')
-                  <span class="invalid-feedback">
-                      <strong>{{ $message }}</strong>
+                  <span class="invalid facility-invalid">
+                    <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
@@ -424,6 +432,22 @@ $(function(){
   if ($('p.require').length) {
     $("html,body").animate({scrollTop:$('#message').offset().top});
   }
+
+  if ($('.invalid').length) {
+    $("html,body").animate({scrollTop:$('.invalid').offset().top});
+  }
+  // if ($('.facility-invalid').length) {
+  //   $("html,body").animate({scrollTop:$('.facility-invalid').offset().top});
+  // }
+  // if ($('.plant-invalid').length) {
+  //   $("html,body").animate({scrollTop:$('.plant-invalid').offset().top});
+  // }
+  // if ($('.bird-invalid').length) {
+  //   $("html,body").animate({scrollTop:$('.bird-invalid').offset().top});
+  // }
+  // if ($('.insect-invalid').length) {
+  //   $("html,body").animate({scrollTop:$('.insect-invalid').offset().top});
+  // }
 })
 </script>
 <script>
