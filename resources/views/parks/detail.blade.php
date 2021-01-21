@@ -172,16 +172,16 @@
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
-                  画像：<input type="file" name="upfile" accept="image/*" required>
-                  @error('upfile')
+                  画像：<input type="file" name="bird_upfile" accept="image/*" required>
+                  @error('bird_upfile')
                   <span class="invalid bird-invalid">
                     <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  タグ：<input type="text" name="comment" value="{{ old('comment') }}" required>
-                  @error('comment')
+                  タグ：<input type="text" name="bird_comment" value="{{ old('bird_comment') }}" required>
+                  @error('bird_comment')
                   <span class="invalid bird-invalid">
                     <strong>{{ $message }}</strong>
                   </span>
@@ -216,16 +216,16 @@
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
-                  画像：<input type="file" name="upfile" accept="image/*" required>
-                  @error('upfile')
+                  画像：<input type="file" name="plant_upfile" accept="image/*" required>
+                  @error('plant_upfile')
                   <span class="invalid plant-invalid">
                     <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  タグ：<input type="text" name="comment" value="{{ old('comment') }}" required>
-                  @error('comment')
+                  タグ：<input type="text" name="plant_comment" value="{{ old('plant_comment') }}" required>
+                  @error('plant_comment')
                   <span class="invalid plant-invalid">
                     <strong>{{ $message }}</strong>
                   </span>
@@ -260,16 +260,16 @@
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
                 <div class="upload-form__field">
-                  画像：<input type="file" name="upfile" accept="image/*" required>
-                  @error('upfile')
+                  画像：<input type="file" name="facility_upfile" accept="image/*" required>
+                  @error('facility_upfile')
                   <span class="invalid facility-invalid">
                     <strong>{{ $message }}</strong>
                   </span>
                   @enderror
                 </div>
                 <div class="upload-form__field">
-                  タグ：<input type="text" name="comment" value="{{ old('comment') }}" required>
-                  @error('comment')
+                  タグ：<input type="text" name="facility_comment" value="{{ old('facility_comment') }}" required>
+                  @error('facility_comment')
                   <span class="invalid facility-invalid">
                     <strong>{{ $message }}</strong>
                   </span>
@@ -436,18 +436,18 @@ $(function(){
   if ($('.invalid').length) {
     $("html,body").animate({scrollTop:$('.invalid').offset().top});
   }
-  // if ($('.facility-invalid').length) {
-  //   $("html,body").animate({scrollTop:$('.facility-invalid').offset().top});
-  // }
-  // if ($('.plant-invalid').length) {
-  //   $("html,body").animate({scrollTop:$('.plant-invalid').offset().top});
-  // }
-  // if ($('.bird-invalid').length) {
-  //   $("html,body").animate({scrollTop:$('.bird-invalid').offset().top});
-  // }
-  // if ($('.insect-invalid').length) {
-  //   $("html,body").animate({scrollTop:$('.insect-invalid').offset().top});
-  // }
+  if ($('.facility-invalid').length) {
+    $("html,body").animate({scrollTop:$('.facility-invalid').offset().top - 130});
+  }
+  if ($('.plant-invalid').length) {
+    $("html,body").animate({scrollTop:$('.plant-invalid').offset().top - 130});
+  }
+  if ($('.bird-invalid').length) {
+    $("html,body").animate({scrollTop:$('.bird-invalid').offset().top - 130});
+  }
+  if ($('.insect-invalid').length) {
+    $("html,body").animate({scrollTop:$('.insect-invalid').offset().top - 130});
+  }
 })
 </script>
 <script>

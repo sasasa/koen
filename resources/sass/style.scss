@@ -1218,6 +1218,25 @@ p.require {
   font-size: 2rem;
 }
 
+@media (min-width: 1000px) {
+  #section_contact_area {
+    #contact_head_sub_section {
+      @include flex($justify:space-between,$align:center,$wrap:nowrap);
+      padding-top: 2rem;
+      background-color: $color_base;
+      width: $width_pc;
+      #contact_head_area {
+        span {
+          color: $font_color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  #contact_form_area {
+    padding-top: 0;
+  }
+}
 /* ======================================== */
 /* privacy_policy.html */
 /* ======================================== */

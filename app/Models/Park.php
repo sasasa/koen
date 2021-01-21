@@ -29,6 +29,19 @@ class Park extends Model
         ],
     ];
 
+    public static function getRulesImage(string $upfile)
+    {
+        return [
+            $upfile => [
+                'required',
+                'file',
+                'image',
+                'mimes:jpeg,png',
+                'dimensions:min_width=100,min_height=100,max_width=5000,max_height=5000',
+            ],
+        ];
+    }
+
     protected $fillable = [
         'park_name',
         'address',

@@ -116,6 +116,9 @@ return [
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
+    'hiragana'             => ':attributeはひらがなで入力してください。',
+    'katakana'             => ':attributeはカタカナで入力してください。',
+    'hiragana_katakana'    => ':attributeはひらがなとカタカナで入力してください。',
 
     /*
     |--------------------------------------------------------------------------
@@ -195,6 +198,10 @@ return [
         'is_reference_library' => '資料館',
 
         'comment' => 'タグ',
+        'insect_comment' => 'タグ',
+        'bird_comment' => 'タグ',
+        'plant_comment' => 'タグ',
+        'facility_comment' => 'タグ',
         'photo_type' => 'タイプ',
 
         'title' => 'タイトル',

@@ -15,6 +15,13 @@ class Photo extends Model
         'photo_type' => 'required|min:1|max:10',
     ];
 
+    public static function getRules(string $comment) {
+        return [
+            $comment => 'required|min:1|max:20|hiragana',
+            'photo_type' => 'required|min:1|max:10',
+        ];
+    }
+
     public static $optionsForSelect = [
         ''=>'選択してください',
         '昆虫'=>'昆虫',
