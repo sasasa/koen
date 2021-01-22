@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInquiriesTable extends Migration
+class CreateAdvertisementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateInquiriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inquiries', function (Blueprint $table) {
+        Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
-            $table->string('inquiry_name')->nullable();
-            $table->string('inquiry_name_kana')->nullable();
-
+            $table->string('representative_name');
+            $table->string('company_name');
             $table->string('email');
-            $table->string('inquiry_title')->nullable();
-            $table->text('inquiry_body');
-
+            $table->text('advertisement_body');
             // 返信済
             $table->boolean('is_reply')->default(false);
             $table->timestamps();
@@ -35,6 +32,6 @@ class CreateInquiriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inquiries');
+        Schema::dropIfExists('advertisements');
     }
 }

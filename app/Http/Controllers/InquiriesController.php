@@ -31,6 +31,13 @@ class InquiriesController extends Controller
         if ($req->inquiry_body) {
             $inquiry_query->where('inquiry_body', 'LIKE', '%'.$req->inquiry_body.'%');
         }
+        if ($req->is_reply) {
+            if ($req->is_reply == 1) {
+                $inquiry_query->where('is_reply', false);
+            } else if ($req->is_reply == 2) {
+                $inquiry_query->where('is_reply', true);
+            }
+        }
 
         return view('inquiries.index', [
             'inquiries' => $inquiry_query->orderBy('id', 'DESC')->paginate(12),
@@ -39,6 +46,7 @@ class InquiriesController extends Controller
             'email' => $req->email,
             'inquiry_title' => $req->inquiry_title,
             'inquiry_body' => $req->inquiry_body,
+            'is_reply' => $req->is_reply,
         ]);
     }
 

@@ -11,6 +11,8 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\RootController;
 use App\Http\Controllers\SiteMapController;
 use App\Http\Controllers\InquiriesController;
+use App\Http\Controllers\AdvertisementsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +51,11 @@ Route::get('/privacy_policy', [RootController::class, 'privacy_policy'])->name('
 Route::resource('/inquiries', InquiriesController::class)->only([
     'create', 'store',
 ]);
+Route::resource('/advertisements', AdvertisementsController::class)->only([
+    'store',
+]);
 Route::get('/inquiries/done', [InquiriesController::class, 'done'])->name('inquiries.done');
+Route::get('/advertisements/done', [AdvertisementsController::class, 'done'])->name('advertisements.done');
 
 Route::resource('/parks.photos', PhotosController::class)->only([
     'store', 'show',
@@ -73,5 +79,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/articles', ArticlesController::class);
     Route::resource('/inquiries', InquiriesController::class)->except([
         'create', 'store',
+    ]);
+    Route::resource('/advertisements', AdvertisementsController::class)->except([
+        'store',
     ]);
 });

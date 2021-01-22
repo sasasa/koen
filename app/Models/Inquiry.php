@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\Replyable;
 
 class Inquiry extends Model
 {
-    use HasFactory;
+    use HasFactory, Replyable;
 
     public static $rules = [
         'inquiry_name' => 'required|min:2|max:30',

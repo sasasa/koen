@@ -23,6 +23,10 @@
     <label for="inquiry_body">{{__('validation.attributes.inquiry_body')}}:</label>
     <input type="text" id="inquiry_body" name="inquiry_body" value="{{$inquiry_body}}" class="form-control">
   </div>
+  <div class="form-group">
+    <label for="is_reply" class="form-check-label">{{__('validation.attributes.is_reply')}}:</label>
+    {{ Form::select('is_reply', \App\Models\Inquiry::$options, $is_reply, ['class'=>"form-control", 'id'=>'is_reply']) }}
+  </div>
   <input type="submit" value="検索" class="btn btn-primary">
 </form>
 

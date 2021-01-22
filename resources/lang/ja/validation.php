@@ -217,6 +217,11 @@ return [
         'inquiry_name_kana' => 'お名前（ひらがな）',
         'inquiry_title' => 'タイトル',
         'inquiry_body' => '内容',
+        'is_reply' => '返信状況',
+
+        'company_name' => '企業名',
+        'representative_name' => '代表者名',
+        'advertisement_body' => '内容',
     ],
 
 ];
