@@ -15,11 +15,7 @@
                     <li>
                         <div class="inform_item" style="background-image: url('/storage/{{$article->image_path}}')">
                             <a href="{{ route('root.show', ['article'=>$article]) }}">
-                                @if(mb_strlen($article->title) > 13)
-                                    <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
-                                @else
-                                    <span>{{ $article->title }}</span>
-                                @endif
+                                <span>{{ $article->title }}</span>
                             </a>
                         </div>
                     </li>

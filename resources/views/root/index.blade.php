@@ -72,11 +72,7 @@
       @foreach ($articles as $article)
         <a href="{{ route('root.show', ['article'=>$article]) }}">
           <li id="infomation_{{ $loop->iteration }}">
-            @if(mb_strlen($article->title) > 13)
-              <span>{{ mb_substr($article->title, 0, 13). '…' }}</span>
-            @else
-              <span>{{ $article->title }}</span>
-            @endif
+            <span>{{ $article->title }}</span>
           </li>
         </a>
         <style>
