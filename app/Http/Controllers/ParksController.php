@@ -46,32 +46,26 @@ class ParksController extends Controller
         ]);
     }
 
-    public function search_by_plant_and_animal(Request $req, string $tag = null)
+    public function search_by_plant_and_animal(Request $req, string $type = null)
     {
-        // $photos = Photo::whereNotIn('photo_type', ['ダミー'])->
-        //         orderBy('id', 'DESC')->limit(100)->get();
-        $insect_photos = Photo::where('photo_type', '昆虫')->orderBy('id', 'desc')->get()->groupBy('comment');
-        $bird_photos = Photo::where('photo_type', '鳥')->orderBy('id', 'desc')->get()->groupBy('comment');
-        $plant_photos = Photo::where('photo_type', '植物')->orderBy('id', 'desc')->get()->groupBy('comment');
-
-        if($tag) {
-            $parks = Tag::where('tag', $tag)->
-                        first()->parks()->paginate(12);
+        if($type) {
+            $group_photos = Photo::where('photo_type', $type)->orderBy('id', 'desc')->get()->groupBy('comment');
         } else {
-            $parks = collect([]);
+            $group_photos = collect([]);
         }
 
         if( $req->photo ) {
             // dd($req->photos);
             $parks = Tag::where('tag', $req->photo)->
                         first()->parks()->paginate(12);
+        } else {
+            $parks = collect([]);
         }
 
         return view('parks.search_by_plant_and_animal', [
-            'insect_photos' => $insect_photos,
-            'bird_photos' => $bird_photos,
-            'plant_photos' => $plant_photos,
+            'group_photos' => $group_photos,
             'parks' => $parks,
+            'type' => $type,
         ]);
     }
 

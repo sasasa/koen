@@ -36,6 +36,14 @@
                     <li>@yield('title')</li>
                 </ol>
             </nav>
+        @elseif ( !empty($type) && strpos(request()->fullUrl(), route('parks.search_by_plant_and_animal', ['type'=>$type])) !== false )
+            <nav id="breadcrumbs">
+                <ol>
+                    <li><a href="/">Top</a></li>
+                    <li><a href="{{ route('parks.search_by_plant_and_animal') }}">公園を動植物から探す</a></li>
+                    <li>{{ $type }}から探す</li>
+                </ol>
+            </nav>
         @elseif ( request()->path() != '/')
             <nav id="breadcrumbs">
                 <ol>
