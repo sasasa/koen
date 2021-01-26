@@ -42,6 +42,7 @@
   <div class="form-group">
     <label for="comment">{{__('validation.attributes.comment')}}:</label>
     <input value="{{old('comment', $photo->comment)}}" type="text" id="comment" class="form-control @error('comment') is-invalid @enderror" name="comment">
+    紐づけてある画像とタグが自動で変更されます。
     @error('comment')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use App\Models\Park;
+use App\Models\Photo;
 
 class TagsController extends Controller
 {
@@ -45,7 +46,13 @@ class TagsController extends Controller
     public function update(Request $req, Tag $tag)
     {
         $this->validate($req, Tag::$rules);
+        $tmp_tag = $tag->tag;
         $tag->fill($req->all())->save();
+        Photo::where('comment', $tmp_tag)->each(function ($photo) use($req) {
+            $photo->comment = $req->tag;
+            $photo->save();
+        });
+
 
         return redirect(route('tags.index'));
     }

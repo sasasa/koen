@@ -110,9 +110,19 @@ class PhotosController extends Controller
         } else {
             $this->validate($req, Photo::$rules);
         }
-        
+        $tmp_comment = $photo->comment;
         $photo->fill($req->all());
         $photo->save();
+        Photo::where('comment', $tmp_comment)->each(function ($photo) use($req) {
+            $photo->comment = $req->comment;
+            $photo->save();
+        });
+
+        $tag = Tag::where('tag', $tmp_comment)->first();
+        if ($tag) {
+            $tag->tag = $req->comment;
+            $tag->save();
+        }
 
         return redirect(route('photos.index'));
     }
