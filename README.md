@@ -33,6 +33,9 @@ php artisan park:csv:loader
 
 php artisan make:migration create_park_tag_table
 
+
+php artisan make:provider CustomServiceProvider
+
 php artisan migrate:refresh
 php artisan db:seed
 php artisan storage:link
