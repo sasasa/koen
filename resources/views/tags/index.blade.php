@@ -31,7 +31,7 @@
     <td>
       <ul>
         @foreach ($tag->parks as $park)
-          <li>{{$park->park_name}}</li>
+          <li>{{ preg_replace('/[0-9]+.*$/', '', $park->address) }}:{{$park->park_name}}</li>
         @endforeach
       </ul>
     </td>
