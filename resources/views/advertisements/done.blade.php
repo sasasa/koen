@@ -17,7 +17,7 @@
   <!-- フォーム -->
   <div id="thank_you_area">
     <h2>
-      お問い合わせありがとうございます。2営業日以内に返信させていただきます。
+      お問い合わせありがとうございました。2営業日以内にご返信いたします。
     </h2>
   </div><!-- contact_form_area -->
 </section><!-- section_contact_form_area -->

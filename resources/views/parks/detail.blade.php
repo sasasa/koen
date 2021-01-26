@@ -5,6 +5,26 @@
 @section('title', $park->park_name)
 
 @section('content')
+@if(Session::has('message'))
+    <!-- モーダルウィンドウの中身 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    {{ session('message') }}
+                </div>
+                <div class="modal-footer text-center">
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 <section id="section_result_expression_area">
   <article id="result_expression_area">
     <h2>{{$park->park_name}}</h2>
@@ -149,7 +169,7 @@
               </form>
             </div><!-- insect -->
             <div id="bird">
-              <h3>鳥</h3>
+              <h3>鳥類</h3>
               <ul>
                 @foreach ($bird_photos as $photo)
                   <li class="natr_card">
@@ -167,7 +187,7 @@
                 @endforeach
               </ul>
               <div class="form-title">
-              鳥の画像をアップロードしよう！
+              鳥類の画像をアップロードしよう！
               </div>
               <form action="{{route('parks.photos.store', ['park' => $park])}}" method="POST" class="upload-form" enctype='multipart/form-data'>
                 @csrf
@@ -188,7 +208,7 @@
                   @enderror
                 </div>
                 <input type="hidden" name="park_id" value="{{$park->id}}">
-                <input type="hidden" name="photo_type" value="鳥">
+                <input type="hidden" name="photo_type" value="鳥類">
                 <input type="submit" value="アップロード">
               </form>
             </div><!-- bird -->
@@ -428,6 +448,8 @@ $(function(){
     location.hash = '#' + id;
     sessionStorage.setItem('hash', location.hash);
   })
+
+  $('#myModal').modal('show');
 
   if ($('p.require').length) {
     $("html,body").animate({scrollTop:$('#message').offset().top});

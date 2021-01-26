@@ -1056,6 +1056,80 @@ p.require {
   height: 7.7rem;
 }
 
+/* ======================================== */
+/*  search_livings.html */
+/* ======================================== */
+#outer_section_livings_area {
+  @include flex($justify:center, $align:center, $wrap:wrap);
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    border-left: 0.4rem solid $color_main;
+    text-align: left;
+    width: $width_sp;
+    padding-left: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  #inner_section_livings_area {
+    @include flex($justify:center, $align:center, $wrap:wrap);
+    background-color: $color_sub;
+    width: 100%;
+
+    #livings_area {
+      width: $width_sp;
+      padding: 3rem 0;
+      ul {
+        li {
+          @include flex($justify:center, $align:center, $wrap:wrap);
+          a {
+            display: block;
+            width: 35rem;
+            padding: 1rem 0;
+            img {
+              display: block;
+              height: 7rem;
+              width: 35rem;
+              border: 0.01rem solid $color_base;
+              border-radius: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  #outer_section_livings_area {
+    h2 {
+      font-size: 3.2rem;
+      width: $width_pc;
+    }
+
+    #inner_section_livings_area {
+      width: $width_pc;
+      #livings_area {
+        width: $width_pc;
+        background-color: $color_base;
+        padding-bottom: 20rem;
+        ul {
+          li {
+            a {
+              width: 100%;
+              padding: 2.5rem 0;
+              img {
+                height: 16rem;
+                width: 100rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 /* ======================================== */
 /*  list_information.html */
@@ -1427,9 +1501,107 @@ p.require {
       margin-bottom: 3rem;
       width: $width_pc;
     }
+    p {
+      font-size: 1.6rem;
+      padding: 1rem 0;
+      width: $width_pc;
+    }
+
     #advert_area {
       width: $width_pc;
       padding-bottom: 7rem;
+
+      .advert_outer {
+        h3 {
+          font-size: 1.6rem;
+        }
+        .advert_inner {
+          h4 {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+/* ======================================== */
+/* terms.html */
+/* ======================================== */
+
+#section_terms_area {
+  @include flex($justify:center, $align:stretch, $wrap:wrap);
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+
+  h2 {
+    color: $color_base;
+    background-color: $color_main;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  #terms_area {
+    p {
+      margin-bottom: 1rem;
+    }
+    width: $width_sp;
+    @include flex($justify:center, $align:stretch, $wrap:wrap);
+    .terms_outer {
+      h3 {
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-align: left;
+        border-left: 0.3rem solid $color_main;
+        margin-bottom: 1rem;
+        padding: 0.15rem 0 0.15rem 0.5rem;
+      }
+
+      .terms_inner {
+        h4 {
+          font-weight: bold;
+        }
+
+        p {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+}
+
+@media (min-width: 1000px) {
+  #section_terms_area {
+    font-size: 1.6rem;
+    padding-top: 1rem;
+    h2 {
+      color: $font_color;
+      text-align: left;
+      background-color: $color_base;
+      font-size: 3.2rem;
+      margin-bottom: 3rem;
+      width: $width_pc;
+    }
+    P {
+      padding: 1rem 0;
+    }
+    #terms_area {
+        width: $width_pc;
+        padding-bottom: 7rem;
+        .terms_outer {
+          h3 {
+            font-size: 1.6rem;
+            .terms_inner {
+              h4 {
+                font-size: 1.6rem;
+              }
+            }
+          }
+        }
     }
   }
 }
@@ -1938,7 +2110,7 @@ input[type="checkbox"]:checked + #check {
   #contact_form_area input,
   #contact_form_area textarea
   {
-    width: 90%;
+    width: 100%;
   }
   /* result_deateails_feature.html */
   .tab-label {

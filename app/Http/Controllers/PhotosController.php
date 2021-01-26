@@ -40,20 +40,23 @@ class PhotosController extends Controller
             $this->validate($req, array_merge(Photo::getRules('insect_comment'), Park::getRulesImage('insect_upfile')));
             $req->merge(['upfile' => $req->insect_upfile]);
             $req->merge(['comment' => $req->insect_comment]);
+            session()->flash('message','昆虫画像登録完了');
         } else if ($req->has('bird_upfile') || $req->has('bird_comment')) {
             $this->validate($req, array_merge(Photo::getRules('bird_comment'), Park::getRulesImage('bird_upfile')));
             $req->merge(['upfile' => $req->bird_upfile]);
             $req->merge(['comment' => $req->bird_comment]);
+            session()->flash('message','鳥類画像投稿完了');
         } else if ($req->has('plant_upfile') || $req->has('plant_comment')) {
             $this->validate($req, array_merge(Photo::getRules('plant_comment'), Park::getRulesImage('plant_upfile')));
             $req->merge(['upfile' => $req->plant_upfile]);
             $req->merge(['comment' => $req->plant_comment]);
+            session()->flash('message','植物画像投稿完了');
         } else if ($req->has('facility_upfile') || $req->has('facility_comment')) {
             $this->validate($req, array_merge(Photo::getRules('facility_comment'), Park::getRulesImage('facility_upfile')));
             $req->merge(['upfile' => $req->facility_upfile]);
             $req->merge(['comment' => $req->facility_comment]);
+            session()->flash('message','施設画像投稿完了');
         }
-        
 
 
         $file = $req->upfile;
