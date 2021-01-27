@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('description', '公園ポータルサイトにご意見・ご要望ありがとうございました。')
+@section('description', '公園マップにご意見・ご要望ありがとうございました。')
 
 @section('title', 'ご意見・ご要望のお問い合わせ完了')
 

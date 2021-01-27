@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('description', '公園ポータルサイトのプライバシーポリシーです。ご利用する際のプライバシーポリシーを記してあります。')
+@section('description', '公園マップのプライバシーポリシーです。ご利用する際のプライバシーポリシーを記してあります。')
 
 @section('title', 'プライバシーポリシー')
 

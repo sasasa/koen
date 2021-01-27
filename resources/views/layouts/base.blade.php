@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keywords" content="公園">
     <meta name="description" content="@yield('description')">
-    <title>@yield('title') | 公園ポータルサイト</title>
+    <title>@yield('title') | 公園マップ</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
