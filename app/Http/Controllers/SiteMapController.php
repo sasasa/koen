@@ -45,10 +45,14 @@ class SiteMapController extends Controller
                 'geo_location' => $photo->park->address,
             ];
         }
-        $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.9', 'weekly', $images);
-        $tags = Tag::orderBy('id', 'DESC')->get();
-        foreach ($tags as $tag) {
-            $sitemap->add(\URL::to('/search_by_plant_and_animal?photo='. $tag->tag), $now, '0.9', 'weekly', $images);
+        $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.8', 'weekly', $images);
+        foreach (['昆虫', '鳥類', '植物'] as $type) {
+            $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $type), $now, '0.8', 'weekly', $images);
+
+            $group_photos = Photo::where('photo_type', $type)->orderBy('id', 'desc')->get()->groupBy('comment');
+            foreach ($group_photos as $tag => $photos) {
+                $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $type. '?photo='. $tag), $now, '0.9', 'weekly', $images);
+            }
         }
 
 
