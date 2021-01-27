@@ -40,6 +40,7 @@ class ReviewsController extends Controller
 
         $review = new Review();
         $review->fill($req->all())->save();
+        session()->flash('message','口コミ投稿完了');
 
         return redirect()->back();
     }

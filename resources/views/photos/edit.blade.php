@@ -12,7 +12,7 @@
 
   <div class="form-group">
     <label for="photo_type">{{__('validation.attributes.photo_type')}}:</label>
-    {{ Form::select('photo_type', [''=>'選択してください','昆虫'=>'昆虫','鳥'=>'鳥','植物'=>'植物',], old('photo_type', $photo->photo_type), empty($errors->first('photo_type')) ? ['class'=>"form-control", 'id'=>'photo_type'] : ['class'=>"form-control is-invalid", 'id'=>'photo_type']) }}
+    {{ Form::select('photo_type', [''=>'選択してください','昆虫'=>'昆虫','鳥類'=>'鳥類','植物'=>'植物','施設'=>'施設',], old('photo_type', $photo->photo_type), empty($errors->first('photo_type')) ? ['class'=>"form-control", 'id'=>'photo_type'] : ['class'=>"form-control is-invalid", 'id'=>'photo_type']) }}
     @error('photo_type')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
@@ -42,6 +42,7 @@
   <div class="form-group">
     <label for="comment">{{__('validation.attributes.comment')}}:</label>
     <input value="{{old('comment', $photo->comment)}}" type="text" id="comment" class="form-control @error('comment') is-invalid @enderror" name="comment">
+    紐づけてある画像とタグが自動で変更されます。
     @error('comment')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>

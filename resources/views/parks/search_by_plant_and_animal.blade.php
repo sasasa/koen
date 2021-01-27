@@ -5,27 +5,56 @@
 @section('title', '公園を動植物から探す')
 
 @section('content')
-<div class="photo">
   @if (!$group_photos->isEmpty())
-  <form method="GET" action="{{route('parks.search_by_plant_and_animal', ['type'=>$type])}}" >
-    @foreach ($group_photos as $key => $photos)
-      <div class="photo__list">
-        <label for="ch_{{ $photos[0]->id }}">
-          <img src="/storage/{{$photos[0]->image_path}}" alt="{{$key}}" title="{{$key}}">
-          <input {{ request()->photo == mb_convert_kana($key, 'Hcsa') ? 'checked' : '' }} id="ch_{{ $photos[0]->id }}" name="photo" type="radio" value="{{ mb_convert_kana($key, 'Hcsa') }}">
-          {{ mb_convert_kana($key, 'Hcsa') }}
-        </label>
-      </div>
-    @endforeach
-    <input type="submit" value="検索">
-  </form>
+  <div class="photo">
+    <form method="GET" action="{{route('parks.search_by_plant_and_animal', ['type'=>$type])}}" >
+      @foreach ($group_photos as $key => $photos)
+        <div class="photo__list">
+          <label for="ch_{{ $photos[0]->id }}">
+            <img src="/storage/{{$photos[0]->image_path}}" alt="{{$key}}" title="{{$key}}">
+            <input {{ request()->photo == mb_convert_kana($key, 'Hcsa') ? 'checked' : '' }} id="ch_{{ $photos[0]->id }}" name="photo" type="radio" value="{{ mb_convert_kana($key, 'Hcsa') }}">
+            {{ mb_convert_kana($key, 'Hcsa') }}
+          </label>
+        </div>
+      @endforeach
+      <input type="submit" value="検索">
+    </form>
+  </div>
   @else
-    <a href="{{ route('parks.search_by_plant_and_animal', ['type'=>'昆虫']) }}">昆虫</a>
-    <a href="{{ route('parks.search_by_plant_and_animal', ['type'=>'鳥']) }}">鳥</a>
-    <a href="{{ route('parks.search_by_plant_and_animal', ['type'=>'植物']) }}">植物</a>
-
+    <section id="outer_section_livings_area">
+      <h2>動植物から探す</h2>
+      <div id="inner_section_livings_area">
+          <div id="livings_area">
+              <ul>
+                  <li>
+                      <a href="{{ route('parks.search_by_plant_and_animal', ['type'=>'鳥類']) }}">
+                          <picture>
+                              <source media="(min-width: 1000px)" srcset="/img/livings/pc/tori_pc.jpg">
+                              <img alt="鳥類から探す" src="/img/livings/sp/tori_sp.jpg">
+                          </picture>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{ route('parks.search_by_plant_and_animal', ['type'=>'昆虫']) }}">
+                          <picture>
+                              <source media="(min-width: 1000px)" srcset="/img/livings/pc/mushi_pc.jpg">
+                              <img alt="昆虫から探す" src="/img/livings/sp/mushi_sp.jpg">
+                          </picture>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{ route('parks.search_by_plant_and_animal', ['type'=>'植物']) }}">
+                          <picture>
+                              <source media="(min-width: 1000px)" srcset="/img/livings/pc/kusa_pc.jpg">
+                              <img alt="植物から探す" src="/img/livings/sp/kusa_sp.jpg">
+                          </picture>
+                      </a>
+                  </li>
+              </ul>
+          </div><!-- id="livings_area" -->
+      </div><!-- id="inner_section_living_area" -->
+    </section><!-- id="outer_section_livings_area" -->
   @endif
-</div>
 
 @if (!$parks->isEmpty())
 <section id="section_catalog_result">

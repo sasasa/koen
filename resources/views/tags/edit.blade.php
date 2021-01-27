@@ -12,6 +12,7 @@
   <div class="form-group">
     <label for="tag">{{__('validation.attributes.tag')}}:</label>
     <input value="{{old('tag', $tag->tag)}}" type="text" id="tag" class="form-control @error('tag') is-invalid @enderror" name="tag">
+    紐づけてある画像も自動で変更されます。
     @error('tag')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>

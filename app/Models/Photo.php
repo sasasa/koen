@@ -25,7 +25,7 @@ class Photo extends Model
     public static $optionsForSelect = [
         ''=>'選択してください',
         '昆虫'=>'昆虫',
-        '鳥'=>'鳥',
+        '鳥類'=>'鳥類',
         '植物'=>'植物',
         '施設' => '施設',
     ];

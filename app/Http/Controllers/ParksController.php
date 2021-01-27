@@ -15,14 +15,14 @@ class ParksController extends Controller
     {
         return view('parks.search_map');
     }
-    
+
     public function detail(Request $req, Park $park)
     {
         $insect_photos = $park->photos()->
                         where('photo_type', '昆虫')->
                         orderBy('id', 'desc')->get();
         $bird_photos = $park->photos()->
-                        where('photo_type', '鳥')->
+                        where('photo_type', '鳥類')->
                         orderBy('id', 'desc')->get();
         $plant_photos = $park->photos()->
                         where('photo_type', '植物')->
