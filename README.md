@@ -8,6 +8,7 @@ php artisan make:model Photo -m
 php artisan make:model Review -m
 php artisan make:model Tag -m
 php artisan make:model Article -m
+php artisan make:model Advertisement -m
 
 
 php artisan make:controller ParksController
@@ -18,6 +19,7 @@ php artisan make:controller Api/SearchParksController
 php artisan make:controller ArticlesController --resource
 php artisan make:controller RootController
 php artisan make:controller SiteMapController
+php artisan make:controller AdvertisementsController --resource
 
 php artisan make:seeder ParksTableSeeder
 php artisan make:seeder UsersTableSeeder
