@@ -110,7 +110,7 @@
     </footer>
 </div>
     <script defer src="{{ asset('js/app.js') }}"></script>
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArS7a0PfkbWeM9-YdpmjU-ikR92TVFQzA&callback=initMap"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY', 'NO') }}&callback=initMap"></script>
     <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
     @yield('script')
     <!-- Scripts -->
