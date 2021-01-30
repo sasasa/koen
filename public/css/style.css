@@ -1290,6 +1290,8 @@ p.require {
   #outer_section_livings_area h2 {
     font-size: 3.2rem;
     width: 100rem;
+    font-weight: bold;
+    border-left: 0.4rem solid #269512;
   }
 
   #outer_section_livings_area #inner_section_livings_area {
@@ -1310,6 +1312,137 @@ p.require {
   #outer_section_livings_area #inner_section_livings_area #livings_area ul li a img {
     height: 16rem;
     width: 100rem;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+/* ======================================== */
+
+/*  search_livings_bird.html */
+
+/* ======================================== */
+
+#section_searchliv_area {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+#section_searchliv_area #searchliv_area {
+  padding-top: 4rem;
+  width: 37.5rem;
+}
+
+#section_searchliv_area #searchliv_area h2 {
+  border-left: 0.4rem solid #269512;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-left: 0.3rem;
+  margin-left: 0.3rem;
+  margin-bottom: 3rem;
+}
+
+#section_searchliv_area #searchliv_area #livings_area {
+  background-color: #F7F7F7;
+  padding: 6rem 0;
+}
+
+#section_searchliv_area #searchliv_area #livings_area ul {
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+#section_searchliv_area #searchliv_area #livings_area ul li {
+  width: 20%;
+  padding: 0 0.45rem;
+}
+
+#section_searchliv_area #searchliv_area #livings_area ul li .livings_button {
+  height: 14rem;
+  width: 6.6rem;
+  font-size: 0.8rem;
+  position: relative;
+}
+
+#section_searchliv_area #searchliv_area #livings_area ul li .livings_button img {
+  height: 6.6rem;
+  width: 6.6rem;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#section_searchliv_area #searchliv_area #livings_area ul li .livings_button div {
+  width: 5rem;
+  position: absolute;
+  top: 7.2rem;
+  left: 1.5rem;
+}
+
+#section_searchliv_area #searchliv_area #livings_area input[type=submit] {
+  display: block;
+  color: #707070;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 1.6rem;
+  border: 0.1rem solid #269512;
+  background-color: #fff;
+  width: 97%;
+  margin: 0 auto;
+}
+
+@media (min-width: 1000px) {
+  #section_searchliv_area #searchliv_area {
+    width: 100rem;
+  }
+
+  #section_searchliv_area #searchliv_area h2 {
+    font-size: 3.2rem;
+  }
+
+  #section_searchliv_area #searchliv_area #livings_area {
+    background-color: #fff;
+  }
+
+  #section_searchliv_area #searchliv_area #livings_area ul li {
+    width: 12.5%;
+    padding: 1.45rem;
+  }
+
+  #section_searchliv_area #searchliv_area #livings_area ul li .livings_button {
+    height: 20rem;
+    width: 9.6rem;
+    font-size: 1.2rem;
+  }
+
+  #section_searchliv_area #searchliv_area #livings_area ul li .livings_button img {
+    height: 9.6rem;
+    width: 9.6rem;
+  }
+
+  #section_searchliv_area #searchliv_area #livings_area ul li .livings_button div {
+    width: 8rem;
+    position: absolute;
+    top: 10.1rem;
+    left: 1.5rem;
   }
 }
 

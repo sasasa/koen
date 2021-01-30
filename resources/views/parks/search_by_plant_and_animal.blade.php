@@ -6,20 +6,29 @@
 
 @section('content')
   @if (!$group_photos->isEmpty())
-  <div class="photo">
-    <form method="GET" action="{{route('parks.search_by_plant_and_animal', ['type'=>$type])}}" >
-      @foreach ($group_photos as $key => $photos)
-        <div class="photo__list">
-          <label for="ch_{{ $photos[0]->id }}">
-            <img src="/storage/{{$photos[0]->image_path}}" alt="{{$key}}" title="{{$key}}">
-            <input {{ request()->photo == mb_convert_kana($key, 'Hcsa') ? 'checked' : '' }} id="ch_{{ $photos[0]->id }}" name="photo" type="radio" value="{{ mb_convert_kana($key, 'Hcsa') }}">
-            {{ mb_convert_kana($key, 'Hcsa') }}
-          </label>
-        </div>
-      @endforeach
-      <input type="submit" value="検索">
-    </form>
-  </div>
+  <form method="GET" action="{{route('parks.search_by_plant_and_animal', ['type'=>$type])}}" >
+    <section id="section_searchliv_area">
+        <div id="searchliv_area">
+            <h2>{{ $type }}から探す</h2>
+              <div id="livings_area"><!-- 画像と検索ボタンが載るエリア -->
+                  <ul>
+                    @foreach ($group_photos as $key => $photos)
+                      <li>
+                          <div class="livings_button">
+                              <label for="livings_input_{{ $photos[0]->id }}">
+                                <img src="/storage/{{$photos[0]->image_path}}" alt="{{$key}}" title="{{$key}}">
+                                <input {{ request()->photo == $key ? 'checked' : '' }} id="livings_input_{{ $photos[0]->id }}" name="photo" type="radio" value="{{ $key }}">
+                                <div>{{ $key }}</div>
+                              </label>
+                          </div><!-- class="livings_button" -->
+                      </li>
+                    @endforeach
+                  </ul>
+                  <input type="submit" value="選んだ条件で検索">
+              </div><!-- id="livings_area" -->
+        </div><!-- id="searchliv_area" -->
+    </section><!-- id="section_searchliv_area" -->
+  </form>
   @else
     <section id="outer_section_livings_area">
       <h2>動植物から探す</h2>
