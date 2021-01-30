@@ -29,9 +29,14 @@ class SiteMapController extends Controller
         $sitemap->add(\URL::to('/'), $now, '1.0', 'weekly', $images);
         // \URL::to('/home')はweb.phpでトップページに指定したURL　＋ α　をaddメソッドで指定している
 
-        $sitemap->add(\URL::to('/search_feature'), $now, '0.9', 'weekly');
-        $sitemap->add(\URL::to('/search_map'), $now, '0.9', 'weekly');
-        $sitemap->add(\URL::to('/search_by_location'), $now, '0.9', 'weekly');
+        $sitemap->add(\URL::to('/search_feature'), $now, '0.9', 'monthly');
+        $sitemap->add(\URL::to('/search_map'), $now, '0.9', 'monthly');
+        $sitemap->add(\URL::to('/search_by_location'), $now, '0.9', 'monthly');
+
+        $sitemap->add(\URL::to('/terms_of_use'), $now, '0.6', 'monthly');
+        $sitemap->add(\URL::to('/privacy_policy'), $now, '0.6', 'monthly');
+        $sitemap->add(\URL::to('/about_advertising'), $now, '0.7', 'monthly');
+        $sitemap->add(\URL::to('/inquiries/create'), $now, '0.7', 'monthly');
 
 
         $photos = Photo::whereNotIn('photo_type', ['ダミー'])->
@@ -45,9 +50,9 @@ class SiteMapController extends Controller
                 'geo_location' => $photo->park->address,
             ];
         }
-        $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.8', 'weekly', $images);
+        $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.8', 'monthly', $images);
         foreach (['昆虫', '鳥類', '植物'] as $type) {
-            $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $type), $now, '0.8', 'weekly', $images);
+            $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $type), $now, '0.8', 'monthly', $images);
 
             $group_photos = Photo::where('photo_type', $type)->orderBy('id', 'desc')->get()->groupBy('comment');
             foreach ($group_photos as $tag => $photos) {
