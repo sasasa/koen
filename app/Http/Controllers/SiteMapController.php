@@ -82,7 +82,12 @@ class SiteMapController extends Controller
                 ];
             }
             $sitemap->add(\URL::to('/detail/'. $park->id), $now, '1.0', 'weekly', $images);
-            $sitemap->add(\URL::to('/user_edit/'. $park->id), $now, '0.8', 'weekly');
+            $sitemap->add(\URL::to('/user_edit/'. $park->id), $now, '0.7', 'weekly');
+
+            
+            foreach ($park->photos as $photo) {
+                $sitemap->add(\URL::to('/parks/'. $park->id. '/photos/'. $photo->id), $now, '0.8', 'monthly');
+            }
         }
 
         $articles = Article::orderBy('created_at', 'DESC')->get();
