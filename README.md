@@ -1,3 +1,4 @@
+<!---
 ```
 mysql -u root -p
 CREATE DATABASE koen CHARACTER SET utf8;
@@ -43,66 +44,103 @@ php artisan db:seed
 php artisan storage:link
 php artisan migrate:refresh --seed
 ```
+-->
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# ローカル開発環境
 
-## About Laravel
+## XAMPかMAMPを入れる
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+XAMPかMAMPを入れる
+PHPバージョンはXserverで動かすために7.3.26 / PHP 7.3.26
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [XAMP](https://www.apachefriends.org/jp/download.html)
+- [MAMP](https://www.mamp.info/en/windows/)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+PHP確認
+```
+php -v
+```
 
-## Learning Laravel
+## composerをインストールする
+- [composer](https://getcomposer.org/download/)
+composer確認
+```
+composer -v
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## httpd.confを書き換える
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+DocumentRoot "プロジェクトまでのパス/koen/public"
+※例 "C:/Users/saeki/growup/koen/public"
 
-## Laravel Sponsors
+<Directory "プロジェクトまでのパス/koen/public">
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## コントロールパネスからhttpdを再起動する
 
-### Premium Partners
+## Databaseを用意する
+OSのターミナルでMYSQLにアクセスしてdatabaseとユーザーを作成する
+```
+mysql -u root -p
+CREATE DATABASE koen CHARACTER SET utf8;
+GRANT ALL PRIVILEGES ON koen.* TO root@localhost IDENTIFIED BY '';
+```
+Databaseの接続情報
+```
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+コンポーザーでライブラリをインストール
+```
+$ composer install
+```
 
-## Contributing
+テーブルの作成
+```
+php artisan key:generate
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## データの用意
+画像アップロードをできるようにシンボリックリンクを張る
+```
+php artisan storage:link
+```
 
-## Code of Conduct
+storage/app/publicに画像を準備
+```
+cp 公園の画像.png storage/app/public/koen.png
+cp 画像がない時の画像.png storage/app/public/noimage.png
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+シードを読み込む
+```
+php artisan db:seed
+```
 
-## Security Vulnerabilities
+## 表示確認
+http://localhost/ にアクセスする
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## SCSSやjavascriptのビルド
+node.jsのインストール
+- [node.js]](https://nodejs.org/ja/download/)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+npmでライブラリをインストール
+```
+npm install
+```
+ビルドが成功するかどうか確かめる
+```
+npm run prod
+```
+
+## SCSSの編集方法
+変更を待ち受けてビルドするコマンド
+```
+npm run watch
+```
+resources/sass/*.scssを編集すると自動でビルドしてくれる
+
