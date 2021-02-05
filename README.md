@@ -144,3 +144,6 @@ npm run watch
 ```
 resources/sass/*.scssを編集すると自動でビルドしてくれる
 
+
+## 本番環境の構築手順
+https://github.com/sasasa/koen/issues/51
