@@ -129,7 +129,7 @@ DB_PASSWORD=
 
 コンポーザーでライブラリをインストール
 ```
-$ composer install
+$ COMPOSER_MEMORY_LIMIT=-1 composer install
 ```
 
 テーブルの作成
@@ -146,8 +146,8 @@ php artisan storage:link
 
 storage/app/publicに画像を準備
 ```
-cp 公園の画像.png storage/app/public/koen.png
-cp 画像がない時の画像.png storage/app/public/noimage.png
+cp 公園のデフォルト画像.png storage/app/public/koen.png
+cp 画像がない時のデフォルト画像.png storage/app/public/noimage.png
 ```
 
 シードを読み込む
@@ -177,8 +177,15 @@ npm run prod
 ```
 npm run watch
 ```
-resources/sass/*.scssを編集すると自動でビルドしてくれる
+
+* resources/js/*.js
+* resources/sass/*.scss
+
+を編集すると自動でビルドしてくれる
 
 
 ## 本番環境の構築手順
+基本的にはローカル開発環境構築と変わらないが
+環境変数が異なることを忘れてはいけない。
+
 https://github.com/sasasa/koen/issues/51
