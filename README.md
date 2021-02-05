@@ -92,6 +92,29 @@ Databaseの接続情報
 cp .env.example .env
 ```
 
+.env
+```
+APP_NAME=公園マップ
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
+
+GOOGLE_MAP_KEY=grow-upのローカル用のキー
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=koen
+DB_USERNAME=root
+DB_PASSWORD=
+
+```
+
+
 コンポーザーでライブラリをインストール
 ```
 $ composer install
