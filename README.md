@@ -61,13 +61,25 @@ PHP確認
 ```
 php -v
 ```
+## macの場合
+Homebrewのインストール
+https://qiita.com/zaburo/items/29fe23c1ceb6056109fd
 
 ## composerをインストールする
 - [composer](https://getcomposer.org/download/)
+
+## macの場合
+```
+brew install composer
+```
+
+
 composer確認
 ```
 composer -v
 ```
+
+
 
 ## httpd.confを書き換える
 
