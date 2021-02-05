@@ -78,7 +78,7 @@ DocumentRoot "プロジェクトまでのパス/koen/public"
 <Directory "プロジェクトまでのパス/koen/public">
 ```
 
-## コントロールパネスからhttpdを再起動する
+## コントロールパネルからhttpdを再起動する
 
 ## Databaseを用意する
 OSのターミナルでMYSQLにアクセスしてdatabaseとユーザーを作成する
@@ -126,7 +126,7 @@ http://localhost/ にアクセスする
 
 ## SCSSやjavascriptのビルド
 node.jsのインストール
-- [node.js]](https://nodejs.org/ja/download/)
+- [node.js](https://nodejs.org/ja/download/)
 
 npmでライブラリをインストール
 ```

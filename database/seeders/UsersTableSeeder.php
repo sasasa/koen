@@ -23,9 +23,9 @@ class UsersTableSeeder extends Seeder
             ]);
         } else {
             User::create([
-                'name' => 'saeki',
-                'email' => 'masaakisaeki@gmail.com',
-                'password' => bcrypt('hogemoge'),
+                'name' => 'grow-up',
+                'email' => 'grow-up@gmail.com',
+                'password' => bcrypt('koenkoen123'),
                 'email_verified_at' => now(),
             ]);
         }
