@@ -63,41 +63,30 @@ class PhotosController extends Controller
         $file_name = time() . '.' . $file->getClientOriginalExtension();
         // EXIF情報を読み取りスマホ画像を回転させる
         $exif = exif_read_data($file);
+        $tmpImg = InterventionImage::make($file);
         if(!empty($exif['Orientation'])) {
             switch($exif['Orientation']) {
                 case 8:
                     //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-                    InterventionImage::make($file)->rotate(90)->
-                    resize(1080, null, function($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    })->save(storage_path('app/public/'. $file_name));
+                    $tmpImg = $tmpImg->rotate(90);
                     break;
                 case 3:
                     //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-                    InterventionImage::make($file)->rotate(180)->
-                    resize(1080, null, function($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    })->save(storage_path('app/public/'. $file_name));
+                    $tmpImg = $tmpImg->rotate(180);
                     break;
                 case 6:
                     //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-                    InterventionImage::make($file)->rotate(-90)->
-                    resize(1080, null, function($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    })->save(storage_path('app/public/'. $file_name));
+                    $tmpImg = $tmpImg->rotate(-90);
                     break;
             }
-        } else {
-            //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-            InterventionImage::make($file)->
-            resize(1080, null, function($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->save(storage_path('app/public/'. $file_name));
         }
+
+        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+        $tmpImg->
+        resize(1080, null, function($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save(storage_path('app/public/'. $file_name));
 
         $photo = new Photo();
         $photo->fill(array_merge($req->all(), [
