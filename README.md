@@ -61,13 +61,25 @@ PHP確認
 ```
 php -v
 ```
+## macの場合
+Homebrewのインストール
+https://qiita.com/zaburo/items/29fe23c1ceb6056109fd
 
 ## composerをインストールする
 - [composer](https://getcomposer.org/download/)
+
+## macの場合
+```
+brew install composer
+```
+
+
 composer確認
 ```
 composer -v
 ```
+
+
 
 ## httpd.confを書き換える
 
@@ -78,7 +90,7 @@ DocumentRoot "プロジェクトまでのパス/koen/public"
 <Directory "プロジェクトまでのパス/koen/public">
 ```
 
-## コントロールパネスからhttpdを再起動する
+## コントロールパネルからhttpdを再起動する
 
 ## Databaseを用意する
 OSのターミナルでMYSQLにアクセスしてdatabaseとユーザーを作成する
@@ -92,9 +104,32 @@ Databaseの接続情報
 cp .env.example .env
 ```
 
+.env
+```
+APP_NAME=公園マップ
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
+
+GOOGLE_MAP_KEY=grow-upのローカル用のキー
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=koen
+DB_USERNAME=root
+DB_PASSWORD=
+
+```
+
+
 コンポーザーでライブラリをインストール
 ```
-$ composer install
+$ COMPOSER_MEMORY_LIMIT=-1 composer install
 ```
 
 テーブルの作成
@@ -111,8 +146,8 @@ php artisan storage:link
 
 storage/app/publicに画像を準備
 ```
-cp 公園の画像.png storage/app/public/koen.png
-cp 画像がない時の画像.png storage/app/public/noimage.png
+cp 公園のデフォルト画像.png storage/app/public/koen.png
+cp 画像がない時のデフォルト画像.png storage/app/public/noimage.png
 ```
 
 シードを読み込む
@@ -126,7 +161,7 @@ http://localhost/ にアクセスする
 
 ## SCSSやjavascriptのビルド
 node.jsのインストール
-- [node.js]](https://nodejs.org/ja/download/)
+- [node.js](https://nodejs.org/ja/download/)
 
 npmでライブラリをインストール
 ```
@@ -142,5 +177,15 @@ npm run prod
 ```
 npm run watch
 ```
-resources/sass/*.scssを編集すると自動でビルドしてくれる
 
+* resources/js/*.js
+* resources/sass/*.scss
+
+を編集すると自動でビルドしてくれる
+
+
+## 本番環境の構築手順
+基本的にはローカル開発環境構築と変わらないが
+環境変数が異なることを忘れてはいけない。
+
+https://github.com/sasasa/koen/issues/51
