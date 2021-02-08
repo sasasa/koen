@@ -12,7 +12,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/destyle.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}?{{ time() }}" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
