@@ -46,7 +46,7 @@ php artisan migrate:refresh --seed
 ```
 -->
 # サーバー
-[公園マップ](kouen-map.com)
+[公園マップ](https://kouen-map.com)
 
 # ローカル開発環境
 
