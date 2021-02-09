@@ -15,6 +15,11 @@ class Park extends Model
     public static $rules = [
         'park_name' => 'required|max:60',
         'address' => 'required|max:128',
+        'park_type' => 'max:128',
+        'management' => 'max:128',
+        'url' => 'max:255',
+
+        'surface_area' => 'integer',
         'longitude' => ['required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
         'latitude' => ['required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
     ];
