@@ -89,15 +89,6 @@
     @enderror
   </div>
 
-  <div class="form-group">
-    <label for="longitude">{{__('validation.attributes.longitude')}}:</label>
-    <input value="{{old('longitude')}}" type="text" id="longitude" class="form-control @error('longitude') is-invalid @enderror" name="longitude">
-    @error('longitude')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
 
   <div class="form-group">
     <label for="latitude">{{__('validation.attributes.latitude')}}:</label>
@@ -108,6 +99,17 @@
     </span>
     @enderror
   </div>
+
+  <div class="form-group">
+    <label for="longitude">{{__('validation.attributes.longitude')}}:</label>
+    <input value="{{old('longitude')}}" type="text" id="longitude" class="form-control @error('longitude') is-invalid @enderror" name="longitude">
+    @error('longitude')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+
 
   <div class="form-check">
     <input {{old('is_toilet') == '1' ? 'checked' : ''}} class="form-check-input" value="1" type="checkbox" id="is_toilet" name="is_toilet">

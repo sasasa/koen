@@ -191,12 +191,12 @@
     <td>{{mb_substr($park->map, 0, 40). '...'}}</td>
   </tr>
   <tr>
-    <th>{{__('validation.attributes.longitude')}}</th>
-    <td>{{$park->longitude}}</td>
-  </tr>
-  <tr>
     <th>{{__('validation.attributes.latitude')}}</th>
     <td>{{$park->latitude}}</td>
+  </tr>
+  <tr>
+    <th>{{__('validation.attributes.longitude')}}</th>
+    <td>{{$park->longitude}}</td>
   </tr>
   <tr>
     <th>{{__('validation.attributes.tag')}}</th>

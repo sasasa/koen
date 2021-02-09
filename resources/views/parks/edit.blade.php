@@ -100,9 +100,9 @@
   </div>
 
   <div class="form-group">
-    <label for="">{{__('validation.attributes.longitude')}}:</label>
-    <input value="{{old('longitude', $park->longitude)}}" type="text" id="longitude" class="form-control @error('longitude') is-invalid @enderror" name="longitude">
-    @error('longitude')
+    <label for="">{{__('validation.attributes.latitude')}}:</label>
+    <input value="{{old('latitude', $park->latitude)}}" type="text" id="latitude" class="form-control @error('latitude') is-invalid @enderror" name="latitude">
+    @error('latitude')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
     </span>
@@ -110,9 +110,9 @@
   </div>
 
   <div class="form-group">
-    <label for="">{{__('validation.attributes.latitude')}}:</label>
-    <input value="{{old('latitude', $park->latitude)}}" type="text" id="latitude" class="form-control @error('latitude') is-invalid @enderror" name="latitude">
-    @error('latitude')
+    <label for="">{{__('validation.attributes.longitude')}}:</label>
+    <input value="{{old('longitude', $park->longitude)}}" type="text" id="longitude" class="form-control @error('longitude') is-invalid @enderror" name="longitude">
+    @error('longitude')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
     </span>
