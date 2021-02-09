@@ -112,6 +112,15 @@
     <script defer src="{{ asset('js/app.js') }}"></script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY', 'NO') }}&callback=initMap"></script>
     <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-94JNEZ8R96"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-94JNEZ8R96');
+    </script>
+
     @yield('script')
     <!-- Scripts -->
 </body>
