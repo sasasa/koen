@@ -187,10 +187,6 @@
     <td>{{$park->url}}</td>
   </tr>
   <tr>
-    <th>{{__('validation.attributes.map')}}</th>
-    <td>{{mb_substr($park->map, 0, 40). '...'}}</td>
-  </tr>
-  <tr>
     <th>{{__('validation.attributes.latitude')}}</th>
     <td>{{$park->latitude}}</td>
   </tr>

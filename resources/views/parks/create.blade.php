@@ -39,6 +39,11 @@
     @enderror
   </div>
 
+  <div class="form-check mb-4">
+    <input {{old('is_default_img') == '1' ? 'checked' : ''}} class="form-check-input" value="1" type="checkbox" id="is_default_img" name="is_default_img">
+    <label class="form-check-label" for="is_default_img">デフォルト画像を利用する</label>
+  </div>
+
   <div class="form-group">
     <label for="park_type">{{__('validation.attributes.park_type')}}:</label>
     <input value="{{old('park_type')}}" type="text" id="park_type" class="form-control @error('park_type') is-invalid @enderror" name="park_type">
@@ -78,17 +83,6 @@
     </span>
     @enderror
   </div>
-
-  <div class="form-group">
-    <label for="map">{{__('validation.attributes.map')}}:</label>
-    <input value="{{old('map')}}" type="text" id="map" class="form-control @error('map') is-invalid @enderror" name="map">
-    @error('map')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
 
   <div class="form-group">
     <label for="latitude">{{__('validation.attributes.latitude')}}:</label>

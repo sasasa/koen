@@ -90,16 +90,6 @@
   </div>
 
   <div class="form-group">
-    <label for="map">{{__('validation.attributes.map')}}:</label>
-    <input value="{{old('map', $park->map)}}" type="text" id="map" class="form-control @error('map') is-invalid @enderror" name="map">
-    @error('map')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-
-  <div class="form-group">
     <label for="">{{__('validation.attributes.latitude')}}:</label>
     <input value="{{old('latitude', $park->latitude)}}" type="text" id="latitude" class="form-control @error('latitude') is-invalid @enderror" name="latitude">
     @error('latitude')

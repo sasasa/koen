@@ -15,7 +15,7 @@ class Park extends Model
     public static $rules = [
         'park_name' => 'required|max:60',
         'address' => 'required|max:128',
-        'park_type' => 'max:128',
+        'park_type' => 'required|max:128',
         'management' => 'max:128',
         'url' => 'max:255',
 

@@ -375,36 +375,40 @@ class ParksController extends Controller
 
     public function store(Request $req)
     {
-        $this->validate($req, array_merge(Park::$rules, Park::$rules_image));
+        if ($req->is_default_img) {
+            $this->validate($req, Park::$rules);
+            $file_name = 'koen.png';
+        } else {
+            $this->validate($req, array_merge(Park::$rules, Park::$rules_image));
 
-        $file = $req->upfile;
-        $file_name = time() . '.' . $file->getClientOriginalExtension();
-        // EXIF情報を読み取りスマホ画像を回転させる
-        $exif = @exif_read_data($file);
-        $tmpImg = InterventionImage::make($file);
-        if(!empty($exif) && !empty($exif['Orientation'])) {
-            switch($exif['Orientation']) {
-                case 8:
-                    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-                    $tmpImg = $tmpImg->rotate(90);
-                    break;
-                case 3:
-                    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-                    $tmpImg = $tmpImg->rotate(180);
-                    break;
-                case 6:
-                    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-                    $tmpImg = $tmpImg->rotate(-90);
-                    break;
+            $file = $req->upfile;
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            // EXIF情報を読み取りスマホ画像を回転させる
+            $exif = @exif_read_data($file);
+            $tmpImg = InterventionImage::make($file);
+            if(!empty($exif) && !empty($exif['Orientation'])) {
+                switch($exif['Orientation']) {
+                    case 8:
+                        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+                        $tmpImg = $tmpImg->rotate(90);
+                        break;
+                    case 3:
+                        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+                        $tmpImg = $tmpImg->rotate(180);
+                        break;
+                    case 6:
+                        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+                        $tmpImg = $tmpImg->rotate(-90);
+                        break;
+                }
             }
+            //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+            $tmpImg->
+            resize(1080, null, function($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save(storage_path('app/public/'. $file_name));
         }
-
-        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-        $tmpImg->
-        resize(1080, null, function($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        })->save(storage_path('app/public/'. $file_name));
 
         $park = new Park();
         $park->fill(array_merge($req->all(), ['image_path' => $file_name]));
