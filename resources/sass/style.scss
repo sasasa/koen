@@ -2284,7 +2284,20 @@ input[type="checkbox"]:checked + #check {
 
 .image-frame {
   text-align: center;
+  img {
+    max-width: $width_sp;
+    width: 100%;
+  }
 }
+@media (min-width: 1000px) {
+  .image-frame {
+    img {
+      max-width: $width_pc;
+      width: 100%;
+    }
+  }
+}
+
 .back-link {
   text-align: center;
   margin: 20px auto;

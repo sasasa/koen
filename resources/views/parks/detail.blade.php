@@ -356,7 +356,7 @@
                       <article class="wordmouth">
                         <h3>{{$review->title}}</h3>
                         <ul>
-                          <li>'年齢'{{$review->ageJp}}代</li>
+                          <li>'年齢'{{$review->ageJp}}</li>
                           <li>'性別'{{$review->genderJp}}</li>
                           <li>'投稿日時'{{$review->created_at->format('Y年m月')}}</li>
                         </ul>

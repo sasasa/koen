@@ -61,8 +61,28 @@ class PhotosController extends Controller
 
         $file = $req->upfile;
         $file_name = time() . '.' . $file->getClientOriginalExtension();
+        // EXIF情報を読み取りスマホ画像を回転させる
+        $exif = exif_read_data($file);
+        $tmpImg = InterventionImage::make($file);
+        if(!empty($exif['Orientation'])) {
+            switch($exif['Orientation']) {
+                case 8:
+                    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+                    $tmpImg = $tmpImg->rotate(90);
+                    break;
+                case 3:
+                    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+                    $tmpImg = $tmpImg->rotate(180);
+                    break;
+                case 6:
+                    //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
+                    $tmpImg = $tmpImg->rotate(-90);
+                    break;
+            }
+        }
+
         //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-        InterventionImage::make($file)->
+        $tmpImg->
         resize(1080, null, function($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
