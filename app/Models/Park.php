@@ -19,7 +19,7 @@ class Park extends Model
         'management' => 'max:128',
         'url' => 'max:255',
 
-        'surface_area' => 'integer',
+        'surface_area' => 'nullable|integer',
         'longitude' => ['required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
         'latitude' => ['required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
     ];
