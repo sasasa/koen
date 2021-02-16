@@ -57,33 +57,7 @@ class PhotosController extends Controller
             $req->merge(['comment' => $req->facility_comment]);
             session()->flash('message','施設画像投稿完了');
         }
-
-
-        $file = $req->upfile;
-        $file_name = time() . '.' . $file->getClientOriginalExtension();
-        // EXIF情報を読み取りスマホ画像を回転させる
-        $exif = @exif_read_data($file);
-        $tmpImg = InterventionImage::make($file);
-        if(!empty($exif) && !empty($exif['Orientation'])) {
-            switch($exif['Orientation']) {
-                case 8:
-                    $tmpImg = $tmpImg->rotate(90);
-                    break;
-                case 3:
-                    $tmpImg = $tmpImg->rotate(180);
-                    break;
-                case 6:
-                    $tmpImg = $tmpImg->rotate(-90);
-                    break;
-            }
-        }
-
-        //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-        $tmpImg->
-        resize(1080, null, function($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        })->save(storage_path('app/public/'. $file_name));
+        $file_name = $this->saveProperlyImage($req->upfile);
 
         $photo = new Photo();
         $photo->fill(array_merge($req->all(), [
@@ -113,15 +87,9 @@ class PhotosController extends Controller
     {
         if ($req->delete_image) {
             $this->validate($req, array_merge(Photo::$rules, Park::$rules_image));
-            
-            $file = $req->upfile;
+
             Storage::disk('public')->delete($photo->image_path);
-            $file_name = time() . '.' . $file->getClientOriginalExtension();
-            //アスペクト比を維持、画像サイズを横幅1080pxにして保存する。
-            InterventionImage::make($file)->resize(1080, null, function($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->save(storage_path('app/public/'. $file_name));
+            $file_name = $this->saveProperlyImage($req->upfile);
 
             $photo->image_path = $file_name;
         } else {
