@@ -14,7 +14,7 @@
                 @foreach ($park_articles as $article)
                     <li>
                         <div class="inform_item" style="background-image: url('/storage/{{$article->image_path}}')">
-                            <a href="{{ route('root.show', ['article'=>$article]) }}">
+                            <a href="{{ route('root.article.show', ['article'=>$article]) }}">
                                 <span>{{ $article->title }}</span>
                             </a>
                         </div>
@@ -28,7 +28,7 @@
                 @foreach ($plant_articles as $article)
                     <li>
                         <div class="inform_item" style="background-image: url('/storage/{{$article->image_path}}')">
-                            <a href="{{ route('root.show', ['article'=>$article]) }}">
+                            <a href="{{ route('root.article.show', ['article'=>$article]) }}">
                                 @if(mb_strlen($article->title) > 13)
                                     <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
                                 @else
@@ -46,7 +46,7 @@
                 @foreach ($animal_articles as $article)
                     <li>
                         <div class="inform_item" style="background-image: url('/storage/{{$article->image_path}}')">
-                            <a href="{{ route('root.show', ['article'=>$article]) }}">
+                            <a href="{{ route('root.article.show', ['article'=>$article]) }}">
                                 @if(mb_strlen($article->title) > 13)
                                     <span>{{mb_substr($article->title, 0, 13). '…'}}</span>
                                 @else

@@ -67,10 +67,10 @@
 
 <section id="section_infomation_area" class="scrol_shift">
   <div id="infomation">
-    <h2><a href="{{ route('root.list') }}">公園なるほど情報</a></h2>
+    <h2><a href="{{ route('root.article.list') }}">公園なるほど情報</a></h2>
     <ul>
       @foreach ($articles as $article)
-        <a href="{{ route('root.show', ['article'=>$article]) }}">
+        <a href="{{ route('root.article.show', ['article'=>$article]) }}">
           <li id="infomation_{{ $loop->iteration }}">
             <span>{{ $article->title }}</span>
           </li>

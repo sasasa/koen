@@ -28,11 +28,11 @@
                     <li>@yield('title')</li>
                 </ol>
             </nav>
-        @elseif ( !empty($article) && request()->fullUrl() == route('root.show', ['article'=>$article]))
+        @elseif ( !empty($article) && request()->fullUrl() == route('root.article.show', ['article'=>$article]))
             <nav id="breadcrumbs">
                 <ol>
                     <li><a href="/">Top</a></li>
-                    <li><a href="{{ route('root.list') }}">公園なるほど情報の一覧</a></li>
+                    <li><a href="{{ route('root.article.list') }}">公園なるほど情報の一覧</a></li>
                     <li>@yield('title')</li>
                 </ol>
             </nav>
@@ -72,7 +72,7 @@
                     <a href="{{route('parks.search')}}"><li>特徴から探す</li></a>
                     <a href="{{route('parks.search_by_plant_and_animal')}}"><li>動植物から探す</li></a>
                 </ul>
-                <div id="tips_link"><a href="{{ route('root.list') }}">公園なるほど情報</a></div>
+                <div id="tips_link"><a href="{{ route('root.article.list') }}">公園なるほど情報</a></div>
             </div><!-- pc_nav_site -->
 
             <!--- ハンバーガーメニューここから  --->
@@ -87,7 +87,7 @@
                     <li><a href="{{ route('parks.search_by_location') }}">現在地から探す</a></li>
                     <li><a href="{{ route('parks.search') }}">特徴から探す</a></li>
                     <li><a href="{{ route('parks.search_by_plant_and_animal') }}">動植物から探す</a></li>
-                    <li><a href="{{ route('root.list') }}">公園なるほど情報</a></li>
+                    <li><a href="{{ route('root.article.list') }}">公園なるほど情報</a></li>
                     </ul>
                     <ul id="nav-content_small_ul">
                     <li><a href="{{ route('root.terms_of_use') }}">利用規約</a></li>

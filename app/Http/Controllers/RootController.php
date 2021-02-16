@@ -16,7 +16,7 @@ class RootController extends Controller
 
     public function show(Article $article)
     {
-        return view('root.show', [
+        return view('root.article.show', [
             'article' => $article,
             'allowedTags' => '<h4><br><p>',
         ]);
@@ -28,7 +28,7 @@ class RootController extends Controller
         $plant_articles = Article::where('article_type', Article::PLANT)->get();
         $animal_articles = Article::where('article_type', Article::ANIMAL)->get();
 
-        return view('root.list', [
+        return view('root.article.list', [
             'park_articles' => $park_articles,
             'plant_articles' => $plant_articles,
             'animal_articles' => $animal_articles,

@@ -28,7 +28,6 @@ use App\Http\Controllers\AdvertisementsController;
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
@@ -41,8 +40,8 @@ Route::get('/user_edit/{park}', [ParksController::class, 'user_edit'])->name('pa
 Route::patch('/user_edit/{park}', [ParksController::class, 'user_update'])->name('parks.user_update');
 
 Route::get('/', [RootController::class, 'index'])->name('root.index');
-Route::get('/article/{article}', [RootController::class, 'show'])->name('root.show');
-Route::get('/article', [RootController::class, 'list'])->name('root.list');
+Route::get('/article/{article}', [RootController::class, 'show'])->name('root.article.show');
+Route::get('/article', [RootController::class, 'list'])->name('root.article.list');
 Route::get('/terms_of_use', [RootController::class, 'terms_of_use'])->name('root.terms_of_use');
 Route::get('/about_advertising', [RootController::class, 'about_advertising'])->name('root.about_advertising');
 Route::get('/privacy_policy', [RootController::class, 'privacy_policy'])->name('root.privacy_policy');
@@ -68,6 +67,8 @@ Route::get('/sitemap.xml', [SiteMapController::class, 'sitemap'])->name('sitemap
 
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
     Route::resource('/parks', ParksController::class);
     Route::resource('/photos', PhotosController::class)->except([
         'store', 'show',

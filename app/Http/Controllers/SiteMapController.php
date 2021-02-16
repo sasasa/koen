@@ -26,17 +26,17 @@ class SiteMapController extends Controller
                 'geo_location' => '',
             ];
         }
-        $sitemap->add(\URL::to('/'), $now, '1.0', 'weekly', $images);
+        $sitemap->add(\URL::to(route('root.index')), $now, '1.0', 'weekly', $images);
         // \URL::to('/home')はweb.phpでトップページに指定したURL　＋ α　をaddメソッドで指定している
 
-        $sitemap->add(\URL::to('/search_feature'), $now, '0.9', 'monthly');
-        $sitemap->add(\URL::to('/search_map'), $now, '0.9', 'monthly');
-        $sitemap->add(\URL::to('/search_by_location'), $now, '0.9', 'monthly');
+        $sitemap->add(\URL::to(route('parks.search')), $now, '0.9', 'monthly');
+        $sitemap->add(\URL::to(route('parks.search_map')), $now, '0.9', 'monthly');
+        $sitemap->add(\URL::to(route('parks.search_by_location')), $now, '0.9', 'monthly');
 
-        $sitemap->add(\URL::to('/terms_of_use'), $now, '0.6', 'monthly');
-        $sitemap->add(\URL::to('/privacy_policy'), $now, '0.6', 'monthly');
-        $sitemap->add(\URL::to('/about_advertising'), $now, '0.7', 'monthly');
-        $sitemap->add(\URL::to('/inquiries/create'), $now, '0.7', 'monthly');
+        $sitemap->add(\URL::to(route('root.terms_of_use')), $now, '0.6', 'monthly');
+        $sitemap->add(\URL::to(route('root.privacy_policy')), $now, '0.6', 'monthly');
+        $sitemap->add(\URL::to(route('root.about_advertising')), $now, '0.7', 'monthly');
+        $sitemap->add(\URL::to(route('inquiries.create')), $now, '0.7', 'monthly');
 
 
         $photos = Photo::whereNotIn('photo_type', ['ダミー'])->
@@ -50,20 +50,20 @@ class SiteMapController extends Controller
                 'geo_location' => $photo->park->address,
             ];
         }
-        $sitemap->add(\URL::to('/search_by_plant_and_animal'), $now, '0.8', 'monthly', $images);
+        $sitemap->add(\URL::to(route('parks.search_by_plant_and_animal')), $now, '0.8', 'monthly', $images);
+
         foreach (['昆虫', '鳥類', '植物'] as $type) {
-            $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $type), $now, '0.8', 'monthly', $images);
+            $sitemap->add(\URL::to(route('parks.search_by_plant_and_animal', ['type'=>$type])), $now, '0.8', 'monthly', $images);
 
             $group_photos = Photo::where('photo_type', $type)->orderBy('id', 'desc')->get()->groupBy('comment');
             foreach ($group_photos as $tag => $photos) {
-                $sitemap->add(\URL::to('/search_by_plant_and_animal/'. $type. '?photo='. $tag), $now, '0.9', 'weekly', $images);
+                $sitemap->add(\URL::to(route('parks.search_by_plant_and_animal', ['type'=>$type, 'photo'=>$tag])), $now, '0.9', 'weekly', $images);
             }
         }
 
 
-        $parks = Park::orderBy('created_at', 'DESC')->get();
+        $parks = Park::orderBy('id', 'DESC')->get();
         foreach ($parks as $park) {
-            
             // add item with images
             $images = [];
             $images[] = [
@@ -81,16 +81,15 @@ class SiteMapController extends Controller
                     'geo_location' => $park->address,
                 ];
             }
-            $sitemap->add(\URL::to('/detail/'. $park->id), $now, '1.0', 'weekly', $images);
-            $sitemap->add(\URL::to('/user_edit/'. $park->id), $now, '0.7', 'weekly');
+            $sitemap->add(\URL::to(route('parks.detail', ['park'=>$park])), $now, '1.0', 'weekly', $images);
+            $sitemap->add(\URL::to(route('parks.user_edit', ['park'=>$park])), $now, '0.7', 'weekly');
 
-            
             foreach ($park->photos as $photo) {
-                $sitemap->add(\URL::to('/parks/'. $park->id. '/photos/'. $photo->id), $now, '0.8', 'monthly');
+                $sitemap->add(\URL::to(route('parks.photos.show', ['park'=>$park, 'photo'=>$photo])), $now, '0.8', 'monthly');
             }
         }
 
-        $articles = Article::orderBy('created_at', 'DESC')->get();
+        $articles = Article::orderBy('id', 'DESC')->get();
         $all_images = [];
         foreach ($articles as $article) {
             $images = [];
@@ -102,11 +101,10 @@ class SiteMapController extends Controller
             ];
             $images[] = $ary;
             $all_images[] = $ary;
-            $sitemap->add(\URL::to('/article/'. $article->id), $now, '0.9', 'weekly', $images);
+            $sitemap->add(\URL::to(route('root.article.show', ['article'=>$article])), $now, '0.9', 'weekly', $images);
         }
-        $sitemap->add(\URL::to('/article'), $now, '0.9', 'weekly', $all_images);
-        
-    
+        $sitemap->add(\URL::to(route('root.article.list')), $now, '0.9', 'weekly', $all_images);
+
         // generate your sitemap (format, filename)
         // $sitemap->store('xml', 'sitemap');
         return $sitemap->render('xml');
