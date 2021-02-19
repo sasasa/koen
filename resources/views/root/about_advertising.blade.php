@@ -42,11 +42,9 @@
             @error('email')
               <p class="require">{{ $message }}</p>
             @enderror
-            
+
             <label for="advertisement_body">内容</label>
-            <textarea id="advertisement_body" accesskey="#" name="advertisement_body" rows="4" cols="40">
-              {{ old('advertisement_body') }}
-            </textarea>
+            <textarea id="advertisement_body" accesskey="#" name="advertisement_body" rows="4" cols="40">{{ old('advertisement_body') }}</textarea>
             @error('advertisement_body')
               <p class="require">{{ $message }}</p>
             @enderror
